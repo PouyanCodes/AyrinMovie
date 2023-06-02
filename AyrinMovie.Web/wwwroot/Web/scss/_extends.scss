@@ -1,0 +1,332 @@
+// this compunent for extends used on flix movie theme
+// این کامپوننت تمامی کلاس های از قبل تعریف شده ای که در قالب فلیکس مووی استفاده شده است را داراست
+
+//
+%forCircleLoader {
+  @include bbttwhm;
+}
+//
+
+// displays
+%row {
+  display: $row;
+}
+
+%block {
+  display: $blockelm;
+}
+
+%inline-block {
+  display: $inline-block;
+}
+
+%none {
+  display: $noneelm;
+}
+
+// flex columns
+%col-4 {
+  flex: 0 0 24%;
+  max-width: 24%;
+}
+
+%col-6 {
+  flex: 0 0 49%;
+  max-width: 49%;
+}
+
+%col-12 {
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+// flex propertis
+%column {
+  flex-direction: $column;
+}
+
+%flexalign {
+  display: $row;
+  align-items: center;
+}
+
+%wrap {
+  flex-wrap: wrap;
+}
+
+%flexcenter {
+  @include flexcenter(center);
+}
+
+%flexspacebetween {
+  @include flexcenter(space-between);
+}
+
+%flexcenterspacearound {
+  @include flexcenter(space-around);
+}
+
+%flexandjustycenter {
+  @include FlexAndJusty(center);
+}
+
+%flexandjusty-space-between {
+  @include FlexAndJusty(space-between);
+}
+
+// centered a element
+%CenterFixed {
+  @include FixedCenter;
+}
+
+// fixed and inser : 0
+%fixed-inset {
+  @include fixed-inset;
+}
+
+// positions
+%absolute {
+  position: $absolute;
+}
+
+%relative {
+  position: $relative;
+}
+
+%fixed {
+  position: $fixed;
+}
+
+// for psudoclasses like ::after ::before
+%psudoclasses {
+  @include psudoclass;
+}
+
+// element sizes
+%max-width {
+  max-width: $max-width;
+}
+
+%fullsize {
+  @include fullwidth;
+}
+
+%fullwidth {
+  width: $fullwidth;
+}
+
+%fullheight {
+  height: $fullwidth;
+}
+
+// transitions
+%transition-2 {
+  transition: $transition-2;
+}
+
+%transition-3 {
+  transition: $transition-3;
+}
+
+%transition-4 {
+  transition: $transition-4;
+}
+
+%transition-cubic {
+  transition: $cubic-transition-4;
+}
+
+// backgrounds
+%white-bg {
+  background: $white-color;
+}
+
+%primary-linear-color {
+  background: $primary-linear-color;
+}
+
+%content-bg-color {
+  background: $content-bg-color;
+}
+
+%dark-color {
+  background: $dark-color;
+}
+
+%dark-color-light {
+  background: $dark-color-light;
+}
+
+%main-bg-color {
+  background: $main-bg-color;
+}
+
+%outlie-button {
+  background: $outline-btn;
+}
+
+%alert-red {
+  background: #cc3333;
+}
+
+%alert-green {
+  background: #12ae40;
+}
+
+// borders
+%panel-blue-border {
+  @include miniborder(rgba($outline-btn, 0.3));
+}
+
+%img-border-radius {
+  border-radius: $border-radius-img;
+}
+
+%btn-border-radius {
+  border-radius: $border-radius-btn;
+}
+
+%btn-30px {
+  border-radius: 30px;
+}
+
+%rounded-radius {
+  border-radius: $rounded;
+}
+
+// fonts
+%bigfont {
+  font-size: $fontSize-11rem;
+}
+
+%mediumfont {
+  font-size: $fontSize-09rem;
+}
+
+%smallfont {
+  font-size: $fontSize-08rem;
+}
+
+%titlefont {
+  font-family: $mediumfont;
+}
+
+%center-text {
+  text-align: $center-text;
+}
+
+// colors
+%primary-text-sl {
+  color: $primary-text-SL;
+}
+
+%content-text-color {
+  color: $content-bg-color;
+}
+
+%whitecolor {
+  color: $white-color;
+}
+
+%primary-text-color {
+  color: $primary-text-color;
+}
+
+%blue-color {
+  color: $outline-btn;
+}
+
+%yellow {
+  color: $yellow-badge;
+}
+
+%orange {
+  color: $orange-badge;
+}
+
+%green {
+  color: $green-badge;
+}
+
+// psudoclass like content : '' , position : absolute , inset : 0
+%psudoclassInset {
+  @include psudoclassInset;
+}
+
+// posinter and absolute
+%pointer-abs {
+  @include pointer-absolute;
+}
+
+// pointer
+%pointer {
+  cursor: $pointer;
+}
+
+%pointer-none {
+  pointer-events: none;
+}
+
+// relative and block
+%relative-block {
+  @include relative-block;
+}
+
+// aboslute and inset
+%abs-inset {
+  @include abs-inset;
+}
+
+// margin and paddings
+%auto-margin {
+  margin: $auto-margin;
+}
+
+%mb-1 {
+  margin-bottom: 1rem;
+}
+
+%mt-1 {
+  margin-top: 1rem;
+}
+
+%padding-1 {
+  padding: 1rem;
+}
+
+%pt-1 {
+  padding-top: 1rem;
+}
+
+%pb-1 {
+  padding-bottom: 1rem;
+}
+
+// box shadow
+%content-shadow {
+  box-shadow: $Content-shadow;
+}
+
+// overflow
+%overflow-hidden {
+  overflow: $overflow;
+}
+
+// panel boxes shadows
+%panel-shadow {
+  box-shadow: 0px 4px 0 rgba($outline-btn, 0.2);
+}
+
+// white space
+%white-space {
+  white-space: nowrap;
+}
+
+// neophorism for admin panel login page
+%neophorism {
+  background: linear-gradient(rgb(220, 229, 249) 0%, rgb(242, 247, 255) 100%);
+  box-shadow: rgb(255, 255, 255) 0px -1px 0px inset,
+    rgb(198, 208, 228) 0px 1px 0px inset;
+}
+
+// End

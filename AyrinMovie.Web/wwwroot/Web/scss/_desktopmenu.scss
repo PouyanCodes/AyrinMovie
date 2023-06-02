@@ -1,0 +1,78 @@
+// کامپوننت استفاده شده در منو دسکتاپ
+// Dropdown menu style
+.menu-with-dropdown {
+  @extend %relative, %block;
+
+  &:hover .dropdown-desktop-menu {
+    @extend %block;
+    transform: scaleY(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+// Dropdown menu style
+.dropdown-desktop-menu {
+  @extend %absolute, %btn-border-radius, %transition-cubic;
+  width: 220px;
+  top: 70px;
+  z-index: 10;
+  background: rgba(5, 5, 5, 0.9);
+  backdrop-filter: blur(10px);
+  transform: scaleY(0) translateY(-30px);
+  transform-origin: top;
+  opacity: 0;
+
+  li:not(:last-child) {
+    margin-bottom: 0.4rem;
+  }
+}
+
+.dropdown-desktop-menu a {
+  @extend %primary-text-color, %fullwidth, %block;
+  padding: 0.4rem 1rem;
+  font-size: 0.75rem;
+
+  &:hover {
+    background: $dark-color-light;
+    color: $white-color;
+  }
+}
+
+// Arrow icon on view all videos btn
+.view-all-videos {
+  @extend %blue-color;
+  padding-bottom: $fontSize-08rem !important;
+
+  &:hover {
+    color: $outline-btn !important;
+    background: $primary-color-light !important;
+  }
+
+  &:hover .arrow-left-icon {
+    transform: translate(-14px, 6px);
+  }
+
+  .arrow-left-icon {
+    @extend %rounded-radius, %transition-2;
+    transform: translate(-10px, 6px);
+    width: 16px;
+    height: 16px;
+    fill: $primary-color;
+  }
+}
+
+.angle-bottom-menu-icon {
+  @extend %transition-2;
+  width: 18px;
+  height: 18px;
+  fill: $primary-text-color;
+  transform: translate(-2px, 4px);
+  transform-origin: 50% 65%;
+}
+
+.menu-with-dropdown:hover .angle-bottom-menu-icon {
+  fill: $white-color;
+  transform: rotate(180deg);
+}
+
+// End

@@ -1,0 +1,187 @@
+﻿@{
+    var movie = ViewBag.movie;
+    var downloadLinks = _linkService.GetDownloadLinks(movie.MovieId);
+
+    ViewData["Title"] = "آیرین مووی - " + movie.MovieTitle;
+}
+
+@using AyrinMovie.Core.Services.Link
+@inject ILinkService _linkService;
+
+
+
+<section class="post__header relative">
+    <div class="post__header__cover absolute" style="background: url(/Files/Movies/@movie.MovieImageName) center -30px no-repeat;"></div>
+    <div class="post__header__bg absolute"></div>
+
+    <!-- Post container -->
+    <article class="main-post container row">
+        <div class="post-img-container">
+            <a href="/home/Movie/@movie.MovieTitle" title="@movie.MovieImageName">
+                <img loading="lazy" class="article-img"
+                     src="~/Files/Movies/Thumbnail/@movie.MovieImageName" alt="کاور فیلم @movie.MovieTitle">
+            </a>
+        </div>
+        <div class="post-info">
+            <div class="post-title-container">
+                <h1 class="post-info-title">
+                    <a class="post-info-link" href="/home/Movie/@movie.MovieTitle" title="@movie.MovieTitle">
+                        @movie.MovieTitle
+                    </a>
+                </h1>
+            </div>
+            <div class="post-meta">
+                <div>
+                    @if (!string.IsNullOrWhiteSpace(movie.MovieGenre))
+                    {
+                        var genres = movie.MovieGenre.Split("-");
+
+                        <span class="post-meta-tags">
+                            <i class="fa fa-tag"></i>
+
+                            @foreach (var genre in genres)
+                            {
+                                <span>-</span>
+                                <a href="/movies?movieGenre=@genre">@genre</a>
+                            }
+                        </span>
+
+                        <span class="tag__line">|</span>
+                    }
+
+
+                    @if (!string.IsNullOrWhiteSpace(movie.ProductionYear))
+                    {
+                        <span class="movie__year">@movie.ProductionYear</span>
+                        <span class="tag__line">|</span>
+                    }
+
+                    @if (!string.IsNullOrWhiteSpace(movie.MovieAge))
+                    {
+                        <span class="post__year">@movie.MovieAge</span>
+                        <span class="tag__line">|</span>
+                    }
+
+                    @if (!string.IsNullOrWhiteSpace(movie.CountryMaker))
+                    {
+                        <span class="post__country">@movie.CountryMaker</span>
+                        <span class="tag__line">|</span>
+                    }
+
+                    @if (!string.IsNullOrWhiteSpace(movie.MovieTime))
+                    {
+                        <span class="post__time">@movie.MovieTime</span>
+                        <span class="tag__line">|</span>
+                    }
+                </div>
+            </div>
+
+            <div class="director__likes">
+
+                <div class="likes">
+
+                    @if (!string.IsNullOrWhiteSpace(movie.IMDBScore))
+                    {
+                        <div class="imdb__score">
+                            <i class="fab fa-imdb"></i>
+                        </div>
+                        <p><span>@movie.IMDBScore</span> از ۱۰ </p>
+                    }
+
+
+                    @if (!string.IsNullOrWhiteSpace(movie.MovieSaticfaction))
+                    {
+                        <div class="like__cr">
+                            <i class="fa fa-heart"></i>
+                        </div>
+                        <p> <span>@movie.MovieSaticfaction</span> رضایت</p>
+                    }
+
+                </div>
+
+                @if (!string.IsNullOrWhiteSpace(movie.Actors))
+                {
+                    var Actors = movie.Actors.Split("-");
+
+                    <div class="actors-director-container">
+                        <div class="actors">
+                            <span class="actors-title">بازیگران  </span>
+                            @foreach (var actor in Actors)
+                            {
+                                <a href="/movies?actors=@actor">@actor</a>
+                                <span>-</span>
+                            }
+                        </div>
+                    </div>
+                }
+
+
+            </div>
+        </div>
+    </article>
+    <!-- Post container end -->
+</section>
+
+
+<section class="post__video__info container">
+
+    <div class="video__container">
+        <video src="@movie.MovieTrailerName" preload="auto" controls>
+            <source src="@movie.MovieTrailerName" type="video/mp4">
+        </video>
+    </div>
+
+    <div class="movie__info__cr">
+
+        @if (!string.IsNullOrWhiteSpace(movie.MovieStory))
+        {
+
+            <div class="movie__story">
+                <h4 class="movie__story__title"> <i class="fas fa-film"></i> داستان فیلم </h4>
+                <p>
+                    @movie.MovieStory
+                </p>
+            </div>
+        }
+
+        <div class="movie__info">
+            <h4 class="movie__story__title"> <i class="fas fa-film"></i> درباره فیلم </h4>
+            <p>
+                @movie.MovieDescription
+            </p>
+        </div>
+    </div>
+</section>
+
+<div class="video__horzontal__line container"></div>
+
+<div class="sell__serials__container container">
+    <div class="sell__serials relative">
+        <h4 class="serials__title"> لینک های دانلود</h4>
+
+
+        <div class="serials____cr">
+            <div id="season1" class="sell__serials__download__section season Serials__dw__animation" style="display: block;">
+
+                @foreach (var link in downloadLinks)
+                {
+                    <div class="sell__serial__inner">
+                        <div class="sell__serial__info">
+                            <span class="film__quality">@link.LinkTitle</span>
+                        </div>
+
+                        <div class="download__serial__btn">
+                            <a href="@link.LinkAddress" target="_blank"><i class="fa fa-download"></i> دانلود با لینک مستقیم </a>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+

@@ -1,0 +1,1247 @@
+// کامپوننت استفاده شده در صفحه اصلی مربوط به پست ها ، سریال ها و بخش بهترین ها که بعد از هدر سایت می باشد و استایل سرچ فیلتر
+
+// Top Videos Choices Styles
+.main-content-top-video-choises {
+  padding-top: 4.5rem;
+  scroll-snap-type: x mandatory;
+
+  @media (max-width: $md-620px) {
+    overflow-x: scroll;
+  }
+}
+
+.top-choices-items {
+  @extend %flexandjusty-space-between, %max-width, %wrap;
+  padding-bottom: 2rem;
+
+  @media (max-width: $md-620px) {
+    width: $lg-1200px;
+    scroll-snap-align: start;
+  }
+}
+
+// Top choices items container scrollbar
+.main-content-top-video-choises::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(31, 31, 31, 0.3);
+  border-radius: 10px;
+  background: $sidebar-bg-color;
+}
+
+.top-choices-item {
+  flex: 0 0 23.55555555%;
+  width: 23.55555555%;
+  margin-top: 1.5rem;
+  scroll-snap-align: start;
+
+  @media (max-width: $lg-991px) {
+    flex: 0 0 48.55555555%;
+    width: 48.55555555%;
+    margin-top: 1.8rem;
+  }
+
+  @media (max-width: $md-620px) {
+    flex: 0 0 23.55555555%;
+    width: 23.55555555%;
+    margin-top: 1.5rem;
+  }
+}
+
+.video-thumbmail {
+  @extend %relative;
+
+  a {
+    @extend %titlefont;
+
+    &:hover {
+      .top-choices-video-overlay {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    img {
+      @extend %img-border-radius, %fullsize;
+    }
+  }
+}
+
+.top-choices-video-overlay {
+  @extend %flexandjustycenter,
+    %column,
+    %abs-inset,
+    %img-border-radius,
+    %transition-4;
+  padding-right: 1.5rem;
+  color: rgba(255, 255, 255, 0.75);
+  background: rgba(0, 0, 0, 0.7);
+  transform: scale(0.95);
+  opacity: 0;
+
+  .top-choices-info {
+    @extend %smallfont;
+    margin-bottom: 0.6rem;
+
+    .top-choices-imdb {
+      padding-right: 0.8rem;
+    }
+  }
+
+  h2 {
+    @extend %whitecolor;
+    font-weight: 600;
+    line-height: 2;
+    font-size: 1rem;
+  }
+
+  .top-choices-espoide,
+  .top-choices-badge {
+    @extend %smallfont;
+  }
+
+  .top-choices-badge {
+    margin-top: 1rem;
+  }
+}
+// Top videos choises style end
+
+// Badges
+.badge {
+  @extend %inline-block,
+    %smallfont,
+    %img-border-radius,
+    %center-text,
+    %white-space;
+  padding: 0.2rem 0.6rem;
+  font-weight: 400;
+  vertical-align: baseline;
+}
+
+.yellow-badge {
+  @extend %yellow;
+  @include miniborder($yellow-badge);
+}
+
+.orange-badge {
+  @extend %orange;
+  @include miniborder($orange-badge);
+}
+
+.green-badge {
+  @extend %green;
+  @include miniborder($green-badge);
+}
+
+.purple-badge {
+  color: $purple-badge;
+  @include miniborder($purple-badge);
+}
+
+.red-badge {
+  color: $red-100;
+  @include miniborder($red-100);
+}
+
+.blue-badge {
+  color: $outline-btn;
+  @include miniborder($outline-btn);
+}
+
+// Badges classes end
+
+// //////////////////////////////////
+// Articles styles
+
+// Articles Main Body bg
+.main-body {
+  @extend %dark-color-light;
+  padding-top: 2rem;
+}
+
+.articles-container {
+  @extend %max-width;
+
+  .articles-aside {
+    @extend %flexandjusty-space-between;
+
+    @media (max-width: $lg-991px) {
+      flex-direction: $column;
+    }
+  }
+
+  .main-articles {
+    flex: 0 0 74%;
+    max-width: 74%;
+
+    @media (max-width: $lg-991px) {
+      @include Flex100;
+    }
+
+    .article-header {
+      @extend %none;
+      margin-bottom: 1.4rem;
+
+      @media (max-width: $lg-991px) {
+        @include flexcenter(space-between);
+      }
+
+      @media (max-width: $md-620px) {
+        flex-direction: $column;
+      }
+
+      p {
+        @extend %bigfont;
+        font-weight: bold;
+
+        @media (max-width: $md-620px) {
+          margin-bottom: 0.6rem;
+        }
+      }
+
+      button {
+        @extend %blue-color, %btn-border-radius, %pointer;
+        @include miniborder($outline-btn);
+        padding: 0.5rem 2rem;
+        background: transparent;
+
+        @media (max-width: $md-620px) {
+          width: $fullwidth;
+        }
+
+        i {
+          padding-left: 0.4rem;
+          font-size: $fontSize-11rem;
+        }
+      }
+    }
+
+    .main-post {
+      @extend %row, %content-bg-color, %btn-border-radius, %content-shadow;
+      padding: 1.4rem;
+      margin-bottom: 1.6rem;
+
+      @media (max-width: $md-620px) {
+        @include flexcenter($center-text);
+        flex-direction: $column;
+      }
+
+      .post-img-container {
+        margin-left: 0.6rem;
+        max-width: 25%;
+        flex: 0 0 25%;
+
+        @media (max-width: $md-620px) {
+          margin-bottom: 1.4rem;
+          margin-left: 0;
+          @include Flex100;
+        }
+
+        &:hover img {
+          transform: translateY(-4px);
+          filter: none;
+        }
+
+        img {
+          @extend %transition-3, %img-border-radius;
+          filter: drop-shadow(0 10px 6px rgba(0, 0, 0, 0.4));
+        }
+      }
+
+      .post-info {
+        flex: 0 0 75%;
+        max-width: 75%;
+
+        @media (max-width: $md-620px) {
+          @include Flex100;
+        }
+
+        .post-title-container {
+          @extend %flexalign;
+          margin-bottom: 1rem;
+
+          @media (max-width: $md-620px) {
+            flex-direction: $column;
+          }
+
+          h1 a {
+            @extend %bigfont, %titlefont;
+            color: #e8eaf0;
+            font-weight: 500;
+
+            @media (max-width: $md-620px) {
+              margin-bottom: 0.4rem;
+              text-align: $center-text;
+              display: $blockelm;
+              width: $fullwidth;
+              font-size: 1rem;
+              line-height: 1.8;
+            }
+
+            &:hover {
+              color: $primary-text-color;
+            }
+          }
+
+          span {
+            @extend %flexalign, %mediumfont;
+            padding-right: 1.2rem;
+            color: $primary-color;
+
+            @media (max-width: $md-620px) {
+              padding-right: 0;
+            }
+
+            img {
+              width: 18px;
+              height: 18px;
+              margin-left: 0.5rem;
+            }
+          }
+        }
+
+        .post-meta {
+          @extend %flexalign, %pb-1;
+          border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+
+          @media (max-width: $md-620px) {
+            justify-content: center;
+            flex-wrap: wrap;
+            border: none;
+          }
+
+          &-tags {
+            @extend %flexalign, %smallfont;
+            i {
+              margin-left: 0.2rem;
+            }
+          }
+
+          span a {
+            @extend %primary-text-color;
+            margin: 0 0.3rem;
+
+            &:hover {
+              color: $primary-color;
+            }
+          }
+
+          .tags-horzontal-line {
+            @extend %block, %img-border-radius;
+            background: $primary-text-color;
+            width: 8px;
+            height: 2px;
+          }
+
+          span:last-child {
+            margin-right: 1rem;
+          }
+
+          .post-meta-like {
+            @extend %smallfont;
+          }
+        }
+
+        .actors-director-container {
+          @extend %smallfont;
+          line-height: 2.2;
+          margin: 1rem 0;
+
+          @media (max-width: $md-720px) {
+            display: $noneelm;
+          }
+
+          span {
+            @extend %primary-text-sl;
+
+            &::after {
+              @extend %primary-text-sl;
+              font-family: "Font Awesome 5 Free";
+              font-weight: bold;
+              padding: 0 0.2rem 0 0.4rem;
+              float: right;
+            }
+          }
+
+          .actors {
+            span {
+              &::after {
+                content: "\f507";
+              }
+            }
+          }
+
+          .director {
+            span {
+              &::after {
+                content: "\f508";
+              }
+            }
+          }
+
+          a {
+            @extend %primary-text-color;
+            margin: 0 0.2rem;
+
+            &:hover {
+              color: $primary-color;
+            }
+          }
+        }
+
+        .post-summary {
+          @extend %dark-color-light, %primary-text-sl;
+          border-radius: 2px;
+          padding: 0.8rem;
+
+          @media (max-width: $lg-1100px) {
+            display: $noneelm;
+          }
+
+          p {
+            @extend %smallfont;
+          }
+        }
+
+        .post-time-country-score-btn-container {
+          @extend %flexspacebetween;
+          margin-top: 2rem;
+
+          @media (max-width: $md-720px) {
+            flex-direction: $column;
+            margin-top: 1rem;
+          }
+
+          .post-time-country-score {
+            @extend %row;
+
+            @media (max-width: $md-720px) {
+              margin-bottom: 1.4rem;
+            }
+
+            @media (max-width: $md-620px) {
+              display: $noneelm;
+            }
+
+            p:not(:first-child) {
+              margin-right: 2rem;
+            }
+
+            p {
+              @extend %smallfont, %white-space;
+
+              i {
+                margin-left: 0.2rem;
+              }
+            }
+          }
+
+          .post-btn {
+            @media (max-width: $md-720px) {
+              width: $fullwidth;
+            }
+
+            @media (max-width: $md-620px) {
+              width: 300px;
+            }
+
+            @media (max-width: 400px) {
+              width: 240px;
+            }
+
+            &-con {
+              @extend %inline-block;
+              background: none;
+
+              @media (max-width: $md-720px) {
+                width: $fullwidth;
+              }
+
+              a {
+                @extend %inline-block,
+                  %mediumfont,
+                  %blue-color,
+                  %btn-border-radius,
+                  %white-space;
+                @include miniborder($outline-btn);
+                width: 150px;
+                padding: 0.6rem 1.375rem;
+
+                @media (max-width: $md-720px) {
+                  @include block-width;
+                  margin: $auto-margin;
+                }
+
+                &:hover {
+                  color: $white-color;
+                  background: $outline-btn;
+                }
+
+                i {
+                  font-size: 1rem;
+                  padding-left: 0.2rem;
+                  vertical-align: middle;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    // Pagination style start here
+    .pagination {
+      @extend %content-bg-color,
+        %content-shadow,
+        %center-text,
+        %btn-border-radius;
+      padding: 1.2rem;
+      margin-bottom: 1.6rem;
+
+      @media (max-width: $xs-480px) {
+        padding: 0.8rem 0.4rem;
+      }
+
+      ul {
+        @extend %flexcenter, %fullwidth, %wrap;
+
+        li {
+          margin: 0 0.6rem;
+
+          @media (max-width: $xs-480px) {
+            margin: 0 0.3rem;
+          }
+
+          @media (max-width: 360px) {
+            margin: 0 0.3rem;
+            margin-bottom: 0.6rem;
+          }
+
+          a {
+            @extend %block,
+              %bigfont,
+              %dark-color-light,
+              %btn-border-radius,
+              %primary-text-color;
+            width: 45px;
+            height: 45px;
+            padding: 0.6rem 0.2rem 0 0.2rem;
+
+            @media (max-width: $xs-480px) {
+              font-size: $fontSize-09rem;
+              width: 40px;
+              height: 40px;
+            }
+
+            &:hover {
+              background: $outline-btn;
+              color: $white-color;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// active page class
+.active-page {
+  background: $outline-btn !important;
+  color: $white-color !important;
+}
+// Pagination end
+
+// Articles End
+
+// Aside Style
+.main-aside {
+  @extend %col-4;
+
+  @media (max-width: $lg-991px) {
+    @include Flex100;
+  }
+
+  // Aside tab
+  .updates-and-search-btn {
+    @extend %content-bg-color, %btn-border-radius, %relative;
+    z-index: 1;
+
+    @media (max-width: $lg-991px) {
+      display: $noneelm;
+    }
+
+    .aside-tab {
+      @extend %absolute, %fullheight, %btn-border-radius, %transition-cubic;
+      top: 0;
+      right: 0;
+      z-index: -1;
+      width: 50%;
+      background: #32323d;
+    }
+
+    .tabs-container {
+      @extend %flexcenterspacearound;
+
+      div {
+        a {
+          @extend %block, %primary-text-color, %mediumfont, %white-space;
+          word-spacing: -2px;
+          padding: 0.8rem 0.4rem;
+        }
+      }
+    }
+  }
+  // Aside tab end
+
+  .serials-container {
+    @extend %flexspacebetween, %wrap;
+  }
+
+  // Serials updates
+  .serial-updates {
+    @extend %flexspacebetween;
+    padding: 2rem 0;
+
+    h1 {
+      @extend %bigfont, %whitecolor;
+      font-weight: 500;
+      word-spacing: -2px;
+
+      i {
+        @extend %primary-text-color;
+        padding-left: 0.7rem;
+      }
+    }
+
+    .view-all-serial-updates {
+      a {
+        @extend %mediumfont, %primary-text-color;
+
+        &:hover {
+          color: $primary-color;
+        }
+      }
+    }
+  }
+
+  .serial-container {
+    @extend %relative;
+    margin-bottom: 1.2rem;
+    box-shadow: 0 5px 25px rgba(20, 20, 20, 10%);
+
+    @media (max-width: $lg-991px) {
+      flex: 0 0 49%;
+    }
+
+    @media (max-width: $md-620px) {
+      flex: 0 0 $fullwidth;
+    }
+
+    .serial-thumbmail {
+      img {
+        @extend %fullwidth, %img-border-radius;
+      }
+    }
+
+    .serial-overlay {
+      @extend %flexspacebetween, %fullwidth, %absolute, %whitecolor, %smallfont;
+      bottom: 0;
+      padding: 0.3rem 0.6rem;
+      background: $sidebar-bg-color;
+
+      span {
+        @extend %btn-border-radius;
+        @include miniborder($white-color);
+        padding: 0.1rem 0.4rem;
+        font-size: 0.7rem;
+      }
+    }
+  }
+  // Serials updates End
+
+  // Dubbed section
+  .dubbed-section {
+    @extend %content-bg-color, %btn-border-radius;
+    box-shadow: 0 5px 25px rgba(20, 20, 20, 10%);
+    margin: 2rem 0 1rem 0;
+    padding: 1.2rem 1rem;
+
+    .dubbed-mic {
+      @extend %flexalign;
+    }
+
+    .dubbed-img-container {
+      @extend %flexcenter, %relative, %rounded-radius;
+      margin-left: 1.4rem;
+      width: 55px;
+      height: 55px;
+      z-index: 1;
+
+      &::after {
+        @extend %psudoclasses, %fullsize;
+        top: 0;
+        z-index: -1;
+        filter: blur(3px);
+        border-radius: inherit;
+        background: #4e54c8;
+        background: linear-gradient(to right, #4e54c8, #8f94fb);
+        animation: img-shadow 1s linear infinite alternate;
+      }
+
+      @keyframes img-shadow {
+        0% {
+          transform: scale(0.8);
+        }
+
+        100% {
+          transform: scale(1.2);
+        }
+      }
+
+      img {
+        @extend %white-bg;
+        max-width: 50px;
+        border-radius: inherit;
+      }
+    }
+
+    .dubbed-text-container {
+      line-height: 1.6;
+
+      p {
+        font-size: 0.7rem;
+      }
+
+      h1 {
+        @extend %whitecolor, %titlefont;
+        font-size: 1rem;
+        word-spacing: -2px;
+      }
+    }
+  }
+
+  .dubbed-options {
+    @extend %row;
+    flex-direction: $column;
+    align-items: center;
+    margin-top: 2rem;
+
+    @media (max-width: $lg-991px) {
+      flex-direction: row;
+    }
+
+    @media (max-width: $md-620px) {
+      flex-direction: $column;
+    }
+
+    div:first-child {
+      margin-bottom: 1rem;
+
+      @media (max-width: $lg-991px) {
+        margin: 0 0 0 0.4rem;
+      }
+
+      @media (max-width: $md-620px) {
+        margin-bottom: 1rem;
+      }
+    }
+
+    .fa-film-dubbed,
+    .fa-animation-dubbed {
+      @extend %fullwidth, %center-text;
+
+      a {
+        @extend %transition-3,
+          %block,
+          %dark-color-light,
+          %btn-border-radius,
+          %mediumfont,
+          %primary-text-sl;
+        padding: 0.5rem 0;
+
+        &:hover {
+          background: rgba(#0e0e0e, 0.1);
+          color: $primary-text-color;
+        }
+      }
+    }
+  }
+}
+// Dubbed section end
+
+// Aside End
+
+// Aside easein Animations class
+.easeOutSer {
+  @extend %transition-4;
+  max-height: $fullwidth;
+  animation: easeOutSerials 400ms ease-in-out forwards;
+}
+
+@keyframes easeOutSerials {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.easeInSer {
+  @extend %transition-4, %overflow-hidden;
+  max-height: 0;
+  animation: easeInOutSerials 400ms ease-in-out forwards;
+}
+
+@keyframes easeInOutSerials {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+// Aside easein Animations Styles End
+
+// Search filter start
+.search-filter {
+  @extend %content-bg-color,
+    %btn-border-radius,
+    %transition-4,
+    %relative,
+    %overflow-hidden;
+  box-shadow: 0 5px 25px rgba(20, 20, 20, 10%);
+  margin: 2rem 0;
+  max-height: 0;
+  transform: translateY(100%);
+
+  .FilterBoxBtn {
+    @extend %block,
+      %transition-3,
+      %btn-border-radius,
+      %outlie-button,
+      %fullwidth,
+      %pointer,
+      %mt-1;
+    color: #fff;
+    padding: 0.6rem 0;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  .search-filter-inner {
+    @extend %fullwidth, %titlefont;
+    padding: 1.4rem;
+
+    h1 {
+      @extend %bigfont, %center-text;
+      color: #e6e6e6;
+      margin-bottom: 2rem;
+    }
+  }
+
+  .form-group-title {
+    @extend %dark-color-light, %btn-border-radius, %transition-3;
+
+    &:hover {
+      background: rgba(#0e0e0e, 0.1);
+    }
+
+    a {
+      @extend %block, %fullwidth, %mediumfont, %primary-text-color;
+      padding: 0.5rem 1.2rem;
+
+      &:hover {
+        color: $white-color;
+      }
+    }
+  }
+
+  .form-group-control {
+    @extend %btn-border-radius, %transition-4, %overflow-hidden;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+    padding: 0 2.8rem 0 0;
+    margin-bottom: 0.9rem;
+    max-height: 0;
+
+    .cr-container {
+      margin-bottom: 0.5rem;
+
+      label {
+        @extend %inline-block, %relative, %mediumfont, %pointer;
+        word-spacing: -2px;
+
+        &:hover span {
+          background: rgba(#2196f3, 0.8);
+        }
+
+        input[type="radio"] {
+          @extend %none;
+
+          &:checked ~ span::after {
+            transform: scale(1.1);
+            background: #fff url(../assest/images/icons/checked.png) no-repeat;
+            background-size: cover;
+          }
+        }
+
+        span {
+          @extend %block,
+            %rounded-radius,
+            %absolute,
+            %transition-cubic,
+            %white-bg;
+          width: 16px;
+          height: 16px;
+          top: 4px;
+          right: -30px;
+
+          &:after {
+            @extend %psudoclassInset, %transition-cubic;
+            transform: scale(0);
+            border-radius: inherit;
+          }
+        }
+      }
+    }
+  }
+}
+// Search filter end
+
+// Ofyer and unyear Styles
+.Ofyear-Unyear {
+  @extend %flexandjusty-space-between;
+  margin-bottom: 0.9rem;
+
+  .of-year,
+  .un-year {
+    @extend %fullwidth, %relative;
+
+    .form-group-control {
+      @extend %fullwidth, %absolute, %content-bg-color;
+      right: 0;
+      top: 40px;
+      box-shadow: 0 0 2px rgba(0, 0, 0, 2%);
+    }
+  }
+
+  .of-year {
+    margin-left: 1rem;
+  }
+}
+// Ofyer and unyear Styles end
+
+// Normal Search filter class auto
+.normal-searchfilter-style {
+  max-height: 200px !important;
+  padding: 0.6rem 2.8rem 0.6rem 0 !important;
+  overflow-y: auto !important;
+}
+
+.min-searchfilter-style {
+  max-height: 200px !important;
+  padding: 0.6rem 2.8rem 0.6rem 0 !important;
+  overflow-y: auto !important;
+}
+
+// Search filter easein class
+.SearchFilterIn {
+  max-height: $fullwidth;
+  transform: translateY(0);
+  overflow: visible;
+}
+
+// Search filter easein class for mobile
+.SearchFilterInAbs {
+  @extend %transition-4, %overflow-hidden;
+  @include fixed-inset;
+  width: 95%;
+  z-index: 9999999;
+  margin: 2rem auto;
+  max-height: 0;
+  transform: translateY(-100%);
+}
+
+.SearchFilterInMobile {
+  overflow-y: auto;
+  max-height: $fullwidth;
+  transform: translateY(0);
+}
+
+.closeSearchFilter {
+  @extend %none;
+
+  @media (max-width: $lg-991px) {
+    @include flexcenter(center);
+    cursor: $pointer;
+    position: $fixed;
+    left: 15px;
+    top: 20px;
+    z-index: 99;
+    background: $primary-text-color;
+    border-radius: $rounded;
+    width: 30px;
+    height: 30px;
+  }
+
+  i {
+    font-size: 1.2rem;
+  }
+}
+
+// best links pages
+#imdb-cr,
+#collection-cr,
+#marvel-cr,
+#dc-cr,
+#oscar-cr,
+#nostalgia-cr {
+  .last__posts__cr {
+    &:hover img {
+      opacity: 1;
+      transform: scale(1.13);
+    }
+  }
+
+  .last__post__img {
+    border-radius: 6px 6px 0 0;
+    padding: 1rem 0;
+    background: linear-gradient(20deg, rgba(#121212, 0.9), rgba(#212529, 0.5)),
+      url(../assest/images/backgrounds/imdb-bg.png) no-repeat center;
+    background-size: 740px;
+  }
+
+  .last__post__text {
+    @extend %center-text;
+  }
+
+  .bests-link {
+    img {
+      @extend %img-border-radius;
+      max-width: 130px;
+      height: 180px;
+    }
+  }
+
+  .score-length {
+    @extend %absolute, %dark-color, %img-border-radius, %flexcenter, %pointer;
+    padding: 0.3rem 0.6rem;
+    z-index: 2;
+    left: 10px;
+    top: 5px;
+
+    i {
+      font-size: 1.2rem;
+      padding-right: 0.4rem;
+    }
+  }
+
+  .fa-imdb {
+    @extend %yellow;
+  }
+
+  .fa-question-circle {
+    color: $purple-badge;
+  }
+
+  .last__post__text {
+    .yl-hover:hover {
+      color: $yellow-badge;
+    }
+
+    .p-hover:hover {
+      color: $purple-badge;
+    }
+
+    .red-hover:hover {
+      color: $red-100;
+    }
+
+    .blue-hover:hover {
+      color: $outline-btn;
+    }
+
+    .green-hover:hover {
+      color: $green-badge;
+    }
+  }
+
+  .link-btn {
+    @extend %block,
+      %auto-margin,
+      %transition-3,
+      %bigfont,
+      %relative,
+      %overflow-hidden;
+    width: max-content;
+    padding: 0.4rem 4rem;
+    margin-bottom: 1.4rem;
+    z-index: 1;
+
+    &::after {
+      @extend %psudoclassInset, %transition-3;
+      z-index: -1;
+      transform-origin: right;
+      transform: scaleX(0);
+    }
+
+    &:hover::after {
+      transform: scaleX(1);
+    }
+  }
+
+  // buttons color on best links pages
+  .yellow-badge {
+    &:hover {
+      color: $main-bg-color;
+    }
+    &::after {
+      background: $yellow-badge;
+    }
+  }
+
+  .purple-badge {
+    &:hover {
+      color: $main-bg-color;
+    }
+    &::after {
+      background: $purple-badge;
+    }
+  }
+
+  .red-badge {
+    &:hover {
+      color: $white-color;
+    }
+
+    &::after {
+      background: $red-100;
+    }
+  }
+
+  .blue-badge {
+    &:hover {
+      color: $white-color;
+    }
+
+    &::after {
+      background: $outline-btn;
+    }
+  }
+
+  .green-badge {
+    &:hover {
+      color: $white-color;
+    }
+
+    &::after {
+      background: $green-badge;
+    }
+  }
+
+  // buttons color on best links pages end
+}
+
+// best lniks pages backgrounds images
+#collection-cr {
+  .last__post__img {
+    background: linear-gradient(20deg, rgba(#121212, 0.9), rgba(#212529, 0.5)),
+      url(../assest/images/backgrounds/collection-bg.png) no-repeat center;
+    background-size: 500px;
+  }
+}
+
+#marvel-cr {
+  .last__post__img {
+    background: linear-gradient(20deg, rgba(#121212, 0.9), rgba(#212529, 0.5)),
+      url(../assest/images/backgrounds/marvel.png) no-repeat center;
+    background-size: 350px;
+  }
+}
+
+#dc-cr {
+  .last__post__img {
+    background: linear-gradient(20deg, rgba(#121212, 0.9), rgba(#212529, 0.5)),
+      url(../assest/images/backgrounds/dc-bg.png) no-repeat center;
+    background-size: 600px;
+  }
+}
+
+#oscar-cr {
+  .last__post__img {
+    background: linear-gradient(20deg, rgba(#121212, 0.9), rgba(#212529, 0.5)),
+      url(../assest/images/backgrounds/oscar.png) no-repeat center;
+    background-size: 400px;
+  }
+
+  .fa-question-circle {
+    color: $yellow-badge;
+  }
+}
+
+#nostalgia-cr {
+  .last__post__img {
+    background: linear-gradient(20deg, rgba(#121212, 0.9), rgba(#212529, 0.5)),
+      url(../assest/images/backgrounds/nostaliga.png) no-repeat center;
+    background-size: 350px;
+  }
+}
+// best lniks pages backgrounds images end
+
+// movie info section for collection page
+.movie-info-inner {
+  @extend %abs-inset, %img-border-radius, %transition-2;
+  padding: 1rem;
+  z-index: 4;
+  background: rgba(0, 0, 0, 0.8);
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+
+  h1 {
+    @extend %mb-1, %titlefont, %whitecolor;
+    border-bottom: 1px solid rgba(#f5f5f5, 0.2);
+    padding-bottom: 0.4rem;
+  }
+
+  p {
+    @extend %mb-1, %flexalign;
+
+    &::before {
+      @extend %block, %rounded-radius;
+      content: "";
+      margin-left: 0.5rem;
+      width: 20px;
+      height: 20px;
+      background: url(../assest/images/icons/film-strip.svg);
+    }
+  }
+
+  button {
+    @extend %pointer,
+      %img-border-radius,
+      %block,
+      %absolute,
+      %alert-red,
+      %whitecolor,
+      %bigfont,
+      %transition-3;
+    padding: 0.2rem 1rem;
+    bottom: 30px;
+    right: 50%;
+    margin-right: -2rem;
+
+    &:hover {
+      box-shadow: 0 0 12px #cc3333;
+    }
+  }
+}
+
+.movie-info-inner-open {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+// movie info section for collection page end
+
+// End

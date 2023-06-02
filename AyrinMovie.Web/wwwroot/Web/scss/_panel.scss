@@ -1,0 +1,1879 @@
+// این کامپوننت مربوط به استایل دهی بخش پنل فلیکس مووی می باشد
+// panel main page start here
+.panel {
+  @extend %content-bg-color;
+}
+
+.panel__main__container {
+  padding: 0;
+
+  //   panel sidebar styles
+  .sidebar {
+    @extend %content-bg-color, %row, %column, %fixed;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 10;
+    width: 260px;
+    border-left: 1px solid rgba(0, 0, 0, 0.25);
+    padding: 0.5rem 1.4rem;
+    overflow-y: auto;
+    transition: 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+
+    @media (max-width: $lg-991px) {
+      transform: translateX(100%);
+    }
+  }
+
+  // styled all svgs in panel pages
+  svg {
+    width: 22px;
+    height: 22px;
+    fill: $primary-text-color;
+  }
+}
+
+.menuPanelIn {
+  transform: translateX(0) !important;
+}
+
+// panel logo
+.panel-logo {
+  width: 50px;
+  height: 50px;
+}
+
+// panel logo side
+.panel__left__logo {
+  padding: 0.6rem 0;
+  margin: 0 -1.4rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+
+  .panel__logo {
+    padding: 0 1.4rem;
+
+    .panel__link {
+      @extend %flexspacebetween, %whitecolor;
+
+      &:hover p {
+        @extend %blue-color;
+      }
+
+      p {
+        @extend %transition-2;
+        letter-spacing: 2px;
+        font-size: 1.4rem;
+        font-family: "Cabin", sans-serif;
+      }
+    }
+  }
+}
+// panel logo side end
+
+// sider menu bar
+.sidebar__menu {
+  @extend %pt-1;
+}
+
+// admin info section
+.admin__info {
+  @extend %flexspacebetween;
+  padding: 0rem 1.4rem 1rem;
+  margin: 0 -1.4rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+}
+
+// admin name section
+.admin__name {
+  @extend %flexcenter;
+
+  i {
+    margin-left: 0.8rem;
+  }
+
+  p {
+    @extend %smallfont;
+  }
+
+  h1 {
+    @extend %titlefont, %whitecolor;
+    font-size: 1rem;
+  }
+}
+// admin name section end
+
+// admin icons
+.admin__i {
+  @extend %flexcenter, %btn-border-radius, %primary-linear-color;
+  width: 38px;
+  height: 38px;
+
+  svg {
+    fill: #fff;
+  }
+}
+
+.admin__i:last-child {
+  @extend %transition-2, %dark-color-light, %outlie-button;
+
+  &:hover {
+    @extend %white-bg;
+  }
+
+  &:hover svg {
+    fill: $outline-btn;
+  }
+
+  svg {
+    @extend %transition-2;
+    fill: $white-color;
+  }
+}
+// admin icons end
+
+// admin actions section
+.actions {
+  padding-top: 2rem;
+}
+
+// admin actions
+.admin__actions {
+  li {
+    margin-bottom: 1.8rem;
+
+    a {
+      @extend %flexalign, %fullwidth, %primary-text-color, %transition-2;
+
+      &:hover,
+      &:hover svg {
+        color: $outline-btn;
+        fill: $outline-btn;
+      }
+
+      i {
+        @extend %transition-4;
+        padding-right: 0.5rem;
+      }
+
+      svg {
+        @extend %transition-2;
+        margin-left: 1rem;
+      }
+    }
+  }
+}
+
+// admin pages section
+.admin__pages__action {
+  li:not(:last-child) {
+    margin-bottom: 1.4rem;
+  }
+
+  li {
+    @extend %relative, %transition-2, %flexalign;
+    padding-right: 1.2rem;
+
+    &::after {
+      @extend %psudoclasses, %rounded-radius;
+      right: 0;
+      width: 8px;
+      height: 8px;
+      background: linear-gradient(to right, #141e30, #243b55);
+      box-shadow: inset 0 0 2px 2px rgba(255, 255, 255, 0.5);
+    }
+  }
+}
+
+// admin pages dropdown attr
+[data-dropdown-panel-hidden] {
+  @extend %overflow-hidden, %transition-4, %dark-color-light;
+  margin: 0 -1.4rem;
+  padding: 0 1.4rem;
+  height: 0;
+}
+
+// admin pages dropdown open class
+.openDropdownPanel {
+  padding: 1rem 1.4rem;
+  margin-bottom: 1.6rem;
+  height: 245px;
+}
+
+.panel__copy__right__text {
+  @extend %block, %smallfont;
+  padding-top: 5rem;
+}
+
+// active link panel classes
+.active__panel__link {
+  color: $outline-btn !important;
+}
+
+.active__panel__link svg {
+  fill: $outline-btn;
+}
+
+// admin pages dropdown title class actived
+.admin__action__active a {
+  color: $outline-btn !important;
+}
+
+.admin__action__active i {
+  transform: rotate(180deg);
+  margin-right: 0.4rem;
+}
+
+.admin__action__active svg {
+  fill: $outline-btn;
+}
+
+// panel main section container
+.main__panel__section {
+  @extend %content-bg-color;
+  padding: 1.1rem 280px 1.1rem 2rem;
+
+  @media (max-width: $lg-991px) {
+    padding: 90px 1.1rem 1rem 1.1rem;
+  }
+}
+
+// panel mobile header
+.mobile__panel__header {
+  @extend %dark-color-light, %fixed, %fullwidth, %none, %panel-shadow;
+  top: 0;
+  right: 0;
+  z-index: 9;
+  height: 80px;
+  padding: 1rem 1.1rem;
+
+  @media (max-width: $lg-991px) {
+    @include flexcenter(space-between);
+  }
+
+  img {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+// navbar opened button
+.OpenPanelNavbar {
+  @extend %pointer;
+  background: none;
+  width: 30px;
+
+  div {
+    @extend %white-bg, %transition-4;
+    width: 20px;
+    height: 2px;
+    margin-bottom: 0.3rem;
+
+    &:nth-child(2) {
+      width: 16px;
+      margin-right: 4px;
+    }
+
+    &:nth-child(3) {
+      width: 10px;
+      margin-right: 10px;
+    }
+  }
+}
+
+// open panel button class
+.openPanel div:nth-child(1) {
+  transform: rotate(45deg) translate(2px, 0px);
+  width: 25px;
+}
+
+.openPanel div:nth-child(2) {
+  opacity: 0;
+}
+
+.openPanel div:nth-child(3) {
+  transform: rotate(-45deg) translate(16px, 0px);
+  width: 25px;
+}
+// open panel button class end
+
+// panel page title for 991px
+.panel__page__title {
+  @extend %flexspacebetween, %wrap;
+  padding: 0.3rem 1.1rem 0.9rem;
+  margin: 0 -1.1rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+
+  h1 {
+    @extend %whitecolor, %titlefont;
+  }
+
+  .panel__header__button {
+    @extend %flexcenter,
+      %whitecolor,
+      %outlie-button,
+      %transition-4,
+      %white-space,
+      %btn-30px;
+    width: 130px;
+    height: 40px;
+
+    &:hover {
+      @extend %white-bg;
+      color: $dark-color;
+    }
+  }
+}
+
+.panel-page-other-title {
+  @media (max-width: $md-620px) {
+    flex-direction: $column;
+    align-items: flex-start;
+
+    h1 {
+      margin-bottom: 1rem;
+    }
+  }
+
+  @media (max-width: $xs-480px) {
+    .panel-header-left-aside {
+      flex-direction: $column;
+      flex-wrap: wrap;
+      align-items: flex-start;
+    }
+
+    .sort-panel-table {
+      margin-bottom: 1rem;
+
+      p:first-child {
+        margin-bottom: 0.6rem;
+      }
+
+      .sort__table__lists {
+        right: 15px;
+      }
+    }
+
+    .panel-search-form-container {
+      padding-right: 0;
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+  }
+}
+// panel page title for 991px end
+
+// website analytics boxes section
+.website__analytics {
+  @extend %flexspacebetween, %wrap;
+  padding: 1.4rem 0 0.4rem;
+}
+
+.website-analytics-cr {
+  @extend %img-border-radius,
+    %dark-color-light,
+    %panel-shadow,
+    %col-4,
+    %padding-1;
+
+  @media (max-width: $lg-991px) {
+    flex: 0 0 49%;
+    max-width: 49%;
+    margin-bottom: 1.4rem;
+  }
+
+  @media (max-width: $md-620px) {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  p {
+    @extend %overflow-hidden, %white-space;
+  }
+}
+
+.website-analytics-count {
+  @extend %flexspacebetween, %mt-1;
+  flex-direction: row-reverse;
+
+  svg {
+    width: 50px;
+    height: 50px;
+    fill: $outline-btn;
+  }
+
+  p {
+    @extend %whitecolor;
+    font-size: 1.8rem;
+  }
+}
+// website analytics boxes section end
+
+// website analayctis tables title
+.website-analytics-last-cr {
+  @extend %flexspacebetween, %wrap;
+  padding-top: 1.4rem;
+}
+
+// analytics table container
+.analytics-container {
+  @extend %dark-color-light,
+    %img-border-radius,
+    %panel-shadow,
+    %relative,
+    %col-6;
+  padding: 1rem 1.4rem;
+  margin-bottom: 1.4rem;
+
+  @media (max-width: $lg-991px) {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+// analytics title container
+.analytics-title {
+  @extend %flexspacebetween;
+}
+
+// analytics title container left and right
+.analytics-right-title,
+.analytics-left-title {
+  @extend %flexalign;
+
+  h2 {
+    @extend %whitecolor, %bigfont, %titlefont;
+
+    @media (max-width: $xs-480px) {
+      font-size: 1rem;
+    }
+  }
+}
+
+.analytics-right-title {
+  svg {
+    margin-left: 0.8rem;
+    fill: $outline-btn;
+  }
+}
+
+// analytics left title icon and show all button
+.analytics-left-title {
+  // sycs icon for analytics tables
+  .sycs-icon {
+    @extend %pointer;
+    margin-left: 1.4rem;
+
+    @media (max-width: $xs-480px) {
+      margin-left: 0.5rem;
+    }
+
+    i {
+      @extend %mediumfont, %transition-2;
+      vertical-align: middle;
+
+      &:hover {
+        @extend %blue-color;
+      }
+    }
+  }
+
+  a {
+    @extend %primary-text-color;
+  }
+
+  //   show all button for tables
+  .show-all-btn {
+    @extend %smallfont, %outlie-button, %whitecolor, %btn-30px;
+    padding: 0.3rem 0.6rem;
+
+    &:hover {
+      color: $dark-color;
+      background: $white-color;
+    }
+  }
+}
+// website analayctis tables title end
+
+// analytics table inner container
+.analytics-table {
+  @extend %white-space;
+  margin-top: 0.5rem;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+
+  //   customazing scroll bar
+  &::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba($outline-btn, 0.2);
+  }
+
+  &:hover::-webkit-scrollbar-thumb {
+    background: $outline-btn;
+  }
+
+  @media (max-width: $md-620px) {
+    &::-webkit-scrollbar-thumb {
+      background: $outline-btn;
+    }
+  }
+  //   customazing scroll bar
+}
+
+// for analytics tables ul li
+.analytics-tr ul:not(:last-child) li {
+  margin-left: 2rem;
+}
+
+// analytics table row container
+.analytics-tr {
+  @extend %flexandjusty-space-between;
+
+  // analytics table header
+  .analytics-table-th {
+    @extend %titlefont, %whitecolor, %bigfont;
+    padding: 1.2rem 0;
+    margin-left: 2rem;
+  }
+
+  li:not(:last-child) {
+    margin-bottom: 1.4rem;
+  }
+
+  //   for panel list items
+  li {
+    @extend %row, %mediumfont;
+
+    span,
+    i {
+      color: $primary-color;
+    }
+
+    span {
+      margin-left: 0.4rem;
+    }
+
+    i {
+      vertical-align: middle;
+      margin: 0.2rem auto 0 0;
+    }
+
+    svg {
+      margin: 0 auto 0 3rem;
+      vertical-align: middle;
+      fill: $yellow-badge;
+    }
+  }
+
+  //   for panel links
+  a {
+    @extend %primary-text-color;
+
+    &:hover {
+      @extend %blue-color;
+    }
+  }
+}
+
+// this is container for imdb scores on scores page panel
+.imdb-scores-container {
+  li {
+    margin-left: 0 !important;
+  }
+
+  p {
+    padding-left: 1rem;
+  }
+
+  svg {
+    margin: 0;
+  }
+}
+// panel main styles end
+
+// // // // // // // // // // // //
+// catalog page and comment and scores start here
+
+// panel left aside header secion
+.panel-header-left-aside {
+  @extend %flexalign;
+}
+
+.panel__page__title h1 {
+  @extend %flexalign;
+}
+.panel__page__title h1 p {
+  @extend %smallfont;
+  padding-right: 1rem;
+  font-weight: normal;
+}
+
+// sort panel table button
+.sort-panel-table {
+  p {
+    @extend %smallfont;
+  }
+}
+
+// sort lists button
+.sort-lists-button {
+  @extend %row, %pointer, %relative;
+
+  p {
+    @extend %mediumfont;
+  }
+}
+// sort lists button
+
+// sort table absolute list item
+.sort__table__lists {
+  @extend %absolute,
+    %dark-color-light,
+    %content-shadow,
+    %mediumfont,
+    %transition-4,
+    %padding-1;
+  top: 35px;
+  right: 0;
+  z-index: 22;
+  width: 200px;
+  border-radius: 10px;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(50px);
+
+  li:not(:last-child) {
+    margin-bottom: 0.6rem;
+  }
+
+  li {
+    @extend %transition-2;
+
+    &:hover {
+      color: $outline-btn;
+    }
+  }
+}
+
+.sort__table__lists.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(0);
+}
+// sort table absolute list item
+
+// sort list bars
+.sort-list-bar {
+  padding-right: 0.6rem;
+
+  span {
+    @extend %block, %white-bg, %transition-4;
+    width: 20px;
+    height: 2px;
+    margin: 0.3rem 0;
+  }
+
+  span:last-child {
+    width: 14px;
+  }
+}
+
+.sort-list-bar.active span:first-child {
+  transform: rotate(45deg) translate(6px, 1px);
+}
+
+.sort-list-bar.active span:last-child {
+  transform: rotate(-45deg) translate(4px, 2px);
+  width: 20px;
+}
+// sort list bars
+
+// panel search box form
+.panel-search-form-container {
+  padding-right: 1.6rem;
+}
+
+.panel-search-form-cr {
+  @extend %relative;
+
+  input {
+    @extend %block, %dark-color-light, %whitecolor, %btn-30px;
+    padding: 0.4rem 0.8rem 0.4rem 2rem;
+    height: 40px;
+    width: 260px;
+
+    &::-webkit-search-cancel-button {
+      appearance: none;
+    }
+
+    &:focus + svg {
+      fill: $outline-btn;
+    }
+  }
+
+  .magni-icon {
+    @extend %absolute, %transition-2;
+    left: 10px;
+    bottom: 8px;
+    width: 27px;
+    height: 27px;
+  }
+}
+// panel search box form
+
+// for other panel page get the full size of screen
+.panel-other-page {
+  @extend %col-12;
+
+  ul {
+    margin-left: 1.8rem;
+  }
+
+  @media (max-width: $xs-480px) {
+    li {
+      font-size: 1rem;
+    }
+
+    .admin__post__actions i {
+      font-size: 1.6rem;
+    }
+  }
+}
+
+// for other panel page get the full size of screen
+
+// admin posts actions buttons data attr tooltip
+[data-lock-button-text]::after,
+[data-view-post]::after,
+[data-edit-post]::after,
+[data-delete-text]::after,
+// 
+[data-lock-button-text]::before,
+[data-view-post]::before,
+[data-edit-post]::before,
+[data-delete-text]::before {
+  @extend %absolute,
+    %dark-color,
+    %whitecolor,
+    %smallfont,
+    %img-border-radius,
+    %transition-2,
+    %pointer-none;
+  content: "";
+  padding: 0.4rem;
+  left: 35px;
+  background: $download-btn;
+  opacity: 0;
+  visibility: hidden;
+}
+
+[data-lock-button-text]::after {
+  content: attr(data-lock-button-text);
+}
+[data-view-post]::after {
+  content: attr(data-view-post);
+}
+[data-edit-post]::after {
+  content: attr(data-edit-post);
+}
+[data-delete-text]::after {
+  content: attr(data-delete-text);
+}
+
+[data-lock-button-text]::before,
+[data-view-post]::before,
+[data-edit-post]::before,
+[data-delete-text]::before {
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right: 10px solid $download-btn;
+  border-radius: 0;
+  background: transparent;
+  padding: 0;
+  left: 25px;
+}
+
+[data-action-icon-1] i {
+  color: rgba(#03c03c, 0.9) !important;
+}
+[data-action-icon-2] i {
+  color: rgba(#f1b813, 0.9) !important;
+}
+[data-edit-button] i {
+  color: rgba(#2f80ed, 0.9) !important;
+}
+[data-action-icon-4] i {
+  color: rgba(#f44336, 0.9) !important;
+}
+// admin posts actions buttons data attr tooltip
+
+// admin post actions container
+.admin__post__actions {
+  a {
+    @extend %flexcenter, %relative;
+    margin-left: 1.4rem;
+    width: 25px;
+    font-size: 1rem;
+
+    &:hover::after,
+    &:hover::before {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    i {
+      margin: 0;
+      font-size: 1.45rem;
+    }
+  }
+}
+// admin post actions container
+
+// panel paginations
+.panel__pagination {
+  @media (max-width: 570px) {
+    margin: 1rem auto;
+  }
+
+  .panel-page-count {
+    @extend %bigfont, %whitecolor, %mb-1;
+  }
+
+  .panel__pages {
+    @extend %row;
+
+    li {
+      margin-left: 1rem;
+
+      a {
+        @extend %flexcenter,
+          %panel-shadow,
+          %bigfont,
+          %dark-color-light,
+          %img-border-radius,
+          %whitecolor;
+        width: 45px;
+        height: 45px;
+
+        &:hover {
+          background: $outline-btn;
+        }
+      }
+    }
+
+    @media (max-width: 570px) {
+      li:nth-child(5),
+      li:nth-child(6),
+      li:nth-child(7),
+      li:nth-child(8) {
+        display: none;
+      }
+    }
+  }
+}
+
+// panel pagination active class
+.actived-panel-page {
+  background: $outline-btn !important;
+}
+
+// catalog page and comment and scores end here
+// // // // // // // // // // // //
+
+// add new post page styles
+
+// panel header dropdown selecte list
+#panel-header-dropdown {
+  @extend %relative, %whitecolor, %outlie-button, %center-text, %btn-30px;
+  padding: 0.48rem;
+  width: 240px;
+
+  @media (max-width: 400px) {
+    margin-top: 1rem;
+  }
+
+  ul {
+    text-align: right;
+  }
+}
+
+// panel header dropdown selecte list
+.addnew__item__container {
+  padding-top: 1.4rem;
+}
+
+.addnew__item {
+  @extend %fullwidth, %block;
+}
+
+// upload post container
+.upload-p-container {
+  @extend %flexspacebetween, %wrap;
+
+  .form-control:not(.img-form-control) {
+    @extend %dark-color-light, %img-border-radius, %relative;
+  }
+}
+
+// upload image form control
+.img-form-control {
+  flex: 0 0 28%;
+  max-width: 28%;
+
+  .image-upload-section {
+    @extend %dark-color-light,
+      %relative,
+      %img-border-radius,
+      %panel-blue-border;
+    top: -18px;
+
+    input {
+      @extend %none;
+    }
+  }
+
+  #post-uploaded-background {
+    @extend %flexcenter, %pointer, %fullwidth, %padding-1;
+    height: 410px;
+    z-index: 1;
+  }
+
+  @media (max-width: $lg-991px) {
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin-top: 1rem;
+
+    #post-uploaded-background {
+      height: 200px;
+    }
+
+    .form-control {
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+// upload img overlay bg
+.uploadImgOverlay::after {
+  @extend %psudoclassInset;
+  background-image: radial-gradient(
+    circle at center,
+    rgba(0, 0, 0, 0.2) 10%,
+    rgba($outline-btn, 0.1) 90%
+  );
+  z-index: -1;
+}
+
+// add item forms main groups
+.add-item-form-group {
+  flex: 0 0 70%;
+  max-width: 70%;
+
+  @media (max-width: $lg-991px) {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .form-control {
+    @extend %transition-4;
+    margin-bottom: 1.2rem;
+  }
+}
+
+// all inputs on add new item panel page
+.additem-input,
+#post-info-input {
+  @extend %fullwidth,
+    %img-border-radius,
+    %dark-color-light,
+    %whitecolor,
+    %transition-4,
+    %block,
+    %panel-blue-border;
+  padding: 0.6rem 1rem;
+
+  &::placeholder {
+    @extend %primary-text-color, %transition-2;
+    opacity: 1;
+  }
+
+  &:focus {
+    border-color: $outline-btn;
+  }
+
+  &:focus::placeholder {
+    opacity: 0;
+  }
+}
+
+#post-info-input {
+  height: 150px;
+  resize: none;
+}
+
+// col4 inputs film relase quality and time and age
+.col-4-inputs {
+  @extend %flexspacebetween, %wrap;
+
+  .form-control {
+    @extend %col-4;
+
+    @media (max-width: $md-620px) {
+      flex: 0 0 49%;
+      max-width: 49%;
+    }
+
+    @media (max-width: $xs-450px) {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+  }
+}
+
+// custom select box styles
+.select-box-inp {
+  @extend %relative, %pointer;
+  color: $primary-text-color !important;
+
+  &::after {
+    @extend %absolute, %transition-2;
+    content: "+";
+    font-size: 1.4rem;
+    left: 10px;
+    top: 7px;
+  }
+}
+
+// select box inputs on class
+.select-box-inp-on::after {
+  transform: rotate(45deg);
+}
+
+// selectable lists styles
+.selectable-list {
+  @extend %absolute, %transition-2, %overflow-hidden, %pointer-none;
+  height: 0;
+  visibility: 0;
+  opacity: 0;
+  z-index: 20;
+
+  li {
+    @extend %pointer, %transition-2;
+
+    &:hover {
+      color: $outline-btn;
+    }
+  }
+
+  li:not(:last-child) {
+    margin-bottom: 1rem;
+  }
+}
+
+// selectable list on class
+.selectable-list-on {
+  height: 150px;
+  overflow-y: auto;
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+// col 6 input 49%
+.col-6-inputs {
+  @extend %flexspacebetween, %relative, %wrap;
+
+  .form-control {
+    @extend %col-6;
+
+    @media (max-width: $md-620px) {
+      flex: 0 0 100% !important;
+      max-width: 100% !important;
+    }
+  }
+}
+
+// added tags styles
+.dataTag {
+  @extend %outlie-button,
+    %relative,
+    %whitecolor,
+    %img-border-radius,
+    %center-text,
+    %mediumfont,
+    %relative,
+    %transition-2;
+  margin: 0.3rem;
+  padding: 0.3rem 0.4rem;
+  opacity: 0;
+  right: 30px;
+  animation: basted 0.4s linear forwards;
+
+  &:hover {
+    @extend %alert-red;
+  }
+
+  &:hover span::after,
+  &:hover span::before {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes basted {
+  to {
+    opacity: 1;
+    right: 0;
+  }
+}
+
+// added tags tooltip for clear
+[data-clear-tag-tooltip]::after,
+[data-clear-tag-tooltip]::before {
+  @extend %absolute, %transition-2, %pointer-none;
+  opacity: 0;
+  transform: scale(0);
+}
+
+[data-clear-tag-tooltip]::after {
+  @extend %white-space,
+    %mediumfont,
+    %img-border-radius,
+    %alert-green,
+    %white-space;
+  content: attr(data-clear-tag-tooltip);
+  top: -40px;
+  right: -10px;
+  padding: 0.2rem;
+}
+
+[data-clear-tag-tooltip]::before {
+  content: "";
+  top: -14px;
+  right: 12px;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid #12ae40;
+}
+
+// for remove outline on contenteditable p
+[contenteditable="true"] {
+  outline: none;
+}
+
+// post imdb score input
+#post-imdb-score {
+  max-height: 60px;
+}
+
+// post imdb score input placeholder
+.placeholder {
+  @extend %absolute, %transition-2, %pointer-none;
+  top: 10px;
+  right: 18px;
+}
+
+.placeholder-out {
+  opacity: 0;
+}
+
+// upload video section ipnuts
+.addPostLastSec {
+  .form-control {
+    @extend %mb-1;
+  }
+
+  #upload-video-input-parent {
+    @extend %pointer;
+  }
+
+  #uploaded-video-input {
+    @extend %none;
+  }
+
+  input {
+    padding-right: 2.5rem;
+  }
+
+  label {
+    @extend %relative, %overflow-hidden;
+    z-index: 1;
+
+    &::after {
+      @extend %psudoclassInset, %alert-green;
+      z-index: -1;
+      left: 0;
+      width: 0;
+    }
+
+    p {
+      padding-right: 1.8rem;
+    }
+  }
+}
+
+// uploaded video input icons
+.upload-post-icon {
+  @extend %absolute, %blue-color;
+  right: 15px;
+  top: 15px;
+}
+
+// uploading loader styles
+.uploading-loader {
+  @extend %absolute, %rounded-radius, %transition-2;
+  width: 24px;
+  height: 24px;
+  border: 2px solid #cc3333;
+  border-top-color: $content-bg-color;
+  border-left-color: $content-bg-color;
+  top: 10px;
+  right: 215px;
+  opacity: 0;
+}
+
+@keyframes uploading-video-loader {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// uploading loader classes for javasciprt
+.uploaded-loader-out {
+  opacity: 0;
+}
+.uploaded-loader-in {
+  opacity: 1;
+  animation: uploading-video-loader 0.5s linear infinite;
+}
+
+.uploading-video-progress::after {
+  animation: uploading-video 7s cubic-bezier(0.11, 0, 0.5, 0) forwards;
+}
+
+@keyframes uploading-video {
+  to {
+    width: 100%;
+  }
+}
+
+// post type checkbox section
+.post-money-free-cr {
+  @extend %row, %bigfont;
+  margin: 1rem auto;
+
+  @media (max-width: $md-620px) {
+    flex-direction: $column;
+  }
+}
+
+// post money or free checkboxes section
+.post-money-or-free,
+.custom-radio-button {
+  margin-left: 1.5rem;
+}
+
+.radiobtns-cr {
+  @media (max-width: $md-620px) {
+    margin-top: 1rem;
+  }
+}
+
+.custom-radio-button {
+  @extend %relative, %pointer;
+  padding-left: 2rem;
+
+  input {
+    @extend %none;
+  }
+
+  &:hover .post-type-radio {
+    background: rgba($outline-btn, 0.8);
+  }
+
+  .post-type-radio {
+    @extend %block, %absolute, %rounded-radius, %white-bg, %transition-2;
+    width: 20px;
+    height: 20px;
+    bottom: 4px;
+    left: 0px;
+
+    &::after {
+      @extend %psudoclassInset, %transition-2;
+      transform: scale(0);
+      background: url(../assest/images/icons/checked.png);
+      background-size: cover;
+    }
+  }
+
+  input:checked ~ .post-type-radio::after {
+    transform: scale(1);
+  }
+}
+
+// data money price form
+[data-money-price] {
+  @extend %alert-red,
+    %img-border-radius,
+    %whitecolor,
+    %overflow-hidden,
+    %transition-4;
+  margin: 1rem 0;
+  padding: 0;
+  max-height: 0;
+  opacity: 0;
+  transition-property: max-height opacity;
+
+  .legal-post-cr {
+    margin: 1rem 0;
+
+    @media (max-width: $md-620px) {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+}
+
+// data money price form class on
+.data-money-price-on {
+  padding: 1rem;
+  max-height: 300px !important;
+  opacity: 1;
+}
+
+.addPostespoide {
+  .form-control {
+    @extend %mb-1;
+  }
+}
+
+.sereis-cover-bg {
+  @extend %dark-color-light,
+    %flexcenter,
+    %img-border-radius,
+    %pointer,
+    %panel-blue-border;
+  height: 150px;
+  background-size: cover;
+
+  @media (max-width: $md-620px) {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+.coming__soon__img {
+  @extend %relative, %mt-1;
+
+  @media (max-width: $md-620px) {
+    display: none;
+  }
+
+  &::after,
+  &::before {
+    @extend %psudoclasses, %outlie-button, %img-border-radius;
+    width: 100px;
+    height: 14px;
+    left: -130px;
+    top: 50%;
+  }
+
+  &::before {
+    width: 0;
+    height: 0;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-left: 24px solid $outline-btn;
+    background: transparent;
+    left: -34px;
+    top: 45.5%;
+    z-index: 2;
+  }
+
+  img {
+    @extend %img-border-radius;
+  }
+}
+
+.badges-selector {
+  @extend %wrap;
+  margin-bottom: 1.4rem;
+
+  li {
+    @extend %pointer, %transition-2;
+    margin: 0.4rem 0.8rem 0.4rem 0;
+  }
+}
+
+// // // // // // // // // // // //
+// // // // // // // // // // // //
+// submit btn
+.add-new-post-btn-cr {
+  @extend %fullwidth;
+  text-align: left;
+}
+.add-new-post-btn {
+  @extend %white-bg,
+    %img-border-radius,
+    %bigfont,
+    %titlefont,
+    %pointer,
+    %relative,
+    %transition-4,
+    %overflow-hidden,
+    %whitecolor;
+  width: 150px;
+  padding: 0.5rem 0;
+  z-index: 1;
+  background: transparent;
+
+  &::after {
+    @extend %outlie-button,
+      %img-border-radius,
+      %dark-color-light,
+      %psudoclasses,
+      %transition-4,
+      %fullsize;
+    top: 0;
+    right: 0;
+    inset: 0;
+    z-index: -1;
+  }
+
+  &:hover::after {
+    width: 0;
+  }
+
+  &:hover {
+    background: $white-color;
+    color: $dark-color;
+  }
+}
+
+// seding form animation on
+.sending-form-animation {
+  @extend %fixed-inset, %flexcenter, %transition-4, %dark-color;
+  z-index: 150;
+  animation: fadeOutAnimation 0.6s ease-in forwards;
+
+  img {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@keyframes fadeOutAnimation {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+// addNew article styles start here
+// //// // // // // // // // // //
+// add new articles form
+
+// texteditor container
+.texteditor-container {
+  @extend %dark-color-light, %img-border-radius, %mb-1;
+  padding: 0.6rem;
+}
+
+// texteditor tools container
+.tools-cr {
+  @extend %row, %relative, %wrap;
+
+  // tools
+  .tool {
+    @extend %transition-4;
+    margin: 0.4rem 0 0.4rem 1rem;
+
+    input:not([type="url"]) {
+      @extend %block, %CenterFixed, %pointer-none;
+      opacity: 0;
+    }
+
+    label {
+      @extend %flexcenter,
+        %pointer,
+        %rounded-radius,
+        %dark-color-light,
+        %transition-2,
+        %panel-blue-border;
+      width: 50px;
+      height: 50px;
+
+      &:hover {
+        background: rgba($outline-btn, 0.9);
+      }
+
+      &:hover i {
+        color: $white-color;
+      }
+
+      i {
+        @extend %transition-2;
+        font-size: 1.2rem;
+      }
+    }
+  }
+}
+
+// select tools not tool frist child for open tools with first child
+.tool:not(:first-child) {
+  @media (max-width: $lg-800px) {
+    overflow: hidden;
+    opacity: 0;
+    width: 0;
+    transition-delay: 0.1s;
+
+    @for $i from 1 through 11 {
+      &:nth-child(#{$i}) {
+        transition-delay: $i * 0.1s;
+        transform: translateX($i * 30px);
+      }
+    }
+  }
+}
+
+// tools opened class
+.tools-opened {
+  width: 50px !important;
+  opacity: 1 !important;
+  transform: translateX(0) !important;
+}
+
+// open tools btn
+#open-tools {
+  @extend %none;
+  margin: 0;
+
+  @media (max-width: $lg-800px) {
+    display: flex;
+    margin: 0.4rem 0 0.4rem 1rem;
+  }
+}
+
+// emojy tool container
+.emojy-cr {
+  @extend %absolute,
+    %flexcenter,
+    %dark-color,
+    %img-border-radius,
+    %content-shadow,
+    %transition-4,
+    %pointer-none,
+    %wrap;
+  width: 300px;
+  max-width: 250px;
+  z-index: 101;
+  top: 200px;
+  left: 50%;
+  opacity: 0;
+  visibility: hidden;
+  padding: 0.4rem 0.2rem;
+  transform: translate(-50%, -100%);
+
+  span {
+    @extend %bigfont, %pointer, %transition-2;
+    margin: 0.3rem;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+}
+
+// emojy container on class
+.emojy-cr-on {
+  transform: translate(-50%, 0);
+  opacity: 1;
+  pointer-events: all;
+  visibility: visible;
+}
+
+// paste url input
+.pasteUrl-input {
+  @extend %overflow-hidden,
+    %transition-4,
+    %fullwidth,
+    %relative,
+    %overflow-hidden;
+  max-height: 0;
+
+  input {
+    @extend %mb-1;
+  }
+
+  // add new post btn class for paste url btn
+  .add-new-post-btn {
+    @extend %absolute, %img-border-radius, %pointer;
+    top: 0;
+    left: 0;
+    width: 60px;
+    height: 45px;
+  }
+}
+
+// paste url on class
+.pasteUrl-input-on {
+  max-height: 100px;
+  margin-top: 1rem;
+}
+
+// active tool class
+.active-tool {
+  background: rgba($outline-btn, 0.9) !important;
+
+  i {
+    color: $white-color !important;
+  }
+}
+
+// text editor form
+.text-editor-form {
+  margin-top: 1rem;
+  line-height: 1.8;
+}
+
+// addnew article textarea
+#article-text-area {
+  transition: none;
+  max-width: 100%;
+  height: 350px;
+}
+
+// upload image for article section
+.image-upload-section {
+  input {
+    @extend %none;
+  }
+}
+
+#article-upload-bg {
+  @extend %flexcenter,
+    %pointer,
+    %dark-color-light,
+    %img-border-radius,
+    %padding-1,
+    %panel-blue-border,
+    %mb-1;
+
+  p {
+    margin-left: 1rem;
+  }
+
+  i {
+    @extend %flexcenter, %rounded-radius;
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+}
+// add new article end here
+// // // // // // // // // // // //
+
+// upload avatar photo for add new user
+.upload-avatar-cr {
+  @extend %padding-1, %center-text, %panel-blue-border;
+}
+
+.upload-user-avatar {
+  @extend %flexcenter, %pointer;
+  margin-bottom: 0.5rem;
+}
+
+// social icon editor container
+.social-editor-container {
+  @extend %flexspacebetween;
+
+  @media (max-width: $lg-800px) {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+
+  // socials links and icons
+  .socials {
+    @extend %flexalign, %fullsize, %wrap;
+    margin-top: 0;
+
+    @media (max-width: $lg-800px) {
+      justify-content: center;
+    }
+
+    ul {
+      @extend %column;
+      margin: 1rem;
+
+      .edit-socials {
+        @extend %flexalign, %relative;
+
+        input {
+          width: 300px;
+          height: 50px;
+          text-align: left;
+
+          &::placeholder {
+            text-align: right;
+          }
+
+          @media (max-width: $xs-450px) {
+            width: 225px;
+          }
+        }
+      }
+
+      // social container
+      .socials-cr {
+        width: 60px;
+        height: 50px;
+        margin: 1rem 0 1rem 1rem;
+
+        a {
+          font-size: 0;
+
+          @media (max-width: $xs-450px) {
+            position: absolute;
+          }
+        }
+
+        i {
+          font-size: 1.8rem;
+        }
+      }
+    }
+  }
+}
+
+// icon editor container
+.icon-editor {
+  @extend %dark-color-light, %overflow-hidden, %relative, %mt-1;
+  flex: 0 0 50%;
+
+  // icons
+  .icons {
+    @extend %flexcenter,
+      %dark-color-light,
+      %img-border-radius,
+      %wrap,
+      %padding-1,
+      %panel-blue-border;
+
+    li {
+      @extend %none;
+      margin: 0.5rem;
+
+      i {
+        @extend %pointer, %transition-2;
+        font-size: 2rem;
+
+        &:hover {
+          color: $outline-btn;
+        }
+      }
+    }
+  }
+}
+
+// icon select box
+.icon-select-box {
+  @extend %flexcenter,
+    %column,
+    %abs-inset,
+    %fullsize,
+    %dark-color,
+    %transition-4,
+    %img-border-radius,
+    %pt-1;
+  z-index: 5;
+  visibility: hidden;
+  opacity: 0;
+  overflow-y: auto;
+  transform: translateY(-100px);
+
+  h1 {
+    @extend %bigfont, %titlefont, %whitecolor;
+    margin-bottom: 0.5rem;
+  }
+
+  li {
+    @extend %whitecolor,
+      %primary-linear-color,
+      %pointer,
+      %transition-2,
+      %fullwidth,
+      %center-text;
+    padding: 0.4rem 0;
+
+    &:hover {
+      font-weight: bold;
+      color: $dark-color;
+    }
+  }
+
+  li:not(:last-child) {
+    margin-bottom: 0.6rem;
+  }
+}
+
+// close select box button
+.close-select-box {
+  @extend %absolute, %img-border-radius, %flexcenter, %pointer, %transition-2;
+  right: 10px;
+  top: 8px;
+  width: 35px;
+  height: 35px;
+
+  @media (max-width: $xs-450px) {
+    width: 30px;
+    height: 30px;
+  }
+
+  &:hover {
+    background: $outline-btn;
+    color: $white-color;
+  }
+
+  i {
+    @extend %bigfont;
+  }
+}
+
+// icon select box on class
+.icon-select-box-on {
+  visibility: visible;
+  opacity: 1;
+  transform: translate(0);
+}
+
+// icons on class
+.icons-on {
+  display: block !important;
+  opacity: 0;
+  transform: scale(0) translateY(-4px);
+  animation: icons-in 0.4s linear forwards;
+  animation-delay: 0.1s;
+
+  // loop for icons animation delay and transform
+  @for $i from 1 through 32 {
+    &:nth-child(#{$i}) {
+      transform: translateY($i * -2px);
+      animation-delay: $i * 0.1s;
+    }
+  }
+}
+
+// icons in animation
+@keyframes icons-in {
+  to {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+// End

@@ -1,0 +1,163 @@
+// استایل دهی صفحه پیش نیاز ها (در قسمت فوتر سایت)
+// requaments posts start
+
+.req__posts__container {
+  padding-top: 7rem;
+  background: $secondary-dark;
+}
+
+.req__posts {
+  @extend %row, %max-width;
+
+  @media (max-width: $lg-991px) {
+    flex-direction: $column;
+  }
+}
+
+.requament__links {
+  flex: 0 0 25%;
+  max-width: 25%;
+  padding-left: 1.5rem;
+
+  @media (max-width: $lg-991px) {
+    @include Flex100;
+    padding-left: 0;
+    margin-bottom: 1rem;
+  }
+}
+
+.req__posts__links {
+  @extend %img-border-radius, %content-bg-color, %padding-1;
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.1);
+
+  .req__post__link:first-of-type {
+    padding-top: 0.6rem;
+  }
+
+  .req__post__link:not(:last-child) {
+    margin-bottom: 0.8rem;
+  }
+
+  .req__post__link {
+    a {
+      @extend %primary-text-color, %mediumfont;
+      line-height: 1.8;
+
+      &:hover {
+        color: $primary-color;
+      }
+
+      i {
+        opacity: 0.5;
+        padding-left: 0.4rem;
+      }
+    }
+  }
+}
+
+// requament titles
+.post__text__cr h1,
+.req__posts__links h1 {
+  @extend %bigfont, %titlefont, %whitecolor;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+}
+
+// contact us btn
+.contact__us__btn {
+  @extend %block, %center-text, %whitecolor, %outlie-button, %btn-border-radius;
+  margin: 1rem auto 0;
+  padding: 0.6rem 0;
+}
+
+// requament post text container
+.req__posts__text {
+  @extend %row, %img-border-radius, %content-bg-color;
+  flex: 0 0 75%;
+  max-width: 75%;
+  padding: 1rem;
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.1);
+
+  @media (max-width: $lg-991px) {
+    @include Flex100;
+    margin-bottom: 1rem;
+    flex-direction: $column;
+  }
+
+  .post__text__cr {
+    flex: 0 0 70%;
+    padding-left: 1.4rem;
+
+    @media (max-width: $lg-991px) {
+      padding-left: 0;
+    }
+
+    .req__img__cr {
+      padding: 1rem 0;
+
+      img {
+        @extend %img-border-radius, %fullwidth;
+      }
+    }
+
+    p {
+      line-height: 1.8;
+      font-size: 0.9rem;
+      text-align: justify;
+    }
+  }
+
+  .req__posts__downloadbox {
+    @extend %center-text, %padding-1;
+    flex: 0 0 30%;
+    height: max-content;
+    background: inherit;
+    border-radius: inherit;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    position: sticky;
+    top: 100px;
+
+    @media (max-width: $lg-991px) {
+      margin-top: 1rem;
+    }
+
+    .req__post__btn a {
+      @extend %block, %whitecolor, %mediumfont;
+      background: $download-btn;
+      border-radius: 3px;
+      padding: 0.65rem 1.1rem;
+      margin-bottom: 0.4rem;
+
+      &:hover,
+      &:active,
+      &:focus {
+        background: #92ca55;
+      }
+    }
+
+    .req__post__btn {
+      span {
+        @extend %smallfont;
+      }
+    }
+
+    .req__post__btn:not(:last-child) {
+      @extend %mb-1;
+    }
+  }
+}
+
+.video__formats {
+  flex: 0 0 $fullwidth !important;
+  padding-left: 0 !important;
+  img {
+    width: auto !important;
+    margin: 0 auto !important;
+  }
+
+  p:first-of-type {
+    padding-top: 0.6rem;
+  }
+}
+
+// End

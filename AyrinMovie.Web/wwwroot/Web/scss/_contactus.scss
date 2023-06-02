@@ -1,0 +1,287 @@
+// کامپوننت استفاده شده در صفحه تماس با ما
+// contact us page style
+.form-control-container {
+  @extend %row, %relative, %img-border-radius, %overflow-hidden;
+  margin-top: 1rem;
+  padding: 0.4rem;
+  background: $primary-bg-color;
+  background: $primary-linear-color;
+  z-index: 1;
+
+  @media (max-width: $md-680px) {
+    flex-direction: $column;
+  }
+
+  &::after {
+    @extend %fullheight, %abs-inset;
+    content: "";
+    width: 200%;
+    background: inherit;
+    z-index: -1;
+    animation: changebgform 2s linear infinite alternate;
+  }
+
+  @keyframes changebgform {
+    to {
+      filter: hue-rotate(50deg);
+    }
+  }
+
+  .contact__us__form {
+    @extend %content-bg-color;
+    padding: 1.4rem;
+    border-radius: 0 4px 4px 0;
+    flex: 0 0 60%;
+    max-width: 60%;
+
+    @media (max-width: $md-680px) {
+      @include Flex100;
+    }
+
+    .form-control:not(:last-child) {
+      margin-bottom: 3rem;
+    }
+
+    .form-control {
+      @extend %fullwidth, %relative;
+
+      input,
+      textarea {
+        @extend %fullwidth, %block, %whitecolor;
+        padding: 0.3rem 0.4rem;
+        background: transparent;
+        border-bottom: 1px solid $primary-text-SL;
+      }
+
+      textarea {
+        height: 40px;
+        max-height: $fullwidth;
+        resize: none;
+      }
+
+      label {
+        @extend %bigfont, %absolute, %transition-2, %pointer-none;
+        right: 5px;
+        bottom: 5px;
+      }
+
+      .contact-us-line {
+        @extend %relative, %fullwidth, %block;
+
+        &::after,
+        &::before {
+          @extend %psudoclasses, %outlie-button;
+          bottom: 0;
+          width: 0;
+          height: 2px;
+          transition: 0.3s cubic-bezier(0.5, 1, 0.89, 1);
+        }
+
+        &::after {
+          left: 50%;
+        }
+
+        &::before {
+          right: 50%;
+        }
+      }
+
+      input:focus ~ .contact-us-line::after,
+      input:focus ~ .contact-us-line::before,
+      input:valid ~ .contact-us-line::after,
+      input:valid ~ .contact-us-line::before,
+      textarea:focus ~ .contact-us-line::after,
+      textarea:focus ~ .contact-us-line::before,
+      textarea:valid ~ .contact-us-line::after,
+      textarea:valid ~ .contact-us-line::before {
+        width: 50%;
+      }
+
+      input:focus ~ label,
+      input:valid ~ label,
+      textarea:focus ~ label,
+      textarea:valid ~ label {
+        color: $outline-btn;
+        bottom: 30px;
+        font-size: $fontSize-09rem;
+        transform: translateX(10px) scale(0.9);
+      }
+    }
+  }
+
+  .movie-png__container {
+    @extend %content-bg-color;
+    flex: 0 0 40%;
+    max-width: 40%;
+    border-radius: 4px 0 0 4px;
+
+    @media (max-width: $md-680px) {
+      display: $noneelm;
+    }
+
+    img {
+      height: 300px;
+    }
+  }
+}
+
+// contact us button
+.btn-form-cr {
+  @extend %flexcenter, %btn-border-radius;
+  background: $primary-bg-color;
+  background: $primary-linear-color;
+  width: 200px !important;
+  padding: 0.2rem;
+  margin-bottom: 0.4rem !important;
+  transition: 0.4s cubic-bezier(0.5, 1, 0.89, 1);
+}
+
+#contactus-btn {
+  @extend %content-bg-color, %relative, %pointer;
+  padding: 0.6rem 0;
+  width: 200px;
+  border-radius: inherit;
+  transition: inherit;
+
+  span {
+    transition: inherit;
+    color: transparent;
+    background: $primary-bg-color;
+    background: $primary-linear-color;
+    background-clip: text;
+    -webkit-background-clip: text;
+  }
+}
+
+#contactus-btn:hover {
+  box-shadow: inset 7rem 0 0 0 $outline-btn, inset -7rem 0 0 0 $outline-btn;
+}
+
+#contactus-btn:hover span {
+  color: $white-color;
+}
+
+.btn-form-cr:hover {
+  background: $outline-btn;
+}
+
+.err__box {
+  margin-top: 0.4rem;
+
+  p {
+    @extend %none;
+    color: #f32525;
+    animation: skewin 0.3s cubic-bezier(0.5, 1, 0.89, 1) forwards;
+  }
+}
+
+@keyframes skewin {
+  40% {
+    transform: translateY(30px) scaleY(0);
+  }
+
+  100% {
+    transform: translateY(0) scaleY(1);
+  }
+}
+
+// succsesfull animation will for valid
+.sendSucceseFullAnimation {
+  @extend %flexcenter, %abs-inset, %fullsize;
+  @include opacity-visibility-true;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  transition: 0.4s ease-in;
+
+  .square {
+    width: 30px;
+    height: 30px;
+    background: $primary-bg-color;
+    background: $primary-linear-color;
+    border-radius: 2px;
+    animation: square 600ms linear infinite alternate;
+  }
+
+  .__sq1 {
+    animation-delay: 0.6s;
+  }
+
+  .__sq2,
+  .__sq4 {
+    animation-delay: 0.7s;
+  }
+
+  .__sq3,
+  .__sq5,
+  .__sq7 {
+    animation-delay: 0.8s;
+  }
+
+  .__sq6,
+  .__sq8 {
+    animation-delay: 0.9s;
+  }
+
+  .__sq9 {
+    animation-delay: 1s;
+  }
+}
+
+@keyframes square {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(0);
+  }
+}
+
+// succesesfull msg
+.succesfull__Msg {
+  @extend %flexcenter, %fixed, %fullwidth;
+  top: 0;
+  right: 50%;
+  height: 200px;
+  transform: translate(50%, -200px);
+  z-index: 99;
+  background: rgba(0, 0, 0, 0.9);
+  border-radius: 10px;
+  transition: 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  visibility: hidden;
+
+  &::after,
+  &::before {
+    @extend %psudoclasses;
+    top: -100%;
+    left: 20%;
+    height: 200px;
+    width: 6px;
+    background: $primary-bg-color;
+    background: $primary-linear-color;
+  }
+
+  &::after {
+    right: 20% !important;
+  }
+
+  p {
+    @extend %relative;
+    font-size: 1.2rem;
+    z-index: 1;
+  }
+}
+
+// succese contact class
+.succses__Contact__in {
+  @include opacity-visibility-false;
+}
+
+// succsessfull msg in class
+.succesfull__Msg__in {
+  visibility: visible;
+  transform: translate(50%, 200px);
+}
+
+// End

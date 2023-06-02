@@ -1,0 +1,238 @@
+// Panel login forms and signup forms here
+// Panel reset password width sms phone and email here
+// کامپوننت استفاده شده در صفحه لاگین پنل
+
+// panel form container
+.panel-form-container {
+  @extend %flexcenter, %overflow-hidden;
+  background: linear-gradient(
+    -240deg,
+    rgba(45, 53, 70, 1) 50%,
+    rgba(104, 152, 248, 1) 50%
+  );
+  min-height: 100vh;
+
+  .panel-form-inner {
+    @extend %flexcenter, %max-width;
+    grid-gap: 50px;
+    gap: 50px;
+  }
+
+  .sending-animation {
+    @extend %flexcenter,
+      %fixed-inset,
+      %dark-color,
+      %transition-4,
+      %pointer-none;
+    z-index: 5;
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+// sending animation class
+.sending-animation-on {
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+// panel form logo
+.form-logo {
+  margin-bottom: 2rem;
+
+  img {
+    margin: 0 auto;
+    width: 50px;
+    height: 50px;
+  }
+}
+
+// panel form control
+.panel-form-control {
+  @extend %img-border-radius, %relative, %overflow-hidden, %padding-1;
+  background: #f1f5ff;
+  box-shadow: 10px 10px 1px rgba(#2c2929, 0.3);
+
+  h1 {
+    @extend %center-text, %titlefont, %content-text-color;
+    margin-bottom: 2rem;
+    letter-spacing: -1px;
+  }
+}
+
+.panel-form {
+  @extend %flexcenter, %column;
+
+  &::after {
+    @extend %psudoclasses, %pointer-none;
+    background: url(../assest/images/icons/film-strip.svg);
+    width: 100px;
+    height: 100px;
+    z-index: 1;
+    bottom: -50px;
+    left: -25px;
+  }
+
+  .form-control {
+    @extend %relative;
+    margin-bottom: 1.4rem;
+
+    input {
+      @extend %img-border-radius, %neophorism;
+      color: $dark-color-light;
+      width: 280px;
+      height: 40px;
+      padding: 0.4rem 0.6rem;
+    }
+
+    input[type="password"] {
+      padding-left: 2rem;
+    }
+
+    .form-legend {
+      @extend %absolute, %transition-2, %pointer-none;
+      right: 0.8rem;
+      bottom: 10px;
+      color: #32353b;
+    }
+
+    input:focus ~ .form-legend,
+    input:valid ~ .form-legend {
+      opacity: 0;
+    }
+
+    input:focus {
+      border: 2px solid $outline-btn;
+    }
+  }
+}
+
+// remember me checkbox and section
+.remember-me-inner {
+  @extend %row, %relative, %content-text-color;
+  width: max-content;
+
+  .post-type-radio {
+    @extend %outlie-button;
+    left: 0;
+    bottom: 3px;
+  }
+}
+
+// forgot password link
+.forgot-password {
+  @extend %content-text-color;
+
+  &:hover {
+    color: $outline-btn;
+  }
+}
+
+// view password button
+.view-password {
+  @extend %absolute, %bigfont, %pointer;
+  left: 10px;
+  bottom: 12px;
+
+  &:hover {
+    @extend %content-text-color;
+  }
+}
+
+.view-password-on {
+  @extend %content-text-color;
+}
+
+// submit btn
+.submit-authentication {
+  @extend %neophorism, %bigfont, %pointer, %transition-2, %btn-30px;
+  margin-bottom: 1.4rem;
+  border: 1px solid rgba(104, 152, 248, 0.8);
+  padding: 0.3rem 0.4rem;
+  width: 140px;
+
+  &:hover {
+    border-color: transparent;
+  }
+}
+
+.auth-link {
+  margin-bottom: 0.6rem !important;
+}
+
+// panel form svg
+.panel-form-img {
+  @media (max-width: $lg-800px) {
+    display: none;
+  }
+
+  img {
+    height: 530px;
+  }
+}
+
+.beam {
+  @extend %absolute, %transition-cubic, %pointer-none;
+  bottom: 0;
+  background: rgba(#ddcf0b, 0.5);
+  clip-path: polygon(10% 0, 50% 100%, 90% 0);
+  width: 150%;
+  height: 140%;
+  z-index: 1;
+  transform: rotate(45deg) scaleY(0) translate(175px, 0px);
+  opacity: 0;
+}
+
+.beam-on {
+  transform: rotate(45deg) scaleY(1) translate(175px, 0px);
+  opacity: 1;
+}
+
+// forms and img animations
+.panel-form-control,
+.panel-form-img {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.panel-form-control.animation,
+.panel-form-img.animation {
+  animation: easeUP 0.7s linear forwards;
+}
+
+.panel-form-img.animation {
+  animation-delay: 0.2s;
+}
+
+@keyframes easeUP {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// catch code styles
+.catch-code-cr {
+  @extend %flexspacebetween;
+}
+
+.code-input {
+  margin: 0 0.3rem;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: easeUP 0.7s linear forwards;
+
+  input {
+    @extend %bigfont, %center-text;
+    width: 45px !important;
+    height: 45px !important;
+  }
+}
+
+// panel form countdown
+.countdown {
+  @extend %center-text, %content-text-color, %bigfont;
+  margin-top: 1rem;
+}
+
+// End

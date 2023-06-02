@@ -1,0 +1,634 @@
+// این کامپوننت مربوط به استایل دهی فوتر سایت می باشد
+// this compunent for styling flixmovie theme footer
+// Footer start here
+.footer {
+  @extend %dark-color-light;
+  padding-top: 2rem;
+
+  // requament footer section
+  .footer-section {
+    @extend %flexspacebetween, %max-width;
+    padding: 2rem 0.938rem 4rem 0.938rem;
+
+    @media (max-width: $lg-991px) {
+      flex-wrap: wrap;
+      margin-top: -4rem;
+    }
+
+    // requament footer section right
+    .footer-right-aside {
+      @extend %flexcenterspacearound,
+        %fullheight,
+        %content-bg-color,
+        %btn-border-radius,
+        %content-shadow;
+      padding: 1.7rem 0.6rem;
+      flex: 0 0 74%;
+      max-width: 74%;
+
+      @media (max-width: $lg-991px) {
+        @include Flex100;
+        flex-direction: $column;
+        align-items: flex-start;
+      }
+
+      .req-software {
+        @extend %flexalign;
+
+        .footer-box {
+          @extend %flexcenter, %btn-border-radius, %yellow;
+          margin-left: 1.4rem;
+          background: #ffc10729;
+          width: 60px;
+          height: 60px;
+
+          @media (max-width: $lg-991px) {
+            margin-bottom: 1rem;
+          }
+
+          i {
+            font-size: 2rem;
+          }
+        }
+
+        .footer-text a {
+          @extend %block, %primary-text-color, %smallfont;
+          letter-spacing: -0.6px;
+
+          &:last-child {
+            @extend %whitecolor, %titlefont;
+            font-size: 1rem;
+          }
+
+          &:hover {
+            color: $primary-color;
+          }
+        }
+      }
+    }
+  }
+
+  // requament footer section left
+  .footer-left-aside {
+    @extend %flexcenter, %column;
+    flex: 0 0 24%;
+    max-width: 24%;
+
+    @media (max-width: $lg-991px) {
+      @include Flex100;
+      margin-top: 1rem;
+    }
+
+    a {
+      @extend %block,
+        %fullwidth,
+        %whitecolor,
+        %btn-border-radius,
+        %transition-4;
+      background: $primary-bg-color;
+      background: $primary-linear-color;
+      box-shadow: 0 3px 20px rgba(250, 123, 119, 0.3);
+      margin: 0.7rem 0;
+      padding: 0.6rem 0.8rem;
+
+      &:hover {
+        box-shadow: none;
+      }
+
+      .social-icons {
+        @extend %flexspacebetween;
+
+        .social-text {
+          @extend %flexspacebetween;
+
+          i {
+            font-size: 1.4rem;
+            padding-left: 0.5rem;
+          }
+        }
+
+        .arrow-social {
+          @extend %flexcenter, %rounded-radius;
+          background: rgba(255, 255, 255, 0.3);
+          width: 20px;
+          height: 20px;
+        }
+      }
+    }
+  }
+}
+// requament footer section end
+
+// blue box
+.blue-box {
+  background: #6898f824 !important;
+  color: $outline-btn !important;
+}
+
+// green box
+.green-box {
+  background: #89d64f26 !important;
+  color: $green-badge !important;
+}
+
+// telegram
+.telegram {
+  background: $outline-btn;
+  background: linear-gradient(145deg, #96d5f5, #5ebae8) !important;
+  box-shadow: 0 3px 20px rgba(142, 209, 243, 0.35) !important;
+
+  &:hover {
+    box-shadow: none !important;
+  }
+}
+
+// Footer with bg start here
+.footer-bg {
+  @extend %relative, %fullwidth;
+  background: $main-bg-color;
+  background: radial-gradient(
+    circle,
+    rgba(0, 0, 0, 0.1) 40%,
+    rgba(0, 0, 0, 0.15) 80%
+  );
+  background-size: cover;
+
+  // footer navigation
+  .footer-nav {
+    @extend %flexandjusty-space-between, %fullwidth;
+    padding: 2rem 3rem;
+    max-width: 1200px;
+
+    @media (max-width: $lg-800px) {
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: $md-620px) {
+      padding: 2rem;
+    }
+
+    .footer-logo-container {
+      @include flexcenter(flex-end);
+      flex-direction: column-reverse;
+
+      @media (max-width: $lg-800px) {
+        margin-right: 2rem;
+      }
+
+      @media (max-width: $xs-480px) {
+        margin: $auto-margin;
+        margin-bottom: 2rem;
+      }
+
+      svg {
+        width: 60px;
+        height: 60px;
+      }
+
+      p {
+        @extend %transition-cubic;
+        letter-spacing: 4px;
+        font-family: "Bebas", sans-serif;
+        font-size: 1.6rem;
+        font-weight: bold;
+        transform: scaleX(1.4);
+
+        i {
+          transition: inherit;
+          font-size: 2rem;
+          font-style: normal;
+          color: transparent;
+          background: $primary-linear-color;
+          -webkit-background-clip: text;
+          -moz-background-clip: text;
+          background-clip: text;
+        }
+
+        &:hover {
+          color: transparent;
+          background: $primary-linear-color;
+          -webkit-background-clip: text;
+          -moz-background-clip: text;
+          background-clip: text;
+        }
+
+        &:hover i {
+          color: $primary-text-color;
+        }
+      }
+    }
+
+    .footer-nav-links {
+      @media (max-width: $lg-800px) {
+        flex-basis: 45%;
+        margin-bottom: 3rem;
+      }
+
+      @media (max-width: $xs-480px) {
+        flex-basis: $fullwidth;
+      }
+
+      @media (max-width: $xs-480px) {
+        margin-bottom: 1.3rem;
+      }
+
+      &:hover h1::before {
+        animation: rotate360degF 1s linear infinite;
+      }
+
+      h1 {
+        @extend %titlefont, %whitecolor, %relative, %transition-cubic;
+        font-size: 1.2rem;
+        word-spacing: -2px;
+        margin-bottom: 1.4rem;
+
+        @media (max-width: $xs-480px) {
+          @include width-pointer;
+          background: $content-bg-color;
+          border-radius: $border-radius-btn;
+          padding: 0.2rem 0.6rem;
+          margin-bottom: 0;
+
+          &:hover {
+            color: $primary-text-color;
+          }
+        }
+
+        &::after,
+        &::before {
+          @extend %psudoclasses, %transition-cubic;
+        }
+
+        &::after {
+          @extend %fullwidth, %btn-30px;
+          height: 2px;
+          bottom: -6px;
+          right: 0;
+          background: $primary-bg-color;
+          background: $primary-linear-color;
+          z-index: 1;
+
+          @media (max-width: $xs-480px) {
+            bottom: 0;
+          }
+        }
+
+        &::before {
+          background: url(../assest/images/icons/film-strip.svg) no-repeat
+            center center;
+          background-size: cover;
+          width: 30px;
+          height: 30px;
+          left: -12px;
+          bottom: -10px;
+          z-index: 2;
+
+          @media (max-width: $xs-480px) {
+            bottom: -5px;
+          }
+        }
+
+        @keyframes rotate360degF {
+          to {
+            transform: rotate(360deg);
+          }
+        }
+      }
+
+      ul {
+        @extend %transition-4;
+
+        @media (max-width: $xs-480px) {
+          max-height: 0;
+          overflow: $overflow;
+          background: $content-bg-color;
+          border-radius: 0 0 10px 10px;
+        }
+
+        li:not(:last-child) {
+          margin-bottom: 1rem;
+        }
+
+        a {
+          @extend %primary-text-color, %block, %fullwidth, %transition-3;
+          font-size: 1rem;
+          font-weight: 500;
+
+          &:hover {
+            transform: translateX(-6px);
+            color: $white-color;
+          }
+
+          &::before {
+            content: "\f104";
+            font-family: "Font Awesome 5 Free";
+            font-weight: bold;
+            top: 1px;
+            right: 0;
+            margin-left: 1rem;
+          }
+        }
+      }
+    }
+  }
+  // footer navigation end
+
+  // footer second nav start here
+  .footer-second-nav {
+    @extend %flexspacebetween;
+    padding: 3rem 1.25rem;
+    max-width: 1200px;
+    border-top: 1px solid rgba(251, 251, 251, 0.24);
+
+    @media (max-width: $md-620px) {
+      flex-direction: $column;
+      padding: 2rem 0;
+    }
+
+    // newsletter input
+    .form-control {
+      p {
+        margin-bottom: 1rem;
+      }
+
+      #newsletter-inp {
+        @extend %row, %relative;
+
+        // newsletter err
+        .newsletter-err {
+          @extend %flexcenter, %absolute, %transition-4;
+          @include miniborder(rgba(209, 209, 209, 0.6));
+          top: -65px;
+          left: -5px;
+          z-index: 2;
+          clip-path: polygon(
+            0% 0%,
+            100% 0%,
+            100% 75%,
+            75% 75%,
+            75% 100%,
+            50% 75%,
+            0% 75%
+          );
+          background: rgba(40, 40, 40, 0.9);
+          padding: 0.6rem;
+          transform-origin: bottom;
+          transform: rotate(-45deg) scale(0);
+        }
+
+        .newsletter-err-in {
+          transform: rotate(0) scale(1) !important;
+        }
+        // newsletter err end
+
+        // newsletter input
+        input {
+          @extend %transition-cubic, %primary-text-color, %block;
+          @include miniborder(rgba(187, 193, 198, 0.2));
+          border-radius: 6px 0 0 6px;
+          background: rgba(28, 28, 34, 0.8);
+          width: 300px;
+          padding: 0 1rem;
+          text-align: left;
+
+          @media (max-width: 380px) {
+            width: $fullwidth;
+          }
+
+          &::placeholder {
+            @extend %transition-cubic;
+            text-align: right;
+          }
+
+          &:focus::placeholder {
+            opacity: 0;
+          }
+
+          &:focus {
+            background: rgba(28, 28, 34, 0.9);
+          }
+        }
+
+        // newsletter button
+        button {
+          @extend %relative, %block, %transition-cubic, %pointer;
+          @include miniborder(rgba(187, 193, 198, 0.2));
+          padding: 0.4rem;
+          width: 50px;
+          height: 50px;
+          border-radius: 0 6px 6px 0;
+          background: rgba(28, 28, 34, 0.7)
+            url(../assest/images/icons/paper-plane.svg) no-repeat;
+          background-position: center center;
+          background-size: 40px;
+
+          @keyframes Btnbganimation {
+            20% {
+              background-position: 2px 2px;
+            }
+
+            40% {
+              background-position: 3px 3px;
+            }
+
+            80% {
+              background-position: 2px 6px;
+            }
+          }
+
+          &:hover {
+            animation: Btnbganimation 0.6s linear infinite;
+          }
+
+          // newsletter tick marks after vilad form
+          &::after {
+            @extend %psudoclassInset, %transition-cubic;
+            background: url(../assest/images/icons/tick.svg) no-repeat;
+            background-position: center center;
+            background-size: 40px;
+            transform: scale(0);
+            opacity: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+// sosical icons start here
+.socials {
+  ul {
+    @extend %row;
+    margin-top: 2.9rem;
+
+    .socials-cr {
+      @extend %flexcenter,
+        %transition-4,
+        %btn-border-radius,
+        %pointer,
+        %overflow-hidden;
+      @include miniborder(rgba(187, 193, 198, 0.1));
+      margin-right: 0.6rem;
+      width: 50px;
+      height: 50px;
+      background: rgba(28, 28, 34, 0.569);
+
+      @media (max-width: $md-620px) {
+        margin: 0 0.6rem;
+      }
+
+      &:hover {
+        border-color: transparent;
+      }
+
+      &:hover a {
+        animation: footerSocial 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+      }
+
+      a {
+        @extend %transition-cubic;
+        color: transparent;
+        background: $primary-bg-color;
+        background: $primary-linear-color;
+        background-clip: text;
+        -webkit-background-clip: text;
+        font-size: 1.5rem;
+      }
+
+      // social icons hover animation
+      @keyframes footerSocial {
+        0% {
+          transform: translateY(0);
+        }
+
+        20% {
+          transform: translateY(-50px);
+        }
+
+        50% {
+          transform: scale(0) translateY(100px);
+        }
+
+        100% {
+          transform: scale(1.1) translateY(0);
+          color: $white-color;
+        }
+      }
+    }
+  }
+}
+
+// CopyRight styles
+.copy-right {
+  @extend %center-text;
+  padding: 2rem 1rem 3rem;
+
+  p {
+    span {
+      color: transparent;
+      background: $primary-bg-color;
+      background: $primary-linear-color;
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+  }
+}
+
+// back to top section styles
+.next-movie {
+  @extend %flexspacebetween,
+    %content-shadow,
+    %relative,
+    %auto-margin,
+    %overflow-hidden;
+  @include miniborder(rgba(187, 193, 198, 0.1));
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 30px 30px 0 0;
+  padding: 2rem 1.25rem 1rem;
+  max-width: 1200px;
+  z-index: 1;
+  border-bottom: transparent;
+
+  a {
+    @extend %block;
+
+    button {
+      @extend %whitecolor, %img-border-radius, %pointer;
+      @include miniborder(rgba(187, 193, 198, 0.1));
+      background: rgba(28, 28, 34, 0.7);
+      width: 50px;
+      height: 50px;
+      font-size: 1.3rem;
+
+      i {
+        animation: angleup 1s linear infinite alternate;
+      }
+    }
+  }
+}
+
+@keyframes angleup {
+  to {
+    transform: translateY(-7px);
+  }
+}
+// back to top section end
+
+// succes msg after newsletter email valid style
+.sussces-email-msg {
+  @extend %flexcenter, %CenterFixed, %fullsize, %transition-cubic;
+  background: rgba(35, 35, 43, 0.8);
+  visibility: hidden;
+  opacity: 0;
+  clip-path: circle(23.9% at 50% 50%);
+  z-index: -10;
+
+  p {
+    @extend %flexcenter,
+      %whitecolor,
+      %img-border-radius,
+      %center-text,
+      %padding-1;
+    @include miniborder(rgba(187, 193, 198, 0.1));
+    background: $primary-bg-color;
+    background: $primary-linear-color;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+    width: 300px;
+    height: 200px;
+    max-width: 90%;
+  }
+}
+
+// succes msg in class
+.sussces-email-msg-in {
+  visibility: visible;
+  opacity: 1;
+  clip-path: circle(70.7% at 50% 50%);
+  z-index: 111;
+}
+
+// checkmark bg in
+.checkinNewsLetter::after {
+  transform: scale(1) !important;
+  opacity: 1 !important;
+}
+
+// button bg out
+.checkinNewsLetter {
+  background-size: 0 !important;
+}
+
+// Foooter Nav listitems
+.footerTitleAfter::after {
+  transform-origin: left !important;
+  transform: scaleX(0) !important;
+}
+
+.footerNavList {
+  max-height: 220px !important;
+  padding: 0.4rem 1rem 1rem 0 !important;
+}
+
+// End

@@ -1,0 +1,8 @@
+if(window.pageYOffset >= Element.offsetTop)
+{
+    ...
+}
+
+y=windows.scrollY;
+if(y=300px){
+element.classList.add('show')}

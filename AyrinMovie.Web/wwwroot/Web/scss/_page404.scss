@@ -1,0 +1,153 @@
+// استایل دهی صفحه 404
+// 404 page styles
+.err__shapes__cr {
+  @extend %relative, %overflow-hidden;
+  width: 100vw;
+  height: 100vh;
+
+  .err__bg__container {
+    @extend %abs-inset;
+    z-index: -1;
+    top: -90px;
+
+    figure {
+      @extend %fullsize;
+
+      img {
+        @extend %fullsize;
+      }
+    }
+  }
+}
+
+.error__page__cr {
+  @extend %max-width;
+  background: transparent;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  width: 100vw;
+  height: 100vh;
+
+  .Err__pAGE {
+    @extend %flexspacebetween, %fullwidth;
+    border: 5px solid rgba(#e0ebff, 0.5);
+    box-shadow: inset 0 0 20px 1px rgba(255, 255, 255, 0.1);
+    border-radius: 30px;
+    height: calc(100vh - 8rem);
+
+    @media (max-width: $lg-991px) {
+      flex-direction: $column;
+    }
+
+    .illustration-404 {
+      svg {
+        width: 490px !important;
+        height: 490px !important;
+
+        @media (max-width: $lg-991px) {
+          width: 190px !important;
+          height: 190px !important;
+        }
+      }
+    }
+
+    .Err__pAGE__text {
+      padding-left: 4rem;
+      line-height: 2;
+
+      @media (max-width: $lg-991px) {
+        padding: 0 0.4rem 2rem;
+        margin-top: -2rem;
+      }
+
+      .forteforerr {
+        @extend %whitecolor;
+        font-size: 5.5rem;
+        font-family: "Dosis", sans-serif;
+        text-align: right;
+        letter-spacing: 2rem;
+        margin-right: -2rem;
+        background: linear-gradient(to left, #ed5434 20%, #f98c54 80%);
+        -webkit-text-fill-color: transparent;
+        -moz-text-fill-color: transparent;
+        background-clip: text;
+        -webkit-background-clip: text;
+
+        @media (max-width: $lg-991px) {
+          font-size: 3rem;
+          text-align: $center-text;
+        }
+      }
+
+      .err404__text {
+        margin-top: -2rem;
+        line-height: 2.2;
+
+        @media (max-width: $lg-991px) {
+          margin-top: -1rem;
+        }
+
+        h1 {
+          @media (max-width: $xs-480px) {
+            display: $noneelm;
+          }
+        }
+
+        a {
+          @extend %relative, %block, %overflow-hidden;
+          width: max-content;
+          color: #e0ebff;
+          background: #ed5434;
+          background: linear-gradient(to left, #ed5434 20%, #f98c54 80%);
+          border-radius: 30px;
+          padding: 0.2rem 2rem;
+          margin-top: 0.5rem;
+          z-index: 1;
+
+          &::after,
+          &:before {
+            @extend %psudoclasses, %transition-4, %fullheight;
+            top: 0;
+            z-index: -1;
+            width: 0;
+            background: linear-gradient(90deg, #ed5434, #f98c54);
+            border-radius: 0 30px 30px 0;
+            filter: blur(6px);
+          }
+
+          &::after {
+            right: 0;
+          }
+
+          &::before {
+            left: 0;
+            border-radius: 30px 0 0 30px;
+          }
+
+          &:hover::after,
+          &:hover::before {
+            width: 50%;
+          }
+        }
+      }
+    }
+  }
+}
+
+// 404 page space man animation
+.space-man,
+.star {
+  animation: spaceMan 3s linear infinite alternate;
+}
+
+@keyframes spaceMan {
+  from {
+    transform: translateY(10px);
+  }
+}
+
+.stones {
+  animation: spaceMan 3s linear infinite alternate-reverse;
+}
+
+// End

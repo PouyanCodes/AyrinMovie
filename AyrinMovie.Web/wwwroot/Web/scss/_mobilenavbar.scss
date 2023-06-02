@@ -1,0 +1,284 @@
+// این کامپوننت استایل دهی بخش هدر برای موبایل می باشد
+// Mobile navigation bar
+
+// Black mask for open navbars or other
+.mask {
+  @extend %none, %fixed-inset, %fullsize;
+  z-index: 98;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(4px);
+  cursor: url(../assest/images/icons/cancel.png) 20 20, default;
+}
+
+// Mobile navbar styles
+.mobile-navbar {
+  @extend %none, %fixed-inset, %content-bg-color, %fullheight;
+  z-index: 99;
+  overflow-y: scroll;
+  width: 80%;
+
+  .mobile-logo-container {
+    @extend %center-text;
+    padding: 1rem 0;
+
+    img {
+      @extend %auto-margin;
+      width: 50px;
+      height: 50px;
+    }
+  }
+
+  .mobile-menu-plus-icon {
+    @extend %absolute;
+    left: 20px;
+    top: 20px;
+
+    span {
+      @extend %none, %whitecolor, %img-border-radius, %transition-cubic;
+      width: 2px;
+      height: 12px;
+
+      &:last-child {
+        @extend %absolute;
+        top: 0;
+        transform: rotate(90deg);
+      }
+    }
+  }
+
+  .mobile-navigation-items {
+    .mobile-menu-title {
+      @extend %relative, %transition-4, %pointer;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+      padding: 0.8rem 1rem;
+      z-index: 1;
+
+      a {
+        @extend %primary-text-color, %fullwidth, %block;
+      }
+
+      &:hover a {
+        color: $white-color;
+      }
+
+      &:hover {
+        color: $white-color;
+      }
+
+      &::before {
+        @extend %psudoclassInset, %fullsize, %transition-cubic, %outlie-button;
+        z-index: -1;
+        transform: scaleX(0);
+        transform-origin: right;
+      }
+    }
+
+    .mobile-menu-collapse {
+      @extend %transition-4, %overflow-hidden;
+      padding-top: 0;
+      max-height: 0;
+      background: #15151a;
+
+      .mobile-link-item {
+        margin-bottom: 0.6rem;
+
+        a {
+          @extend %fullwidth, %block, %primary-text-color;
+          padding: 0.5rem 1rem;
+          font-size: 1rem;
+
+          &:hover {
+            background: $dark-color;
+            color: $white-color;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Mobile Navigation Scroll bar Style
+.mobile-navbar::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(31, 31, 31, 0.3);
+  border-radius: 10px;
+  background: $sidebar-bg-color;
+}
+
+.mobile-navbar::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: $primary-bg-color;
+  background: $primary-linear-color;
+}
+
+.mobile-navbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.view-all-videos-mobile {
+  width: $fullwidth !important;
+  a {
+    @extend %block;
+    width: $fullwidth !important;
+    padding: 0.6rem $fontSize-08rem;
+  }
+}
+
+// Menu Animations class
+.MobileBarOpen {
+  animation: MenuBarOpen 0.8s cubic-bezier(0.68, -0.6, 0.32, 1.6) forwards;
+}
+
+.MobileBarClose {
+  animation: MenuBarClose 0.7s ease-in-out forwards;
+}
+
+// black mask animation classs
+.BlackMaskMenu {
+  animation: maskOut 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6) forwards;
+}
+
+@keyframes MenuBarOpen {
+  0% {
+    transform: translateX(100%);
+    clip-path: circle(11.2% at 100% 49%);
+    opacity: 0.4;
+  }
+
+  40% {
+    transform: translateX(50%);
+    clip-path: circle(50% at 100% 49%);
+    opacity: 0.7;
+  }
+
+  90% {
+    clip-path: circle(60% at 100% 49%);
+  }
+
+  100% {
+    transform: translateX(0);
+    clip-path: circle(100% at 50% 50%);
+    opacity: 1;
+  }
+}
+
+@keyframes MenuBarClose {
+  0% {
+    transform: translateX(0);
+    clip-path: circle(100% at 50% 50%);
+  }
+
+  60% {
+    transform: translateX(50%);
+  }
+
+  100% {
+    transform: translateX(100%);
+    clip-path: circle(0% at 100% 49%);
+    z-index: -10;
+  }
+}
+
+@keyframes maskOut {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+// plus icons for dropdown menu attr
+[data-dropdown^="true"]::after {
+  @extend %psudoclasses, %transition-cubic;
+  left: 10px;
+  top: 17px;
+  background: url("../assest/images/icons/plus-solid.svg");
+  background-size: cover;
+  width: 16px;
+  height: 18px;
+}
+
+// Menu Actives classes
+.menu-active-item {
+  @extend %whitecolor;
+  border-bottom: none !important;
+}
+
+.menu-active-item-bg::before {
+  transform: scaleX(1) !important;
+}
+
+.menu-item-show {
+  @extend %transition-4;
+  padding-top: 0.4rem !important;
+  max-height: 600px !important;
+}
+
+.mobile-menu-mines::after {
+  background: url("../assest/images/icons/minus-solid.svg");
+}
+
+// Mobile searchbox responsive
+.MobileSearchbox-icon-Container {
+  @extend %none;
+
+  @media (max-width: $xs-450px) {
+    @include block-pointer;
+    background: none;
+  }
+
+  .Mobile-searchbox-icon {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.desktop-searchbox {
+  @media (max-width: $xs-450px) {
+    @include abs-inset;
+    z-index: 80;
+    width: $fullwidth;
+    height: 80px;
+    background: #23232b;
+    transform: translateY(-100px);
+    transition: $cubic-transition-4;
+  }
+
+  @media (max-width: $xs-450px) {
+    .desktop-searchbox-form {
+      width: 75%;
+      position: $absolute;
+      left: 10px;
+      bottom: 20px;
+    }
+  }
+
+  @media (max-width: $xs-450px) {
+    .desktop-searchbox-form input {
+      width: $fullwidth;
+    }
+  }
+
+  .closeSearchBox {
+    @extend %pointer-abs, %none;
+    right: 16px;
+    bottom: 32px;
+    background: none;
+    color: $primary-color;
+  }
+
+  @media (max-width: $xs-450px) {
+    .closeSearchBox {
+      display: $blockelm;
+    }
+  }
+}
+
+// Mobile Sticky Search Box class
+.StickySearchBoxIn {
+  transform: translateY(0);
+}
+
+// End

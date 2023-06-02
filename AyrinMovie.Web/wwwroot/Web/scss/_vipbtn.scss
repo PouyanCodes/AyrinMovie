@@ -1,0 +1,40 @@
+// استایل دهی دکمه ورود به وبلاگ
+// Vipe btn styles
+.vip-btn {
+  @extend %relative, %block, %btn-border-radius, %overflow-hidden;
+  background: $primary-bg-color;
+  background: linear-gradient(145deg, #fa9f6f, #fa697c, #fa9f6f, #fa697c);
+  z-index: 2;
+  padding: 0.3rem;
+}
+
+.vip-btn::before {
+  @extend %psudoclassInset, %fullheight;
+  width: 200%;
+  background: inherit;
+  background-size: 50% $fullwidth;
+  z-index: -1;
+}
+
+.vip-btn a {
+  @extend %main-bg-color, %btn-border-radius;
+  padding: 0.2rem 0.2rem;
+  color: $white-color;
+}
+
+.vip-btn a:hover {
+  color: $primary-text-color;
+}
+
+@keyframes ChangeXBg {
+  to {
+    transform: translateX(50%);
+  }
+}
+
+.vip-btn:hover::before,
+.vip-btn:focus::before {
+  animation: ChangeXBg 600ms linear infinite;
+}
+
+// End

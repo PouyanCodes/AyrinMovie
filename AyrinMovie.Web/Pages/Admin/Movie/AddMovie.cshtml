@@ -1,0 +1,350 @@
+﻿@page
+@using AyrinMovie.Core.Services.Movie
+@model AyrinMovie.Web.Pages.Admin.Movie.AddMovieModel
+
+@inject IMovieService _movieService
+
+@section Styles
+{
+<link rel="stylesheet" type="text/css" href="~/Admin/plugins/dropify/dropify.min.css">
+<link href="~/Admin/assets/css/users/account-setting.css" rel="stylesheet" type="text/css" />
+}
+
+
+@{
+    ViewData["Title"] = "پنل کاربری | افزودن فیلم ";
+    ViewData["Page-Header"] = "افزودن فیلم";
+    ViewData["MovieMenuActive"] = "true";
+}
+
+
+@{
+    var data1 = _movieService.GetGroups();
+    var Groups = new SelectList(data1, "Value", "Text");
+
+    var data2 = _movieService.GetSubGroups(int.Parse(Groups.First().Value));
+    var SubGroups = new SelectList(data2, "Value", "Text");
+}
+
+
+
+<div class="Information-Box-container layout-top-spacing">
+
+    <div class="Information-content">
+        <form method="post" enctype="multipart/form-data">
+
+
+            <div class="scrollspy-example" data-spy="scroll" data-target="#Information-Box-scroll" data-offset="-100">
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
+                        <div id="general-info" class="section general-info">
+                            <div class="info">
+                                <h6>افزودن فیلم</h6>
+                                <div class="row">
+                                    <div class="col-lg-12 mx-auto">
+                                        <div class="row">
+                                            <div class="col-xl-2 col-lg-12 col-md-4">
+                                                <div class="upload mt-4 pr-md-4">
+                                                    <input asp-for="AddMovieViewModel.MovieImage" type="file" id="input-file-max-fs" class="dropify" data-default-file="/Files/Movies/Defult.jpg" data-max-file-size="7M" />
+                                                    <p class="mt-2"><i class="flaticon-cloud-upload mr-1"></i>  آپلود پوستر فیلم</p>
+                                                    <p class="mt-2"><i class="flaticon-cloud-upload mr-1"></i>  سایز مناسب ( 207 * 290 )</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-10 col-lg-12 col-md-8 mt-md-0 mt-4">
+                                                <div class="form">
+                                                    <div class="row">
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                <label>عنوان</label>
+                                                                <input asp-for="AddMovieViewModel.MovieTitle" type="text" class="form-control mb-4" placeholder="نام فیلم" />
+                                                                <span asp-validation-for="AddMovieViewModel.MovieTitle" class="text-danger"></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                <label> ژانر فیلم </label>
+                                                                <input asp-for="AddMovieViewModel.MovieGenre" type="text" class="form-control mb-2" placeholder="اکشن ، دلهره آور . ." />
+                                                                <span asp-validation-for="AddMovieViewModel.MovieGenre" class="text-danger"></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <div class="form-group">
+                                                                <label>کلمات کلیدی</label>
+                                                                <input asp-for="AddMovieViewModel.Tags" type="text" class="form-control mb-2" placeholder="برچسب های فیلم" />
+                                                                <p class="help-block">کلمات کلیدی خود را با " - " جدا کنید</p>
+                                                                <span asp-validation-for="AddMovieViewModel.Tags" class="text-danger"></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <div class="form-group">
+                                                                <label>بازیگران</label>
+                                                                <input asp-for="AddMovieViewModel.Actors" type="text" class="form-control mb-2" placeholder="بازیگران و عوامل ساخت " />
+                                                                <p class="help-block">نام بازیگران را با " - " جدا کنید</p>
+                                                                <span asp-validation-for="AddMovieViewModel.Actors" class="text-danger"></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <div class="form-group">
+                                                                <label>دموی فیلم</label>
+                                                                <input asp-for="AddMovieViewModel.MovieTrailerName" type="text" class="form-control mb-2" placeholder="لینک تیزر و پیش نمایش فیلم " />
+                                                                <span asp-validation-for="AddMovieViewModel.MovieTrailerName" class="text-danger"></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-sm-4">
+                                                            <div class="form-group">
+                                                                <label>کشور سازنده</label>
+                                                                <input asp-for="AddMovieViewModel.CountryMaker" type="text" class="form-control mb-2" placeholder="کشور سازنده" />
+                                                                <span asp-validation-for="AddMovieViewModel.CountryMaker" class="text-danger"></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                            <div class="form-group">
+                                                                <label>امتیاز منتقدان</label>
+                                                                <input asp-for="AddMovieViewModel.IMDBScore" type="text" class="form-control mb-2" placeholder="از 0 تا 10" />
+                                                                <span asp-validation-for="AddMovieViewModel.IMDBScore" class="text-danger"></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                            <div class="form-group">
+                                                                <label>میزان رضایت</label>
+                                                                <input asp-for="AddMovieViewModel.MovieSatisfaction" type="text" class="form-control mb-2" placeholder="میزان رضایت" />
+                                                                <span asp-validation-for="AddMovieViewModel.MovieSatisfaction" class="text-danger"></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-sm-4">
+                                                            <div class="form-group">
+                                                                <label>سال ساخت</label>
+                                                                <input asp-for="AddMovieViewModel.ProductionYear" type="text" class="form-control mb-2" placeholder="سال ساخت و تهیه فیلم" />
+                                                                <span asp-validation-for="AddMovieViewModel.ProductionYear" class="text-danger"></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                            <div class="form-group">
+                                                                <label>رده سنی</label>
+                                                                <input asp-for="AddMovieViewModel.MovieAges" type="text" class="form-control mb-2" placeholder="مخاطب کدام گروه سنی" />
+                                                                <span asp-validation-for="AddMovieViewModel.MovieAges" class="text-danger"></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                            <div class="form-group">
+                                                                <label>تایم فیلم</label>
+                                                                <input asp-for="AddMovieViewModel.MovieTime" type="text" class="form-control mb-2" placeholder="مدت زمان فیلم" />
+                                                                <span asp-validation-for="AddMovieViewModel.MovieTime" class="text-danger"></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-sm-6">
+                                                            <div class="d-sm-flex d-block">
+                                                                <div class="form-group mr-3">
+                                                                    <label>  گروه</label>
+                                                                    <select asp-for="AddMovieViewModel.GroupId" class="form-control" asp-items="Groups">
+                                                                    </select>
+                                                                </div>
+                                                                <div class="form-group mr-3">
+                                                                    <label>زیر گروه</label>
+                                                                    <select asp-for="AddMovieViewModel.SubGroup" class="form-control" asp-items="SubGroups">
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
+                        <div class="section about">
+                            <div class="info">
+                                <h5>لینک های دانلود</h5>
+                                <div class="row">
+                                    <div class="col-md-11 mx-auto">
+                                        <div class="row" id="DownloadLinks">
+                                            <div class="col-md-9">
+                                                <div class="form-group">
+                                                    <input name="DownLoadLinksAddress" type="text" class="form-control  mb-2" placeholder="آدرس لینک اول . ." required>
+                                                    <p class="text-danger">@ViewData["validateLinks"]</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <input name="DownloadLinksTitle" type="text" class="form-control  mb-2" placeholder="متلا دانلود با کیفیت 1080" required>
+                                                    <p class="help-block">متن دکمه ی دانلود را این جا وارد کنید </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <input id="addLink" type="button" class="btn btn-primary mb-2 mr-2 btn-md" value="افزودن لینک جدید" />
+                                                <input id="removeLink" type="button" class="btn btn-secondary mb-2 mr-2 btn-md" value="پاک کردن" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
+                        <div class="section about">
+                            <div class="info">
+                                <h5>توضیحاتی در مورد فیلم</h5>
+                                <div class="row">
+                                    <div class="col-md-11 mx-auto">
+                                        <div class="form-group">
+                                            <textarea asp-for="AddMovieViewModel.MovieDescription" class="form-control" placeholder="اندکی توضیح در مورد فیلم . ." rows="10"></textarea>
+                                        </div>
+                                        <span asp-validation-for="AddMovieViewModel.MovieDescription" class="text-danger mb-2"></span>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
+                        <div class="section about">
+                            <div class="info">
+                                <h5>داستان فیلم</h5>
+                                <div class="row">
+                                    <div class="col-md-11 mx-auto">
+                                        <div class="form-group">
+                                            <textarea asp-for="AddMovieViewModel.MovieStory" class="form-control" placeholder="گوشه ای از اتفاقات و داستان فیلم . ." rows="10"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
+                        <div class="row">
+                            <div class="col-md-12 mx-auto">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <input type="submit" class="btn btn-primary mb-4 mr-2 btn-lg" value="افزودن فیلم" />
+                                        <input type="reset" class="btn btn-secondary mb-4 mr-2 btn-lg" value="پاک کن" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@section Scripts
+{
+
+<script src="~/Admin/plugins/dropify/dropify.min.js"></script>
+<script src="~/Admin/plugins/blockui/jquery.blockUI.min.js"></script>
+<script src="~/Admin/assets/js/users/account-settings.js"></script>
+
+
+}
+
+<script>
+
+
+
+
+
+    var x = 1;
+
+    document.getElementById("addLink").addEventListener("click", function ()
+    {
+
+        x++;
+
+     $("#DownloadLinks").append('<div id="DownLoadLinksAddress' + x + '" class="col-md-9">' +
+
+                        '<div class="form-group">' +
+                            '<input name="DownLoadLinksAddress" type="text" class="form-control  mb-2" id="email" placeholder="' + 'افزودن لینک ' + x + '" required />' +
+                        '</div>' +
+                     '</div>' +
+
+                    '<div id="DownloadlinksTitle' + x + '" class="col-md-3">' +
+                       '<div class="form-group">' +
+                           '<input name="DownLoadLinksTitle" type="text" class="form-control  mb-2" id="website1" placeholder="' + 'متن دکمه دانلود ' + x + '" required />' +
+                        '</div>' +
+                   '</div>');
+    });
+
+      document.getElementById("removeLink").
+        addEventListener("click", function () {
+     document.getElementById("DownLoadLinksAddress" + x ).remove();
+     document.getElementById("DownloadlinksTitle" + x ).remove();
+
+     x--;
+
+    });
+
+</script>
+
+
+
+<script>
+
+     $("#AddMovieViewModel_GroupId").change(function() {
+        $("#AddMovieViewModel_SubGroup").empty();
+        $.getJSON("/home/GetSubGroups/" + $("#AddMovieViewModel_GroupId :selected").val(),
+            function(data) {
+
+                $.each(data,
+                    function() {
+                        $("#AddMovieViewModel_SubGroup").append('<option value=' + this.value + '>' + this.text + '</option>');
+
+                    });
+            });
+    });
+
+</script>

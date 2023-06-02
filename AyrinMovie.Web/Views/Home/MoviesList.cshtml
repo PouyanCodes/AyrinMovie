@@ -1,0 +1,165 @@
+﻿@{
+    ViewData["Title"] = "آیرین مووی - لیست فیلم ها";
+}
+
+<main class="main-content-top-video-choises">
+    <!-- Top choices Videos Start-->
+    <!-- Top choices Videos End-->
+</main>
+
+
+<section class="main-body" id="index-main-body">
+    <article class="container articles-container">
+
+        <form id="formFilter" action="/movies" method="get">
+            <input type="hidden" id="pageid" name="pageId" value="@ViewBag.pageId.ToString()" />
+            <input type="hidden" name="movieGenre" value="@ViewBag.movieFilter.MovieGenre" />
+            <input type="hidden" name="tags" value="@ViewBag.movieFilter.Tags" />
+            <input type="hidden" name="actors" value="@ViewBag.movieFilter.Actors" />
+
+            <div class="articles-aside">
+                <!-- Posts Container -->
+                <section id="main-article-container" class="main-articles mr-4">
+
+                    @foreach (var movie in ViewBag.movieList.Movies)
+                    {
+                        <!-- Post container -->
+
+                        <article class="main-post">
+                            <div class="post-img-container">
+                                <a href="/home/Movie/@movie.MovieTitle" title="@movie.MovieTitle">
+                                    <img loading="lazy" class="article-img" src="~/Files/Movies/@movie.MovieImageName" alt="کاور فیلم">
+                                </a>
+                            </div>
+                            <div class="post-info">
+                                <div class="post-title-container">
+                                    <h1 class="post-info-title">
+                                        <a class="post-info-link" href="/home/Movie/@movie.MovieTitle" title="@movie.MovieTitle">
+                                            @movie.MovieTitle
+                                        </a>
+                                    </h1>
+                                </div>
+                                <div class="post-meta">
+
+                                    @if (!string.IsNullOrWhiteSpace(movie.MovieGenre))
+                                    {
+                                        var genres = movie.MovieGenre.Split("-");
+
+                                        <span class="post-meta-tags">
+                                            <i class="fa fa-tag"></i>
+
+                                            @foreach (var genre in genres)
+                                            {
+                                                <span>-</span>
+                                                <a href="/movies?movieGenre=@genre">@genre</a>
+                                            }
+
+                                        </span>
+                                    }
+
+
+                                    @if (!string.IsNullOrWhiteSpace(movie.MovieSatisfaction))
+                                    {
+                                        <span class="top-choices-like post-meta-like">
+                                            <i class="fa fa-heart"></i> @movie.MovieSatisfaction %
+                                            رضایت
+                                        </span>
+                                    }
+
+                                </div>
+
+                                @if (!string.IsNullOrWhiteSpace(movie.Actors))
+                                {
+                                    var Actors = movie.Actors.Split("-");
+
+                                    <div class="actors-director-container">
+                                        <div class="actors">
+                                            <span class="actors-title">بازیگران :</span>
+                                            @foreach (var actor in Actors)
+                                            {
+                                                <a href="/movies?actors=@actor">@actor</a>
+                                            }
+                                        </div>
+                                    </div>
+                                }
+
+
+                                <div class="post-summary">
+                                    <p class="post-summary-text">
+                                        @((movie.MovieStory.Length>=300)?movie.MovieStory.Substring(0,300) + " . .":movie.MovieStory)
+                                    </p>
+                                </div>
+
+
+                                <div class="post-time-country-score-btn-container">
+                                    <div class="post-time-country-score">
+
+                                        @if (!string.IsNullOrWhiteSpace(movie.ProductionYear))
+                                        {
+                                            <p><i class="far fa-calendar"></i> سال انتشار : @movie.ProductionYear </p>
+                                        }
+
+                                        @if (!string.IsNullOrWhiteSpace(movie.CountryMaker))
+                                        {
+                                            <p><i class="fas fa-globe-europe"></i> کشور : @movie.CountryMaker </p>
+                                        }
+
+                                    </div>
+
+                                    <div class="post-btn">
+                                        <button class="post-btn-con">
+                                            <a class="post-btn-link" href="/home/Movie/@movie.MovieTitle">
+                                                <i class="fa fa-download"></i>
+                                                دانلود
+                                            </a>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Post container end -->
+                    }
+
+                    <!-- pagination -->
+                    <section id="post-pages" class="pagination">
+                        <ul id="pages">
+
+
+                            @for (int i = 1; i <= (ViewBag.movieList.PageCount); i++)
+                            {
+                                <li class="pagelines"><a class="@((i==ViewBag.movieList.CurrentPage)?"active-page":"")" onclick="changePage(@i);" href="#">@i</a></li>
+                            }
+
+
+                        </ul>
+                    </section>
+
+
+                </section>
+
+
+
+            </div>
+
+        </form>
+
+    </article>
+</section>
+
+
+
+
+
+@section Scripts
+{
+<script type="text/javascript">
+
+    function changePage(pageid) {
+        document.getElementById("pageid").value = pageid;
+        document.getElementById("formFilter").submit();
+        }
+
+</script>
+
+}

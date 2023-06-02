@@ -1,0 +1,849 @@
+// کامپوننت استفاده شده در صفحه داخلی پست های وبلاگ
+// blog post styles start here
+.blog-post-main-container {
+  @extend %dark-color-light;
+  padding-top: 7rem;
+
+  .blog-post-container {
+    @extend %max-width, %flexandjusty-space-between;
+
+    @media (max-width: $lg-991px) {
+      flex-direction: $column;
+    }
+  }
+}
+
+.blog__post__main__section,
+.blog__post__aside {
+  @extend %content-bg-color, %img-border-radius, %content-shadow;
+  padding: 1.4rem;
+
+  @media (max-width: $md-620px) {
+    padding: 0.7rem;
+  }
+}
+
+// blog left navigation start
+.blog__post__btn__container {
+  @extend %relative;
+  flex: 0 0 6%;
+  max-width: 6%;
+  z-index: 2;
+
+  @media (max-width: $lg-991px) {
+    display: $noneelm;
+  }
+
+  .blog__post__btns {
+    position: sticky;
+    top: 100px;
+
+    li:not(:last-child) {
+      margin-bottom: 1rem;
+    }
+
+    li {
+      a {
+        @extend %flexcenter,
+          %primary-text-color,
+          %rounded-radius,
+          %content-bg-color,
+          %relative,
+          %pointer,
+          %transition-3;
+        font-size: 1.5rem;
+        width: 45px;
+        height: 45px;
+
+        &:hover {
+          transform: scale(0.9);
+          background: $outline-btn;
+          color: $white-color;
+        }
+
+        &:hover .sticky-buttons-tooltip {
+          @include opacity-visibility-false;
+          left: -110px;
+        }
+
+        .sticky-buttons-tooltip {
+          @extend %absolute,
+            %whitecolor,
+            %outlie-button,
+            %img-border-radius,
+            %mediumfont,
+            %pointer-none;
+          @include opacity-visibility-true;
+          width: max-content;
+          left: -50px;
+          top: 6px;
+          padding: 0.3rem 0.5rem;
+          transition: 250ms ease-in;
+
+          &::after {
+            @extend %psudoclasses;
+            bottom: 5px;
+            right: -8px;
+            width: 0;
+            height: 0;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            border-left: 10px solid #6898f8;
+          }
+        }
+      }
+    }
+  }
+}
+// blog left navigation end
+
+// blog post main section start
+.blog__post__main__section {
+  @extend %relative;
+  flex: 0 0 67%;
+  max-width: 67%;
+
+  @media (max-width: $lg-991px) {
+    flex: 0 0 $fullwidth;
+    max-width: $fullwidth;
+  }
+
+  .blog__post__img {
+    margin-bottom: 2rem;
+
+    img {
+      @extend %img-border-radius, %content-shadow, %relative;
+      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4));
+      z-index: 1;
+    }
+  }
+
+  .blog__post__title {
+    @extend %center-text, %whitecolor;
+    font-size: 1.3rem;
+  }
+
+  .blog__post__infography {
+    @extend %flexcenter;
+    margin: 1.4rem 0 2rem;
+
+    li {
+      list-style: none;
+    }
+
+    li {
+      @extend %mediumfont;
+      padding: 0 1rem;
+      border-left: 2px solid $primary-text-color;
+
+      &:last-child {
+        border: none;
+      }
+
+      @media (max-width: $xs-480px) {
+        font-size: $fontSize-08rem;
+        padding: 0 0.4rem;
+      }
+
+      i {
+        padding-left: 0.3rem;
+      }
+    }
+  }
+
+  // blog article body styles
+  .article__body {
+    p {
+      @extend %primary-text-color, %mediumfont, %mb-1;
+      line-height: 2.2;
+      text-align: justify;
+    }
+
+    .article__img {
+      img {
+        @extend %img-border-radius, %pointer;
+        margin: 1.4rem 0;
+      }
+
+      .close-img-zoom {
+        @extend %flexcenter,
+          %content-bg-color,
+          %content-shadow,
+          %rounded-radius,
+          %fixed,
+          %overflow-hidden,
+          %pointer;
+        width: 45px;
+        height: 45px;
+        top: 20px;
+        right: 40px;
+        z-index: 1402;
+        @include opacity-visibility-true;
+        transition: 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+
+        &:hover {
+          background: $outline-btn;
+        }
+
+        &:after,
+        &::before {
+          @extend %psudoclasses, %white-bg;
+          width: 2px;
+          height: 35px;
+          transform: rotate(-45deg);
+          transition: inherit;
+        }
+
+        &::before {
+          transform: rotate(45deg);
+        }
+
+        &:hover::after {
+          transform: rotate(135deg);
+        }
+
+        &:hover::before {
+          transform: rotate(-135deg);
+        }
+      }
+    }
+
+    // blog quote styles
+    .quote {
+      @extend %row;
+
+      blockquote {
+        padding: 0.3rem 0 0 0.8rem;
+
+        i {
+          @extend %flexcenter, %outlie-button, %rounded-radius, %whitecolor;
+          vertical-align: top;
+          width: 35px;
+          height: 35px;
+        }
+      }
+    }
+  }
+
+  .article__tag__share {
+    @extend %flexspacebetween;
+    border: 2px dotted rgba(255, 255, 255, 0.4);
+    border-left: transparent;
+    border-right: transparent;
+    padding: 1.4rem 0;
+    margin: 2rem auto;
+
+    @media (max-width: $md-720px) {
+      flex-direction: $column;
+      align-items: flex-start;
+    }
+
+    .article__tags {
+      @extend %flexalign;
+
+      @media (max-width: $md-720px) {
+        margin-bottom: 1rem;
+      }
+
+      @media (max-width: $xs-480px) {
+        flex-direction: $column;
+        align-items: flex-start;
+      }
+
+      p {
+        padding-left: 1rem;
+
+        @media (max-width: $xs-480px) {
+          margin-bottom: 1rem;
+        }
+      }
+    }
+
+    .blog__tags__container {
+      li {
+        vertical-align: middle;
+        margin: 0.4rem 0 0.4rem 1.7rem;
+
+        @media (max-width: 380px) {
+          margin-bottom: 1rem;
+        }
+      }
+    }
+
+    .article__share {
+      @media (max-width: $md-720px) {
+        align-self: flex-end;
+      }
+
+      &__nav {
+        @extend %flexalign, %relative;
+
+        &:hover::after,
+        &:hover::before {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+
+        &::after,
+        &::before {
+          @extend %absolute, %transition-4, %pointer-none;
+          z-index: 8;
+          opacity: 0;
+          transform: translateY(10px) scale(0.4);
+        }
+
+        &::after {
+          @extend %mediumfont, %dark-color, %img-border-radius;
+          content: attr(data-share-tooltip);
+          width: max-content;
+          top: -45px;
+          right: 25%;
+          padding: 0.3rem 0.4rem;
+        }
+
+        &::before {
+          content: "";
+          width: 0;
+          height: 0;
+          border-left: 10px solid transparent;
+          border-right: 10px solid transparent;
+          border-top: 10px solid $dark-color;
+          top: -16px;
+          left: 45%;
+        }
+
+        li {
+          margin-left: 1rem;
+
+          a {
+            @extend %flexcenter,
+              %rounded-radius,
+              %relative,
+              %transition-2,
+              %overflow-hidden,
+              %content-text-color;
+            font-size: 1.3rem;
+            background: $primary-text-color;
+            width: 36px;
+            height: 36px;
+            z-index: 1;
+
+            i {
+              @extend %transition-4;
+            }
+
+            &::after {
+              @extend %psudoclasses, %outlie-button, %transition-4;
+              inset: 0;
+              top: 100%;
+              z-index: -1;
+            }
+
+            &:hover {
+              color: $white-color;
+            }
+
+            &:hover i {
+              transform: rotateY(360deg);
+            }
+
+            &:hover::after {
+              top: 0;
+            }
+          }
+        }
+
+        li:last-child {
+          margin-left: 0;
+        }
+
+        li:nth-child(5) a::after {
+          background: #0088cc;
+        }
+
+        li:nth-child(4) a::after {
+          background: #26d367;
+        }
+
+        li:nth-child(3) a::after {
+          background: #55acef;
+        }
+
+        li:nth-child(2) a::after {
+          background: #1878f1;
+        }
+
+        li:nth-child(1) a::after {
+          background: #016193;
+        }
+      }
+    }
+  }
+
+  .writer__info {
+    @extend %flexalign, %content-shadow, %img-border-radius, %padding-1;
+
+    @media (max-width: $md-720px) {
+      flex-direction: $column;
+    }
+
+    .write__info__box {
+      @extend %flexalign;
+
+      @media (max-width: $md-620px) {
+        flex-direction: $column;
+      }
+
+      .writer__img__container {
+        @extend %relative, %fullsize;
+        margin-left: 1rem;
+
+        @media (max-width: $md-620px) {
+          width: auto;
+          height: auto;
+          margin-left: 0;
+        }
+
+        img {
+          @extend %rounded-radius;
+          height: 120px;
+          width: 120px;
+        }
+
+        .best__writer__badge {
+          @extend %absolute, %whitecolor;
+          cursor: help;
+          right: 15px;
+          top: -8px;
+
+          &:hover::after {
+            @include opacity-visibility-false;
+          }
+
+          i {
+            @extend %flexcenter, %outlie-button, %rounded-radius;
+            font-size: 1.4rem;
+            width: 30px;
+            height: 30px;
+          }
+
+          &::after {
+            @extend %absolute,
+              %mediumfont,
+              %transition-2,
+              %blue-color,
+              %white-space,
+              %pointer-none;
+            @include opacity-visibility-true;
+            content: attr(data-writer-score);
+            top: -25px;
+            right: -20px;
+          }
+        }
+      }
+
+      .writer__text {
+        h1 {
+          @extend %whitecolor, %bigfont;
+          margin-bottom: 0.5rem;
+        }
+
+        p {
+          @extend %mediumfont;
+          line-height: 1.8;
+
+          @media (max-width: $md-720px) {
+            margin-bottom: 1rem;
+          }
+        }
+      }
+    }
+
+    .writer__post__links {
+      @extend %fullwidth, %center-text;
+
+      a {
+        @extend %inline-block,
+          %btn-border-radius,
+          %relative,
+          %overflow-hidden,
+          %content-text-color;
+        background: $primary-text-color;
+        padding: 0.3rem 0.4rem;
+        z-index: 1;
+
+        &:hover {
+          color: $white-color;
+        }
+
+        &::after {
+          @extend %psudoclasses, %outlie-button;
+          inset: 0;
+          border-radius: inherit;
+          top: 100%;
+          transition: inherit;
+          z-index: -1;
+        }
+
+        &:hover::after {
+          top: 0;
+        }
+      }
+    }
+  }
+
+  .previus__post__next__post {
+    @extend %flexspacebetween, %img-border-radius, %padding-1;
+    @include miniborder(rgba(255, 255, 255, 0.3));
+    margin: 2rem auto;
+
+    a {
+      @extend %primary-text-color, %mediumfont;
+
+      &:hover {
+        color: $outline-btn;
+      }
+
+      &:hover i {
+        color: $outline-btn;
+      }
+    }
+
+    a:last-child {
+      text-align: left;
+    }
+
+    .previus__post__icon,
+    .next__post__icon {
+      i {
+        @extend %whitecolor, %transition-2;
+        font-size: 1.5rem;
+      }
+    }
+
+    .previus__post__icon {
+      padding-left: 1rem;
+    }
+
+    .next__post__icon {
+      padding-right: 1rem;
+    }
+
+    .previus__post,
+    .next__post {
+      @extend %flexalign;
+
+      h3 {
+        @media (max-width: 350px) {
+          font-size: $fontSize-08rem;
+        }
+      }
+
+      p {
+        @media (max-width: $xs-480px) {
+          display: $noneelm;
+        }
+      }
+    }
+  }
+
+  .blog__comments__container {
+    margin: 4rem auto 0;
+  }
+}
+
+// image zoom effect classes
+.img-parent-node {
+  @extend %flexcenter, %fixed-inset, %fullsize;
+  z-index: 12;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 0 2rem;
+}
+
+.img-zoom-effect {
+  @extend %relative;
+  width: 600px;
+  height: 400px;
+  animation: imgInAnimation 0.8s cubic-bezier(0.68, -0.6, 0.32, 1.6) forwards;
+
+  @media (max-width: $md-620px) {
+    width: $fullwidth;
+    height: auto;
+  }
+}
+
+@keyframes imgInAnimation {
+  0% {
+    opacity: 0;
+    transform: translateX(120px);
+  }
+
+  60% {
+    opacity: 0.7;
+    transform: translateX(40px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+
+.img-zoom-effect-out {
+  width: auto;
+  height: auto;
+  animation: imgOutAnimation 0.8s cubic-bezier(0.68, -0.6, 0.32, 1.6) forwards;
+}
+
+@keyframes imgOutAnimation {
+  100% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+
+  60% {
+    opacity: 0.7;
+    transform: translateX(60px);
+  }
+
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.close-image-zoom-in {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.close-image-zoom-out {
+  transform: scale(0);
+  @include opacity-visibility-true;
+}
+// blog main section end
+
+// blog post aisde styles
+.blog__post__aside {
+  @extend %relative, %overflow-hidden;
+  flex: 0 0 25%;
+  max-width: 25%;
+  margin-right: 1rem;
+  z-index: 1;
+  height: max-content;
+
+  @media (max-width: $lg-991px) {
+    flex: 0 0 $fullwidth;
+    max-width: $fullwidth;
+    margin: 2rem auto 1rem;
+  }
+
+  svg {
+    @extend %absolute;
+    top: 0;
+    right: 0;
+    z-index: -1;
+    opacity: 0.4;
+    transform: rotate(90deg);
+  }
+
+  .title {
+    @extend %relative, %whitecolor, %bigfont;
+    width: max-content;
+    margin: 0 auto 1rem;
+    padding: 0 1rem 0.4rem;
+
+    svg {
+      @extend %fullwidth, %absolute;
+      height: 40px;
+      right: 37px;
+      top: -20px;
+      transform: rotate(18deg);
+    }
+
+    &::after {
+      @extend %psudoclasses, %fullwidth, %outlie-button;
+      bottom: 0;
+      right: 0;
+      height: 2px;
+    }
+  }
+
+  img {
+    @extend %img-border-radius;
+  }
+
+  a {
+    @extend %primary-text-color;
+  }
+
+  .new__post__container {
+    margin-bottom: 2rem;
+
+    .new__post__img {
+      @extend %content-shadow, %relative;
+
+      img {
+        border-radius: 6px 6px 0 0;
+      }
+    }
+  }
+
+  .new__post__link {
+    @extend %row, %column, %center-text;
+
+    &:hover {
+      color: $outline-btn;
+    }
+
+    .news__post__text__cr {
+      @extend %dark-color-light;
+      border-radius: 0 0 6px 6px;
+      padding: 0.8rem 0;
+
+      p:first-child,
+      time {
+        @extend %inline-block;
+        margin-bottom: 0.5rem;
+      }
+
+      p:first-child {
+        @extend %mediumfont;
+      }
+
+      time {
+        @extend %smallfont;
+      }
+
+      p:last-child {
+        @extend %auto-margin,
+          %smallfont,
+          %outlie-button,
+          %whitecolor,
+          %btn-30px;
+        width: max-content;
+        padding: 0.3rem 0.4rem;
+      }
+    }
+  }
+
+  .related__posts:not(:last-child) {
+    @extend %mb-1;
+  }
+
+  .related__posts {
+    @extend %flexspacebetween,
+      %dark-color-light,
+      %img-border-radius,
+      %transition-4;
+    padding: 0.6rem;
+
+    @media (max-width: $lg-991px) {
+      flex-direction: $column;
+      justify-content: center;
+    }
+
+    &:hover {
+      background: $content-bg-color;
+      box-shadow: $Content-shadow;
+    }
+
+    .post-related-img {
+      @extend %relative, %rounded-radius, %overflow-hidden;
+      margin-left: 1rem;
+
+      @media (max-width: $lg-991px) {
+        margin: 0 0 0.5rem 0;
+      }
+    }
+
+    .related__post__img {
+      img {
+        width: 90px;
+        height: 90px;
+
+        @media (max-width: $lg-991px) {
+          width: 150px;
+          height: 150px;
+        }
+      }
+    }
+
+    .related__post__info {
+      @extend %mediumfont, %rounded-radius;
+      flex-basis: 50%;
+      max-width: 50%;
+
+      a:hover {
+        color: $outline-btn;
+      }
+
+      .related__post__date__time {
+        @media (max-width: $lg-1100px) {
+          display: $noneelm;
+        }
+
+        @media (max-width: $lg-991px) {
+          display: $blockelm;
+          text-align: $center-text;
+          time {
+            font-size: 0.8rem;
+          }
+        }
+      }
+
+      time {
+        @extend %inline-block;
+        font-size: 0.7rem;
+
+        &:first-child {
+          padding-left: 0.4rem;
+          border-left: 1px solid rgba(255, 255, 255, 0.4);
+        }
+      }
+    }
+  }
+}
+// blog post aisde styles end
+
+// image hover effect attr for new blog article on left aside
+[data-image-hover-effect]::after {
+  @extend %psudoclasses, %fullsize, %transition-4, %pointer-none;
+  inset: 0;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.1),
+    rgba(0, 0, 0, 0.5)
+  );
+  border-radius: 10px;
+  background-size: 100%;
+}
+
+[data-image-hover-effect]:hover::after {
+  background-size: 200%;
+}
+
+.blogPostAnimation {
+  animation: PostsScaleIn 400ms ease-in forwards;
+  animation-delay: 400ms;
+
+  @for $i from 1 through 6 {
+    &:nth-child(#{$i}) {
+      animation-delay: $i * 50ms;
+    }
+  }
+}
+
+@keyframes PostsScaleIn {
+  from {
+    opacity: 0.2;
+    transform: scale(0.4);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+// End

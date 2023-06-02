@@ -1,0 +1,164 @@
+// تمامی متغیر ها در این تعریف شده اند
+// Color Variables
+// رنگ ها
+$primary-color: #5facfa !default;
+$primary-color-light: rgba(104, 152, 248, 0.2) !default;
+$primary-text-color: #bbc1c6 !default; // for texts
+$primary-text-SL: #9ba1a6 !default; //
+$text-color: #c6c9cc !default; // for texts
+$white-color: #f5f5f5 !default; // for texts or bg
+$dark-color: #101014de !default;
+$main-bg-color: #0f0f0f !default;
+$dark-color-light: #1c1c22 !default;
+$secondary-dark: #1d1c22;
+$content-bg-color: #23232b !default; // for video or content colors
+$outline-btn: #6898f8 !default; // for btns outline
+$border-radius-img: 6px !default;
+$border-radius-btn: 4px !default;
+$sidebar-bg-color: rgba(0, 0, 0, 0.5) !default;
+$primary-linear-color: linear-gradient(145deg, #fa9f6f, #fa697c) !default;
+$primary-bg-color: #fa697c !default;
+
+// Box shadow
+$Content-shadow: 0 5px 30px 2px rgba(0, 0, 0, 0.3);
+
+// Badges
+// برچسب ها
+$yellow-badge: #ffc107 !default;
+$orange-badge: #ff7555 !default;
+$green-badge: #89d64f !default;
+$purple-badge: #aa7df2 !default;
+$download-btn: #12ae40 !default;
+$red-100: #ff3232 !default;
+
+// Transtions
+$transition-2: all 0.2s ease-in-out !default;
+$transition-4: all 0.4s ease-in-out !default;
+$transition-400ms: all 400ms !default;
+$transition-3: all 0.3s ease-in !default;
+$cubic-transition-4: all 0.4s cubic-bezier(0.785, 0.135, 0.15, 0.86) !default;
+
+// Max width
+$max-width: 1320px !default;
+$max-width1300px: 1300px !default;
+
+// Column
+$column: column !default;
+
+// Container
+// ظرف نگهدارنده
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+// رنگ های مربوط به برچسب ها و دکمه ها
+.orange {
+  color: #ff7555 !important;
+}
+
+.green {
+  color: #89d64f !important;
+}
+
+.yellow {
+  color: #ffc107 !important;
+}
+
+.purple {
+  color: #aa7df2 !important;
+}
+
+.green100 {
+  color: #03c03ce6 !important;
+}
+
+.red100 {
+  color: #f44336e6 !important;
+}
+
+.blue-100 {
+  color: $outline-btn !important;
+}
+
+.panel-green-class {
+  color: #03c03ce6;
+}
+
+.panel-red-class {
+  color: #f44336e6;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.relative {
+  position: relative;
+}
+
+.row {
+  display: flex;
+}
+
+.block {
+  display: block;
+}
+
+.title {
+  font-family: "iransans-medium", sans-serif, Tahoma, Arial, Helvetica,
+    sans-serif;
+}
+
+// title variable
+$mediumfont: "iransans-medium", sans-serif, Tahoma, Arial, Helvetica, sans-serif;
+
+// other variables
+
+// elements display
+// دیسپلی ها
+$row: flex;
+$blockelm: block;
+$inline-block: inline-block;
+$noneelm: none;
+$visible: visible;
+$hidden-item: hidden;
+$overflow: hidden;
+
+// cursor
+$pointer: pointer;
+
+// text
+$center-text: center;
+
+// Font sizes
+$fontSize-08rem: 0.8rem;
+$fontSize-09rem: 0.9rem;
+$fontSize-11rem: 1.1rem;
+
+// sizes
+$fullwidth: 100%;
+$rounded: 100vw;
+$auto-margin: 0 auto;
+
+// positions
+$relative: relative;
+$absolute: absolute;
+$fixed: fixed;
+
+// breakpoints
+// نقطه های شکست برای ریسپانسیو کردن قالب
+$lg-1200px: 1200px;
+$lg-1100px: 1100px;
+$lg-991px: 991px;
+$lg-800px: 800px;
+$md-720px: 720px;
+$md-680px: 680px;
+$md-620px: 620px;
+$xs-480px: 480px;
+$xs-450px: 450px;
+
+// End

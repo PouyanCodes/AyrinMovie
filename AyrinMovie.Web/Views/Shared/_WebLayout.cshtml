@@ -1,0 +1,160 @@
+﻿
+<!DOCTYPE html>
+<html dir="rtl" lang="fa-IR">
+
+<head>
+
+    <partial name="Web/_MetaTags" />
+
+    <title>@ViewData["Title"]</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="~/Web/assest/logo/film.ico"/>
+
+    <partial name="Web/_Styles" />
+    @RenderSection("Styles",false)
+
+</head>
+
+<body>
+
+    <!-- Loader animation -->
+    <script>
+        window.addEventListener("load", function () {
+            document.querySelector('.loader-parent').classList.add('loaded');
+            setTimeout(function () {
+                document.querySelector('.loader-parent').remove();
+            }, 3000)
+        });
+    </script>
+
+    <!-- loader 3 -->
+    <div class="loader-parent loader3">
+        <div class="loader-film-strip">
+            <div class="loader-strip-inner">
+                <div class="loader-film-strip-inner"></div>
+                <div class="loader-film-strip-inner inner-2"></div>
+                <div class="loader-film-strip-inner inner-3"></div>
+                <div class="loader-film-strip-inner inner-4"></div>
+            </div>
+        </div>
+        <p class="loader-text">در حال بارگزاری</p>
+    </div>
+    <!-- Loader animation end -->
+    <!-- --------------- -->
+    <!-- Black mask -->
+    <div class="mask"></div>
+
+    <!-- Mobile Navigation Menu -->
+    <partial name="Web/_MobileNavbar" />
+    <!-- Mobile Navigation End-->
+   
+
+    <!-- Header -->
+    <header class="header">
+        <!-- Navigation bar on header -->
+        <nav class="desktop-navbar" role="navigation" aria-label="navigation">
+
+            <div class="container desktop-navbar-container">
+
+                <!-- Mobile Navbar -->
+                <div class="mobile-menu-icon">
+                    <svg role="button" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
+                         width="24px">
+                        <path d="M0 0h24v24H0V0z" fill="none" />
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+                    </svg>
+                </div>
+
+                <!-- Desktop and mobile logo -->
+                <div class="desktop-logo-container">
+                    <a href="/">
+                        <svg class="desktop-logo" xmlns="http://www.w3.org/2000/svg"
+                             xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs"
+                             version="1.1" width="512" height="512" x="0" y="0" viewBox="0 0 512 512"
+                             style="enable-background:new 0 0 512 512" xml:space="preserve">
+                        <g>
+                        <linearGradient xmlns="http://www.w3.org/2000/svg" id="SVGID_1_"
+                                        gradientUnits="userSpaceOnUse" x1="256" x2="256" y1="496" y2="16">
+                        <stop stop-opacity="1" stop-color="#fa697c" offset="0" />
+                        <stop stop-opacity="1" stop-color="#fa9f6f" offset="1" />
+                                </linearGradient>
+                        <g xmlns="http://www.w3.org/2000/svg">
+                        <g>
+                        <path d="m100 256c-11.046 0-20 8.954-20 20s8.954 20 20 20 20-8.954 20-20-8.954-20-20-20zm296 160h-360v40h360v40h40v-40h40v-40h-40zm-296-240c-11.046 0-20 8.954-20 20s8.954 20 20 20 20-8.954 20-20-8.954-20-20-20zm0-80c-11.046 0-20 8.954-20 20s8.954 20 20 20 20-8.954 20-20-8.954-20-20-20zm312 0c-11.046 0-20 8.954-20 20s8.954 20 20 20 20-8.954 20-20-8.954-20-20-20zm40-80h-392c-33.084 0-60 26.916-60 60v240c0 33.084 26.916 60 60 60h392c33.084 0 60-26.916 60-60v-240c0-33.084-26.916-60-60-60zm20 300c0 11.028-8.972 20-20 20h-392c-11.028 0-20-8.972-20-20v-240c0-11.028 8.972-20 20-20h392c11.028 0 20 8.972 20 20zm-276-20 133.333-100-133.333-100zm40-120 26.667 20-26.667 20zm176 0c-11.046 0-20 8.954-20 20s8.954 20 20 20 20-8.954 20-20-8.954-20-20-20zm0 80c-11.046 0-20 8.954-20 20s8.954 20 20 20 20-8.954 20-20-8.954-20-20-20z"
+                              fill="url(#SVGID_1_)" data-original="url(#SVGID_1_)" style="fill: auto;"> />
+                                    </g>
+                                </g>
+                            </g>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- Desktop Navigation Items -->
+                <ul class="navigation-items">
+                    <!-- demo links -->
+                    <div class="menu-with-dropdown">
+                    <li class="navlinks-title">
+                        <a href="#">
+                            فیلم
+                            <svg class="angle-bottom-menu-icon"
+                                 xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                                 fill="#f9f9f9">
+                                <path d="M0 0h24v24H0z" fill="none" />
+                                <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" />
+                            </svg>
+                        </a>
+                    </li>
+                    <ul class="dropdown-desktop-menu">
+                        <li><a href="/movies">تمامی فیلم ها</a></li>
+                        <li><a href="articles-demos.html">دوبله فارسی</a></li>
+                        <li><a href="/movies?country=ایران">ایرانی</a></li>
+                        <li><a href="venom.html"></a></li>                       
+                    </ul>
+            </div>
+            <!-- demo links end -->
+
+            <div class="menu-with-dropdown">
+                <li class="navlinks-title">
+                    <a href="loaders.html">
+                        انیمیشن
+                        <svg class="angle-bottom-menu-icon"
+                             xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                             fill="#f9f9f9">
+                            <path d="M0 0h24v24H0z" fill="none" />
+                            <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" />
+                        </svg>
+                    </a>
+                </li>
+                <ul class="dropdown-desktop-menu">
+                    <li><a href="#">دوبله فارسی</a></li>              
+                </ul>
+            </div>
+
+            <li class="navlinks-title vip-btn"><a href="/blog">وبلاگ</a></li>
+            </ul>
+
+
+           <partial name="Web/_SearchBox" />
+
+        </nav>
+    </header>
+    <!-- Header end -->
+    <!-- ---------- -->
+
+    <!-- ---------------- -->
+    <!-- Main Body -->
+
+        @RenderBody()
+
+    <!-- main body end -->
+    
+    <partial name="Web/_Footer" />
+
+    
+    <partial name="Web/_Scripts" />
+    @RenderSection("Scripts",false)
+
+</body>
+
+</html>

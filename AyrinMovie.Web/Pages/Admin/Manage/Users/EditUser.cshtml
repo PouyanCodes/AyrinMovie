@@ -1,0 +1,159 @@
+﻿@page "{id}"
+@using AyrinMovie.Core.Services
+@model AyrinMovie.Web.Pages.Admin.Manage.Users.EditUserModel
+
+@{
+    ViewData["Title"] = "پنل کاربری | ویرایش کاربر ";
+    ViewData["Page-Header"] = "ویرایش کاربر";
+    ViewData["UsersMenuActive"] = "true";
+}
+
+
+@section Styles
+{
+<link rel="stylesheet" type="text/css" href="~/Admin/plugins/dropify/dropify.min.css">
+<link href="~/Admin/assets/css/users/account-setting.css" rel="stylesheet" type="text/css" />
+}
+
+
+@inject IUserService _userService
+
+
+<div class="Information-Box-container layout-top-spacing">
+
+    <div class="Information-content">
+        <form method="post" enctype="multipart/form-data">
+
+            <input type="hidden" asp-for="EditUserViewModel.userId" />
+            <input type="hidden" asp-for="EditUserViewModel.ImageName" />
+
+            <div class="scrollspy-example" data-spy="scroll" data-target="#Information-content-scroll" data-offset="-100">
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
+                        <div id="general-info" class="section general-info">
+                            <div class="info">
+                                <h6>ویرایش کاربر</h6>
+                                <div class="row">
+                                    <div class="col-lg-11 mx-auto">
+                                        <div class="row">
+                                            <div class="col-xl-2 col-lg-12 col-md-4">
+                                                <div class="upload mt-4 pr-md-4">
+                                                    <input type="file" asp-for="EditUserViewModel.UserAvatar" id="input-file-max-fs" class="dropify" data-default-file="/Files/UserAvatar/Thumbnail/@Model.EditUserViewModel.ImageName" data-max-file-size="7M" />
+                                                    <p class="mt-2"><i class="flaticon-cloud-upload mr-1"></i> آپلود عکس</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-10 col-lg-12 col-md-8 mt-md-0 mt-4">
+                                                <div class="form">
+                                                    <div class="row">
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                <label>نام و نام خانوادگی</label>
+                                                                <input type="text" asp-for="EditUserViewModel.FullName" class="form-control mb-4" placeholder="نام و نام خانوادگی" />
+                                                                <span asp-validation-for="EditUserViewModel.FullName" class="text-danger"></span>
+                                                            </div>
+                                                        </div>
+
+
+                                                        <!-- Fix Later-->
+
+                                                        @if (Model.EditUserViewModel.UserRole != 2)
+                                                        {
+                                                            <div class="col-sm-6">
+                                                                <label>نقش</label>
+                                                                <div class="d-sm-flex d-block">
+                                                                    <div class="form-group mr-1">
+                                                                        <select asp-for="EditUserViewModel.UserRole" class="form-control">
+                                                                            <option value="3">ادمین</option>
+                                                                            <option value="4">نویسنده</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        }
+
+                                                        else
+
+                                                        {
+                                                            <input type="hidden" asp-for="EditUserViewModel.UserRole" />
+                                                        }
+
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                <label>ایمیل</label>
+                                                                <input type="text" asp-for="EditUserViewModel.Email" class="form-control mb-4" placeholder="ایمیلتان را در اینجا بنویسید" />
+                                                                <span asp-validation-for="EditUserViewModel.Email" class="text-danger"></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                <label>موبایل</label>
+                                                                <input type="text" asp-for="EditUserViewModel.PhoneNumber" class="form-control mb-4" placeholder="شماره موبایل خود را اینجا وارد نمایید" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <div class="form-group">
+                                                                <label>رمزعبور</label>
+                                                                <input type="password" asp-for="EditUserViewModel.Password" class="form-control" placeholder="از رمز قوی استفاده کنید" />
+                                                                <span asp-validation-for="EditUserViewModel.Password" class="text-danger"></span>
+                                                                <p class="help-block"> در صورت عدم تمایل به تغیر رمز ، این فیلد را خالی بگزارید</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
+                        <div id="about" class="section about">
+                            <div class="info">
+                                <h5>درباره</h5>
+                                <div class="row">
+                                    <div class="col-md-11 mx-auto">
+                                        <div class="form-group">
+                                            <label for="aboutBio">بیوگرافی</label>
+                                            <textarea class="form-control" asp-for="EditUserViewModel.Biography"placeholder="در مورد خودتان چیز جالبی بگویید" rows="10"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
+                        <div class="row">
+                            <div class="col-md-11 mx-auto">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <input type="submit" class="btn btn-primary mb-4 mr-2 btn-lg" value="ویرایش کاربر" />
+                                        <input type="reset" class="btn btn-secondary mb-4 mr-2 btn-lg" value="پاک کن" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+@section Scripts
+{
+<script src="~/Admin/plugins/dropify/dropify.min.js"></script>
+<script src="~/Admin/plugins/blockui/jquery.blockUI.min.js"></script>
+<script src="~/Admin/assets/js/users/account-settings.js"></script>
+}

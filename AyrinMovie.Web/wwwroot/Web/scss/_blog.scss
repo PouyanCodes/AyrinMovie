@@ -1,0 +1,734 @@
+// کامپوننت استفاده شده در صفحه اصلی وبلاگ
+// blog start here
+
+// scroll top button for blog
+.scroll-top-button {
+  @extend %fixed, %rounded-radius, %outlie-button, %content-shadow, %pointer;
+  bottom: -100px;
+  left: 25px;
+  z-index: 99;
+  width: 45px;
+  height: 45px;
+  background: $primary-linear-color;
+  opacity: 0;
+  transition: 0.6s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+
+  @media (max-width: $xs-480px) {
+    left: 10px;
+  }
+
+  &::after {
+    @extend %absolute,
+      %whitecolor,
+      %main-bg-color,
+      %img-border-radius,
+      %mediumfont,
+      %transition-2,
+      %white-space,
+      %pointer-none;
+    content: attr(data-tooltip);
+    right: -70px;
+    top: 8px;
+
+    padding: 0.2rem 0.4rem;
+    opacity: 0;
+  }
+
+  i {
+    @extend %whitecolor;
+    font-size: 1.4rem;
+  }
+
+  &:hover::after {
+    opacity: 1;
+  }
+}
+
+.scroll-top-button.show {
+  opacity: 1;
+  bottom: 20px;
+
+  @media (max-width: $xs-480px) {
+    bottom: 10px;
+  }
+}
+// scroll top button end
+
+// blog right aside section
+.blog-right-aside {
+  flex: 0 0 74.5555% !important;
+  max-width: 74.5555% !important;
+
+  @media (max-width: $lg-991px) {
+    flex: 0 0 $fullwidth !important;
+    max-width: $fullwidth !important;
+  }
+}
+
+// blog main section
+.main__section {
+  padding: 6rem 0 2rem;
+
+  .mansory__grid {
+    // mansory grid on blog intro container
+    .mansory__grid__cr {
+      @extend %max-width;
+      display: grid;
+      grid-template-areas:
+        "item1 item1 item2 item3"
+        "item1 item1 item2 item4";
+      grid-gap: 25px;
+      gap: 25px;
+      min-height: 450px;
+
+      @media (max-width: $lg-991px) {
+        grid-template-areas:
+          "item1 item1"
+          "item1 item1"
+          "item1 item1"
+          "item3 item2"
+          "item3 item2"
+          "item4 item2"
+          "item4 item2";
+        min-height: 700px;
+      }
+
+      @media (max-width: $xs-480px) {
+        grid-template-areas:
+          "item1"
+          "item2"
+          "item3"
+          "item4";
+        min-height: 900px;
+      }
+    }
+  }
+
+  // top choices blog post container
+  .main__posts__cr {
+    @extend %content-bg-color, %relative, %overflow-hidden;
+    box-shadow: 0 4px 0 #272727;
+    border-radius: 10px;
+
+    &:hover .main__post__cr__link {
+      filter: grayscale(100%);
+    }
+
+    // top choices blog posts
+    .main__post__cr__link {
+      @extend %abs-inset, %transition-3;
+      background: url(../assest/blog-images/squid-game.jpg) center top no-repeat;
+      background-size: cover;
+      border-radius: 10px;
+
+      &:hover .read__more__text {
+        opacity: 1;
+      }
+
+      // blog post read more button
+      .read__more__text {
+        @extend %CenterFixed,
+          %dark-color,
+          %btn-border-radius,
+          %bigfont,
+          %primary-text-color,
+          %pointer,
+          %transition-3;
+        position: inherit;
+        padding: 0.4rem;
+        opacity: 0;
+
+        &::after,
+        &::before {
+          @extend %psudoclasses;
+          background: transparent;
+          z-index: 2;
+          width: 20%;
+          height: 45%;
+          transition: inherit;
+        }
+
+        &::before {
+          top: 0;
+          left: 0;
+          border-left: 1px solid rgba(255, 255, 255, 0.9);
+          border-top: 1px solid rgba(255, 255, 255, 0.9);
+        }
+
+        &::after {
+          bottom: 0;
+          right: 0;
+          border-right: 1px solid rgba(255, 255, 255, 0.9);
+          border-bottom: 1px solid rgba(255, 255, 255, 0.9);
+        }
+
+        &:hover::after,
+        &:hover::before {
+          width: 99%;
+          height: 99%;
+        }
+      }
+    }
+
+    // blog post link
+    .main__posts__link {
+      @extend %fullwidth,
+        %absolute,
+        %dark-color,
+        %primary-text-color,
+        %mediumfont;
+      padding: 0.7rem 0.6rem 0.7rem 0;
+      bottom: 0;
+
+      &:hover {
+        color: $white-color;
+      }
+    }
+  }
+}
+
+// main blog posts container
+.main__posts__cr:nth-child(1) {
+  grid-area: item1;
+}
+
+.main__posts__cr:nth-child(2) {
+  grid-area: item2;
+}
+
+.main__posts__cr:nth-child(3) {
+  grid-area: item3;
+}
+
+.main__posts__cr:nth-child(4) {
+  grid-area: item4;
+}
+
+// user another backgrounds for top choices blog posts
+.main__posts__cr:nth-child(2) .main__post__cr__link {
+  background: url(../assest/blog-images/tenet.jpg) center no-repeat;
+  background-size: cover;
+}
+
+.main__posts__cr:nth-child(3) .main__post__cr__link {
+  background: url(../assest/blog-images/money-heist.jpg) center no-repeat;
+  background-size: cover;
+}
+
+.main__posts__cr:nth-child(4) .main__post__cr__link {
+  background: url(../assest/blog-images/old-guard.jpeg) center no-repeat;
+  background-size: cover;
+}
+
+// blog title
+.main-blog-post {
+  @extend %content-bg-color, %img-border-radius, %content-shadow;
+  padding: 1.5rem;
+
+  @media (max-width: $xs-480px) {
+    padding: 1.5rem 1rem;
+  }
+
+  .blog__posts__title {
+    @extend %flexspacebetween;
+
+    a {
+      @extend %primary-text-color, %mediumfont;
+
+      i {
+        vertical-align: middle;
+        padding-right: 0.3rem;
+      }
+
+      &:hover {
+        color: $white-color;
+      }
+    }
+
+    a:first-child {
+      @extend %bigfont;
+    }
+  }
+
+  .last__posts__blog {
+    @extend %block, %bigfont, %primary-text-color;
+    width: max-content;
+    margin: 1rem 0;
+  }
+}
+
+// blog posts container
+.last__posts__container {
+  @extend %flexandjusty-space-between, %wrap;
+  gap: 12px;
+  grid-gap: 12px;
+
+  // blog post container
+  .last__posts__cr {
+    @extend %content-shadow, %img-border-radius, %dark-color-light, %relative;
+    flex-basis: calc(33% - 12px);
+    max-width: calc(33% - 12px);
+    margin-bottom: 0.8rem;
+    box-shadow: 0 6px 0 rgba(#0e0c0c, 0.5);
+
+    // displayed data post type video icon
+    &:hover [data-post-type="video"]::after {
+      opacity: 1;
+    }
+
+    &:hover .last__post__img img {
+      opacity: 0.5;
+    }
+
+    @media (max-width: $lg-991px) {
+      flex-basis: calc(50% - 12px);
+      max-width: calc(50% - 12px);
+    }
+
+    @media (max-width: $md-620px) {
+      flex-basis: $fullwidth;
+      max-width: $fullwidth;
+      margin-bottom: 1.4rem;
+    }
+  }
+
+  .last__posts__cr:last-child {
+    @media (max-width: $md-620px) {
+      margin-bottom: 0;
+    }
+  }
+
+  // comments icon on blog thumbnail
+  .post__comment__length {
+    @extend %flexalign, %absolute;
+    flex-direction: row-reverse;
+    z-index: 2;
+    left: 10px;
+
+    &::after {
+      @extend %absolute,
+        %main-bg-color,
+        %whitecolor,
+        %btn-border-radius,
+        %smallfont,
+        %transition-2,
+        %white-space,
+        %pointer-none;
+      content: attr(data-comment-length);
+      left: -5px;
+      top: 30px;
+      padding: 0.3rem;
+      opacity: 0;
+    }
+
+    &:hover::after {
+      opacity: 1;
+    }
+
+    i,
+    span {
+      @extend %whitecolor;
+      font-size: 1.2rem;
+    }
+
+    i {
+      padding-right: 0.3rem;
+    }
+  }
+
+  // blog article image
+  .last__post__img {
+    @extend %flexcenter, %relative;
+    margin-bottom: 0.5rem;
+
+    img {
+      @extend %transition-2, %fullwidth;
+      border-radius: 10px 10px 0 0;
+      min-height: 170px;
+    }
+  }
+
+  .last__post__text {
+    @extend %overflow-hidden;
+    padding: 0 0.9rem 0.7rem;
+    margin-bottom: 1rem;
+    height: 100px;
+
+    a {
+      @extend %whitecolor, %block, %titlefont;
+      margin: 0.8rem 0;
+
+      &:hover {
+        color: $primary-color;
+      }
+    }
+
+    p {
+      font-size: 0.8rem;
+      line-height: 1.8;
+    }
+  }
+}
+
+// data post type attribute for blog articles
+[data-post-type="video"]::after {
+  @extend %psudoclasses, %rounded-radius, %transition-4, %pointer-none;
+  width: 70px;
+  height: 70px;
+  background: url(../assest/images/icons/play.png) no-repeat, $outline-btn;
+  background-size: cover;
+  opacity: 0;
+}
+
+// view all btn on blog footer
+#view-all-blog-posts {
+  @extend %outlie-button;
+  margin: 2rem auto 1rem;
+
+  button:hover a {
+    color: $white-color;
+  }
+
+  a {
+    @extend %blue-color, %inline-block, %fullwidth;
+  }
+}
+
+// blog left aside styles
+#blog-tabs-container {
+  @media (max-width: $lg-991px) {
+    display: $blockelm;
+    margin-top: 2rem;
+  }
+}
+
+.blog__sort__list__and__tags__container {
+  @extend %transition-2;
+}
+
+// blog tags title and container
+.blog__tags,
+.sort__blog__list,
+.most__view__container {
+  @extend %content-bg-color, %img-border-radius, %content-shadow;
+  margin-top: 1.2rem;
+  padding: 0.6rem 1.5rem;
+
+  @media (max-width: $xs-480px) {
+    padding: 0.6rem 1rem;
+  }
+
+  #blog__tags__title,
+  #blog-sorts-title {
+    padding: 1rem 0;
+  }
+}
+
+// blog page tags container
+.blog__tags__container {
+  @extend %row, %overflow-hidden, %wrap;
+
+  li {
+    @extend %flexcenter;
+    margin: 0.4rem 0 0.6rem 1.5rem;
+
+    a {
+      @extend %inline-block,
+        %fullsize,
+        %relative,
+        %dark-color-light,
+        %primary-text-color;
+      padding: 0.2rem 1.2rem 0.2rem 0.3rem;
+      z-index: 1;
+
+      // blog tags styles circle and tringe styles
+      &::before,
+      &::after {
+        @extend %psudoclasses, %transition-2;
+      }
+
+      &::before {
+        @extend %rounded-radius;
+        background: $primary-text-color;
+        right: 6px;
+        top: 12px;
+        height: 6px;
+        width: 6px;
+      }
+
+      &::after {
+        width: 0;
+        height: 0;
+        border-top: 15px solid transparent;
+        border-bottom: 15px solid transparent;
+        border-right: 15px solid $dark-color-light;
+        top: 1px;
+        left: -15px;
+        z-index: -1;
+      }
+
+      &:hover {
+        background: $outline-btn;
+        color: $white-color;
+      }
+
+      &:hover::before {
+        background: $white-color;
+      }
+
+      &:hover::after {
+        border-right-color: $outline-btn;
+      }
+    }
+  }
+}
+
+// blog sorts title
+#blog-sorts-title {
+  margin-bottom: 0.6rem;
+}
+
+.toggle__cr:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+.toggle__cr:last-child {
+  margin-bottom: 0.6rem;
+}
+
+// blog page toggle container
+.toggle__cr {
+  label {
+    @extend %flexalign, %pointer;
+
+    input[type="checkbox"] {
+      @extend %none;
+
+      &:checked ~ .custom__toggle {
+        background: $outline-btn;
+      }
+
+      &:checked ~ .custom__toggle .custom__toggle__inner {
+        right: 50%;
+        background: $white-color;
+      }
+    }
+  }
+}
+
+// custom checkbox toggles
+.custom__toggle {
+  @extend %flexalign, %transition-4, %pointer, %btn-30px;
+  width: 48px;
+  height: 20px;
+  background: $primary-text-SL;
+  box-shadow: 0 0 10px 2px inset rgba(255, 255, 255, 0.2);
+  margin-left: 1rem;
+  padding: 0.72rem 0.2rem;
+
+  &__inner {
+    @extend %inline-block, %relative, %dark-color, %rounded-radius;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    transition: inherit;
+  }
+}
+
+// most view container styles
+.most__view__container {
+  @extend %transition-4, %overflow-hidden;
+  padding: 0;
+  margin: 0;
+  max-height: 0;
+  opacity: 0;
+  transition-property: opacity, max-height;
+
+  .most__view__link {
+    @extend %block, %primary-text-color;
+    margin-bottom: 2.5rem;
+
+    &:hover img {
+      filter: grayscale(100%);
+    }
+
+    .most__view__img {
+      @extend %relative, %fullwidth, %content-shadow, %overflow-hidden;
+
+      &::after {
+        @extend %psudoclasses, %fullsize, %transition-4;
+        top: 0;
+        background: radial-gradient(
+          circle,
+          rgba(255, 255, 255, 0.1),
+          rgba(0, 0, 0, 0.5)
+        );
+        border-radius: 10px;
+        background-size: 100%;
+      }
+
+      &:hover::after {
+        background-size: 200%;
+      }
+    }
+
+    img {
+      @extend %content-shadow, %transition-4, %fullwidth;
+      border-radius: 10px;
+      border: 2px solid rgba(255, 255, 255, 0.4);
+      height: 160px;
+
+      @media (max-width: $lg-991px) {
+        height: 300px;
+      }
+
+      @media (max-width: $xs-480px) {
+        height: 200px;
+      }
+    }
+
+    p {
+      @extend %center-text, %mediumfont, %transition-2;
+      margin-top: 1rem;
+      padding: 0 0.6rem;
+
+      &:hover {
+        color: $primary-color;
+      }
+    }
+  }
+}
+
+// most view in class
+.most__view__in {
+  padding: 2rem 1.5rem 1rem;
+  margin-top: 1.2rem;
+  max-height: $fullwidth;
+  opacity: 1;
+
+  @media (max-width: $xs-480px) {
+    padding: 2rem 1rem 1rem;
+  }
+}
+
+// footer blog styles
+.blog-footer {
+  padding-top: 5rem;
+
+  .copy-right {
+    @extend %mediumfont;
+
+    @media (max-width: $xs-480px) {
+      font-size: $fontSize-08rem;
+    }
+  }
+}
+
+.blog-footer-nav {
+  border: none !important;
+}
+
+// top choises articles start
+.top-choises-blog {
+  padding-top: 7rem;
+}
+
+// top choises articles in blog page styles
+.top-choises-articles-blog {
+  flex: 0 0 $fullwidth !important;
+  max-width: $fullwidth !important;
+
+  .main-blog-post {
+    @extend %padding-1;
+
+    .title {
+      @extend %whitecolor, %center-text;
+      margin: 0 auto 2rem;
+
+      span {
+        @extend %blue-color;
+      }
+    }
+  }
+
+  // last posts for top articles on blog page container
+  .last__posts__cr {
+    flex: 0 0 calc(25% - 18px);
+    max-width: calc(25% - 18px);
+
+    @media (max-width: $lg-991px) {
+      flex: 0 0 calc(33% - 18px);
+      max-width: calc(33% - 18px);
+    }
+
+    @media (max-width: $lg-800px) {
+      flex: 0 0 calc(50% - 18px);
+      max-width: calc(50% - 18px);
+    }
+
+    @media (max-width: 570px) {
+      flex: 0 0 $fullwidth;
+      max-width: $fullwidth;
+    }
+  }
+
+  // read more button for top choises blog page
+  .read__more__button {
+    @extend %pb-1;
+    border-bottom: 1px solid rgba($primary-text-color, 0.2);
+
+    a {
+      @extend %relative,
+        %block,
+        %auto-margin,
+        %blue-color,
+        %transition-4,
+        %overflow-hidden,
+        %btn-30px;
+      @include miniborder($outline-btn);
+      width: max-content;
+      padding: 0.3rem 0.7rem;
+      z-index: 1;
+
+      &::after,
+      &::before {
+        @extend %psudoclasses, %fullheight, %outlie-button;
+        top: 0;
+        width: 0;
+        border-radius: inherit;
+        z-index: -1;
+        transition: inherit;
+      }
+
+      &::after {
+        right: 0;
+      }
+
+      &::before {
+        left: 0;
+      }
+
+      &:hover {
+        color: $white-color;
+      }
+
+      &:hover::after,
+      &:hover::before {
+        width: 100%;
+      }
+    }
+  }
+
+  // post date and time
+  .post__date__time {
+    @extend %center-text, %block, %smallfont;
+    margin: 0.6rem;
+  }
+}
+
+// top choises blog articles pagination
+.blog-pagination {
+  margin: 1.8rem auto 0;
+}
+
+// End

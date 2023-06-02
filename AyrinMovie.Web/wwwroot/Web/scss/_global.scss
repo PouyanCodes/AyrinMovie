@@ -1,0 +1,175 @@
+// این کامپوننت برای ریست استایل های دیفالت مرورگر ها و استایل دهی به عناصر گلوبال می باشد
+// Global styles
+@charset 'UFT-8';
+
+::selection {
+  background: $outline-btn;
+  color: $white-color;
+}
+
+::-moz-selection {
+  background: $outline-btn;
+  color: $white-color;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+img,
+picture {
+  display: $blockelm;
+  image-rendering: auto;
+  -webkit-image-rendering: auto;
+  -ms-image-rendering: auto;
+  max-width: $fullwidth;
+  object-fit: cover;
+  -o-object-fit: cover;
+  -moz-object-fit: cover;
+  -webkit-object-fit: cover;
+  user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  -ms-user-select: none;
+  -ms-user-drag: none;
+}
+
+input,
+button,
+select,
+textarea {
+  font: inherit;
+  border: none;
+  outline: none;
+}
+
+html,
+body {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: $fullwidth;
+  -ms-text-size-adjust: $fullwidth;
+  direction: rtl;
+  text-align: right;
+  text-rendering: optimizeLegibility;
+}
+
+// Scroll bar for firefox
+html {
+  scrollbar-face-color: $primary-bg-color;
+  scrollbar-face-color: $primary-linear-color;
+  scrollbar-shadow-color: $dark-color;
+  scrollbar-highlight-color: $outline-btn;
+  scrollbar-width: 2px;
+}
+
+/* Only FireFox scroll*/
+html {
+  scrollbar-color: $outline-btn $content-bg-color;
+}
+
+body {
+  color: $primary-text-color;
+  background: $main-bg-color;
+  font: 16px "Iransans", Tahoma, Arial, Helvetica, sans-serif, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
+    "Open Sans", "Helvetica Neue", sans-serif;
+  line-height: 1.6;
+  text-rendering: optimizeLegibility;
+  overflow-x: $overflow;
+}
+
+// Scroll bar for chrome
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(50, 50, 50, 0.5);
+  border-radius: 2rem;
+  margin-block: 0.4rem;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $primary-bg-color;
+  background: $primary-linear-color;
+  border-radius: 2rem;
+}
+
+// A links transitions
+a:link,
+a:visited,
+a:hover,
+a:active,
+a:focus {
+  text-decoration: none;
+  transition: $transition-2;
+  -webkit-transition: $transition-2;
+  -o-transition: $transition-2;
+  -moz-transition: $transition-2;
+  -ms-transition: $transition-2;
+}
+
+video {
+  width: $fullwidth;
+  height: auto;
+  border-radius: $border-radius-btn !important;
+  position: $relative;
+}
+
+// margin for post inner
+.margin {
+  padding-top: 5rem;
+  background: $secondary-dark;
+}
+
+// post inenr title
+.p-title {
+  color: $white-color;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+  font-family: "iransans-medium";
+  text-transform: uppercase;
+
+  @media (max-width: $lg-991px) {
+    display: $noneelm;
+  }
+}
+
+// End

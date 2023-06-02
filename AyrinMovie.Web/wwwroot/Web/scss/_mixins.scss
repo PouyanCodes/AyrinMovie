@@ -1,0 +1,149 @@
+// تمامی میکسین های مربوط که کلاس های از قبل تعریف شده در این کامپوننت می باشد
+// Mixins
+
+// این میکسین فقط برای لودر دایره ها می باشد
+// circle loaders center
+@mixin bbttwhm {
+  width: 30px;
+  height: 30px;
+  border-radius: $rounded;
+  transform-origin: 50%;
+  transform-style: preserve-3d;
+  margin: 0 1rem;
+}
+
+// وسط چین کردن المنت
+@mixin FixedCenter {
+  position: $fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin abscenter {
+  position: $absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// میکسین های فلکس باکس
+// Flex mixins
+@mixin flexAlign {
+  display: $row;
+  align-items: center;
+}
+
+@mixin flexcenter($justify) {
+  @include flexAlign;
+  justify-content: $justify;
+}
+
+@mixin flexColumn($column) {
+  display: $row;
+  flex-direction: $column;
+  justify-content: center;
+}
+
+@mixin FlexAndJusty($justify-value) {
+  display: $row;
+  justify-content: $justify-value;
+}
+
+@mixin Flex100 {
+  max-width: $fullwidth;
+  flex: 0 0 $fullwidth;
+}
+
+// for sizes
+@mixin fullwidth {
+  width: $fullwidth;
+  height: $fullwidth;
+}
+
+// 1px solid border
+@mixin miniborder($color) {
+  border: 1px solid $color;
+}
+
+// fixed inset
+@mixin fixed-inset {
+  position: $fixed;
+  inset: 0;
+}
+
+@mixin abs-inset {
+  position: $absolute;
+  inset: 0;
+}
+
+@mixin psudoclass {
+  content: "";
+  position: $absolute;
+}
+
+@mixin psudoclassInset {
+  content: "";
+  position: $absolute;
+  inset: 0;
+}
+
+@mixin opacity-visibility-true {
+  opacity: 0;
+  visibility: $hidden-item;
+}
+
+@mixin opacity-visibility-false {
+  opacity: 1;
+  visibility: $visible;
+}
+
+// pointer width position
+@mixin pointer-width-block {
+  cursor: $pointer;
+  display: $blockelm;
+  width: $fullwidth;
+}
+
+@mixin block-width {
+  width: $fullwidth;
+  display: $blockelm;
+}
+
+@mixin relative-width {
+  position: $relative;
+  width: $fullwidth;
+}
+
+@mixin relative-cursor-block {
+  position: $relative;
+  cursor: $pointer;
+  display: $blockelm;
+}
+
+@mixin width-pointer {
+  width: $fullwidth;
+  cursor: $pointer;
+}
+
+@mixin pointer-absolute {
+  cursor: $pointer;
+  position: $absolute;
+}
+
+@mixin relative-block {
+  position: $relative;
+  display: $blockelm;
+}
+
+@mixin block-pointer {
+  display: $blockelm;
+  cursor: $pointer;
+}
+
+@mixin width-absolute {
+  width: $fullwidth;
+  position: $absolute;
+}
+
+// End

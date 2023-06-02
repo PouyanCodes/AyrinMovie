@@ -1,0 +1,274 @@
+// صفحه لودر ها و انمیشن های لودر ها
+// Loader Animation
+
+// Loader 1 Balls
+.loader {
+  @extend %CenterFixed, %fullwidth, %transition-4, %pointer-none;
+  background: #0c0c0c;
+  z-index: 99;
+}
+
+.loader-circle-container {
+  @extend %CenterFixed, %row;
+}
+
+.loader-circle {
+  @extend %forCircleLoader, %primary-linear-color;
+  box-shadow: 0 3px 20px rgba(250, 123, 119, 0.3);
+  animation: circle 0.6s alternate infinite ease;
+}
+
+@keyframes circle {
+  0% {
+    height: 5px;
+    border-radius: 3.125rem 3.125rem 1.563rem 1.563rem;
+    transform: scaleX(1.7) translateY(50px);
+  }
+  40% {
+    @extend %rounded;
+    height: 20px;
+    transform: scaleX(1);
+  }
+}
+
+.loader-circle:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.loader-circle:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.loader-shadow-container {
+  @extend %CenterFixed, %row;
+  transform: translate(-50%, 300%);
+}
+
+.circle-shadow {
+  @extend %forCircleLoader;
+  background: rgba(49, 49, 49, 0.9);
+  z-index: -1;
+  filter: blur(1px);
+  animation: shadow 0.6s alternate infinite ease;
+}
+
+@keyframes shadow {
+  0% {
+    transform: scaleX(1.5) rotateX(120deg);
+  }
+  40% {
+    transform: scaleX(1) rotateX(120deg);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scaleX(0.2) rotateX(120deg);
+    opacity: 0.3;
+  }
+}
+
+.circle-shadow:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.circle-shadow:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+// Loader 2 Film Strip
+.loader-parent {
+  @extend %transition-4, %fixed-inset, %img-border-radius, %overflow-hidden;
+  background: #0c0c0c;
+  z-index: 999;
+}
+
+.loader-bg {
+  @extend %CenterFixed, %primary-linear-color, %rounded-radius;
+  z-index: 4;
+  width: 200px;
+  height: 200px;
+  animation: Strip 1s linear infinite;
+
+  .loader-circle-2 {
+    @extend %CenterFixed, %main-bg-color;
+    width: 60px;
+    height: 60px;
+    border-radius: inherit;
+  }
+
+  .mid-circle {
+    @extend %CenterFixed, %main-bg-color;
+    width: 25px;
+    height: 25px;
+    border-radius: inherit;
+  }
+}
+
+.loader-circle-2:nth-child(2) {
+  top: 50px;
+}
+
+.loader-circle-2:nth-child(3) {
+  left: 50px;
+  animation-delay: 0.2s;
+}
+
+.loader-circle-2:nth-child(4) {
+  right: -10px;
+  animation-delay: 0.3s;
+}
+
+.loader-circle-2:nth-child(5) {
+  top: 150px;
+  animation-delay: 0.4s;
+}
+
+@keyframes Strip {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+// loader 3 film Strip
+.loader3 {
+  @extend %flexcenter, %transition-4, %column, %overflow-hidden;
+
+  .loader-film-strip {
+    @extend %primary-linear-color, %relative, %overflow-hidden, %mb-1;
+    width: 56px;
+    height: 72px;
+    // transform: rotate(90deg); // for rotate loader to horizontal
+
+    &::after,
+    &::before {
+      @extend %psudoclasses, %fullheight;
+      border-left: 6px dashed $dark-color-light;
+      animation: rolling 0.3s cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
+    }
+
+    &::after {
+      left: 5px;
+    }
+
+    &::before {
+      right: 5px;
+    }
+
+    .loader-strip-inner {
+      @extend %fullheight;
+      animation: rollingInner 0.3s linear infinite;
+    }
+
+    .loader-film-strip-inner {
+      @extend %absolute, %dark-color-light;
+      width: 30px;
+      height: 26px;
+      right: 13px;
+      top: -5px;
+      box-shadow: 0 0 4px inset rgba(255, 255, 255, 0.3);
+      margin: 0.4rem 0;
+    }
+
+    .inner-2 {
+      top: 25px;
+    }
+
+    .inner-3 {
+      top: 55px;
+    }
+
+    .inner-4 {
+      top: 85px;
+    }
+  }
+}
+
+@keyframes rolling {
+  0% {
+    top: 0;
+  }
+  100% {
+    top: -15px;
+  }
+}
+
+@keyframes rollingInner {
+  to {
+    transform: translateY(-50%);
+  }
+}
+
+// loaded class
+.loaded {
+  @include opacity-visibility-true;
+  z-index: -1;
+}
+
+// loader page start here
+.loader__container {
+  @extend %max-width;
+  margin: 8rem auto 2rem;
+
+  .loader__cr {
+    @extend %flexalign, %fullwidth, %relative;
+  }
+
+  #loaderone,
+  #loadertwo,
+  #loaderthree {
+    @extend %row, %fullheight, %absolute;
+    justify-content: flex-start;
+    top: 0;
+    z-index: -1;
+    animation: loadersIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  }
+
+  .loader-bg {
+    @extend %absolute;
+    top: 100px;
+  }
+}
+
+@keyframes loadersIn {
+  from {
+    transform: translate(-50%, -50%) rotate(120deg);
+  }
+}
+
+.loader__btn__cr {
+  @extend %flexandjustycenter;
+  margin-bottom: 4rem;
+
+  button {
+    @extend %btn-border-radius, %bigfont, %whitecolor, %transition-4, %pointer;
+    @include miniborder(rgba(255, 255, 255, 0.2));
+    background: transparent;
+    padding: 0.4rem 0.6rem;
+    margin: 0 0.4rem;
+
+    &:hover {
+      @extend %primary-linear-color, %whitecolor;
+    }
+  }
+}
+
+// loader info text
+.loader-info {
+  @extend %mediumfont;
+  margin: 13rem 0 3rem;
+
+  h1 {
+    margin: 2rem 0 0.2rem;
+  }
+
+  p {
+    max-width: 900px;
+  }
+}
+
+// active loader button class
+.active__loader__btn {
+  background: $primary-linear-color !important;
+  color: $white-color !important;
+}
+
+// End

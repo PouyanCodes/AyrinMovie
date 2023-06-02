@@ -1,0 +1,405 @@
+// کامپوننت استفاده شده در استایل دهی کامنت ها
+// comments container
+.comments__container__class {
+  @extend %max-width;
+  margin: 3rem auto;
+
+  .comments__inner__cr {
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #f1f2f3;
+
+    .cm__title__btn {
+      @extend %flexspacebetween;
+
+      h1 {
+        @extend %whitecolor, %bigfont, %titlefont;
+
+        i {
+          @extend %primary-text-color;
+        }
+      }
+
+      // add comment button
+      button {
+        @extend %transition-cubic, %btn-border-radius, %pointer;
+        background: transparent;
+        padding: 0.6rem 0.8rem;
+
+        span {
+          @extend %inline-block;
+        }
+
+        &:hover {
+          @extend %whitecolor;
+          background: $green-badge;
+        }
+
+        i {
+          @extend %transition-cubic, %mediumfont;
+          padding-left: 0.3rem;
+        }
+
+        .rotate__Cm__icon {
+          @extend %center-text;
+          transform: translate(-1px, -2px) rotate(45deg) !important;
+          font-size: 1.2rem;
+        }
+      }
+    }
+  }
+}
+
+// comment form
+.comment__below__form {
+  @extend %block, %fullwidth, %relative, %overflow-hidden;
+  margin-top: 0;
+  transition: all 0.5s ease-in-out;
+  max-height: 0;
+
+  .add__comment__label {
+    @extend %block, %whitecolor, %titlefont, %mb-1;
+    font-size: 1.2rem;
+  }
+
+  .comment__form__control {
+    @extend %mb-1;
+  }
+
+  textarea,
+  input:not([type="submit"]) {
+    @extend %btn-border-radius,
+      %transition-cubic,
+      %fullwidth,
+      %primary-text-color;
+    @include miniborder(rgba(255, 255, 255, 0.1));
+    background: $secondary-dark;
+    padding: 0.4rem 0.8rem;
+    transition-property: border;
+
+    &::placeholder {
+      @extend %transition-cubic;
+    }
+
+    &:focus {
+      border: 1px solid $green-badge;
+    }
+
+    &:focus::placeholder {
+      opacity: 0;
+    }
+  }
+
+  textarea {
+    resize: vertical;
+  }
+}
+
+.auther__email__btn {
+  @extend %row, %fullwidth;
+
+  @media (max-width: $md-620px) {
+    flex-direction: $column;
+  }
+}
+
+input[type="submit"] {
+  @extend %btn-border-radius, %whitecolor, %transition-cubic, %pointer;
+  @include miniborder($green-badge);
+  height: 45px;
+  width: 120px;
+  background: $green-badge;
+
+  @media (max-width: $md-620px) {
+    width: $fullwidth;
+  }
+
+  &:hover {
+    background: $green-badge;
+    color: $white-color;
+  }
+}
+
+.comment__form__control:nth-child(1),
+.comment__form__control:nth-child(2) {
+  @extend %fullwidth;
+  margin-left: 1rem;
+
+  @media (max-width: $md-620px) {
+    margin-left: 0;
+    margin-bottom: 0.4rem;
+  }
+
+  input {
+    height: 45px;
+  }
+}
+
+.comments__cr {
+  @extend %max-width;
+  margin-top: 2rem;
+
+  .commentDiv {
+    background: $secondary-dark;
+  }
+}
+
+// all comments container
+.allComments__cr {
+  @extend %max-width;
+  padding-top: 1.8rem;
+
+  #allComments {
+    @extend %row, %column;
+  }
+}
+
+// comment divistion container
+.comment__cr {
+  @extend %fullwidth, %btn-border-radius;
+  padding: 1rem 1.4rem;
+  margin-bottom: 1rem;
+  background: $secondary-dark;
+  animation: commentPosted 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6) forwards;
+
+  @media (max-width: $xs-480px) {
+    padding: 1rem;
+  }
+}
+
+// comments animation in commented
+@keyframes commentPosted {
+  0% {
+    transform: translateY(-100px);
+  }
+
+  60% {
+    transform: translateY(-30px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+// comment user icon and name
+.Comment__user__icon,
+.Comment__user__name {
+  padding-left: 0.8rem;
+
+  @media (max-width: $xs-480px) {
+    padding-left: 0.5rem;
+  }
+}
+
+.Comment__user__name {
+  font-size: 0.938rem;
+}
+
+// comment date
+.Comment__date__cr {
+  @extend %primary-text-sl;
+  font-size: 0.75rem;
+}
+
+.DateNameIcon__cr {
+  @extend %flexalign;
+}
+
+// comment like and dislike buttons
+.LikeDislike__cr {
+  @extend %flexalign;
+  padding-top: 0.3rem;
+
+  div {
+    @extend %pointer;
+  }
+
+  div:last-child {
+    margin-right: 1rem;
+
+    &:hover i {
+      color: #dc7760;
+    }
+
+    i {
+      @extend %orange, %transition-2;
+    }
+
+    span {
+      padding-right: 0.4rem;
+    }
+  }
+
+  div:first-child {
+    &:hover i {
+      color: #6ace1d;
+    }
+
+    i {
+      @extend %green, %transition-2;
+    }
+
+    span {
+      padding-right: 0.4rem;
+    }
+  }
+}
+
+// like dislike post animation class
+.like__dislike__Post {
+  animation: postLikeDislike 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6) forwards !important;
+}
+
+@keyframes postLikeDislike {
+  40%,
+  80% {
+    transform: scale(1.5);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+// date name icon && like dislike
+.WrapCmDiv {
+  @extend %flexspacebetween, %wrap;
+}
+
+// comment text
+.CommentTextCr {
+  margin-top: 0.6rem;
+  padding-right: 2rem;
+  font-size: 0.875rem;
+  word-break: keep-all;
+
+  @media (max-width: $xs-480px) {
+    padding-right: 0;
+  }
+}
+
+// disabled comment form buttons style
+#submit__comment:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: rgba(255, 20, 20, 0.6);
+  border: currentColor;
+}
+
+// comment form err style
+#UserNameErr,
+#UserEmailErr {
+  @extend %block;
+  margin-top: 0.6rem;
+  color: #ff1414;
+}
+
+// post comment animation afte submit
+.PostComment__Animation {
+  @extend %absolute, %fullsize, %img-border-radius, %transition-cubic;
+  @include opacity-visibility-true;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+
+  .postcm__animation {
+    background: rgba(0, 0, 0, 0.3);
+  }
+}
+
+.PostComment__Animation__in {
+  @include opacity-visibility-false;
+}
+
+// show comment class in
+.comment__below__show {
+  margin-top: 2rem !important;
+  max-height: 350px !important;
+}
+
+// footer comment below btn
+.footer__comment__btn {
+  @extend %max-width;
+  margin: 3rem auto;
+
+  #submit__comment__footer {
+    @extend %relative,
+      %block,
+      %center-text,
+      %green,
+      %auto-margin,
+      %pointer,
+      %overflow-hidden;
+    padding: 1rem 0.8rem;
+    transition: 0.3s linear;
+    border: 1px solid currentColor;
+    border-radius: 4px;
+    background: transparent;
+    box-shadow: 6px 4px 0 $green-badge;
+
+    &::after,
+    &::before {
+      @extend %abs-inset, %fullsize;
+      content: "";
+      transition: inherit;
+      background: $green-badge;
+      z-index: -1;
+    }
+
+    &::after {
+      clip-path: polygon(
+        20% 0%,
+        80% 0%,
+        100% 0,
+        100% 51%,
+        100% 75%,
+        35% 50%,
+        0 35%,
+        0 0
+      );
+      transform: translateY(-100px);
+    }
+
+    &::before {
+      clip-path: polygon(
+        23% 40%,
+        50% 52%,
+        75% 64%,
+        100% 75%,
+        100% 100%,
+        32% 100%,
+        0 100%,
+        0 30%
+      );
+      transform: translateY(100px);
+    }
+
+    &:hover {
+      color: #000;
+      font-weight: bold;
+      border-color: $green-badge;
+      box-shadow: none;
+      z-index: 1;
+    }
+
+    &:hover::after,
+    &:hover::before {
+      transform: translateY(0);
+    }
+
+    i {
+      animation: angleup 1s linear infinite alternate;
+    }
+  }
+}
+
+// replay comment style
+.replay__cm {
+  @extend %smallfont, %orange;
+  text-align: left;
+  font-style: italic;
+  padding-top: 0.4rem;
+  line-height: 1.8;
+}
+
+// End

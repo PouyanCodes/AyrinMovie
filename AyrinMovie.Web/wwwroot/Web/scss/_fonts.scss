@@ -1,0 +1,82 @@
+// Importants fonts
+
+// flixmovie theme base fonts
+@font-face {
+  font-family: "Iransans";
+  font-weight: 400;
+  src: url(../fonts/iransans/IRANSansWeb.eot) format("truetype"),
+    url(../fonts/iransans/IRANSansWeb.ttf) format("embedded-opentype"),
+    url(../fonts/iransans/IRANSansWeb.woff) format("woff"),
+    url(../fonts/iransans/IRANSansWeb.woff2) format("woff2");
+}
+
+@font-face {
+  font-family: "iransans-medium";
+  font-weight: 700;
+  src: url(../fonts/iransnas-medium/iransans-medium.eot)
+      format("embedded-opentype"),
+    url(../fonts/iransnas-medium/iransans-medium.ttf) format("truetype"),
+    url(../fonts/iransnas-medium/iransans-medium.woff) format("woff"),
+    url(../fonts/iransnas-medium/Iransans-medium.woff2) format("woff2");
+}
+
+// Optinal fonts for other users
+@font-face {
+  font-family: "Kalame";
+  src: url(../fonts/kalame/iranfontkalameh.ttf) format("truetype"),
+    url(../fonts/kalame/iranfontkalameh.eot) format("embedded-opentype"),
+    url(../fonts/kalame/iranfontkalameh.woff) format("woff"),
+    url(../fonts/kalame/iranfontkalameh.woff2) format("woff2");
+}
+
+@font-face {
+  font-family: "Sahel-bold";
+  font-weight: bold;
+  src: url(../fonts/sahel-bold/Sahel-Bold-FD.ttf) format("truetype"),
+    url(../fonts/sahel-bold/Sahel-Bold-FD.eot) format("embedded-opentype"),
+    url(../fonts/sahel-bold/Sahel-Bold-FD.woff) format("woff"),
+    url(../fonts/sahel-bold/Sahel-Bold-FD.woff2) format("woff2");
+}
+
+@font-face {
+  font-family: "Sahel-normal";
+  font-weight: 400;
+  src: url(../fonts/sahel-medium/Sahel-FD.ttf) format("truetype"),
+    url(../fonts/sahel-medium/Sahel-FD.eot) format("embedded-opentype"),
+    url(../fonts/sahel-medium/Sahel-FD.woff) format("woff"),
+    url(../fonts/sahel-medium/Sahel-FD.woff2) format("woff2");
+}
+
+@font-face {
+  font-family: "Vazir-bold";
+  font-weight: 900;
+  src: url(../fonts/vazir-bold/Vazir-Bold-FD.ttf) format("truetype"),
+    url(../fonts/vazir-bold/Vazir-Bold-FD.eot) format("embedded-opentype"),
+    url(../fonts/vazir-bold/Vazir-Bold-FD.woff) format("woff"),
+    url(../fonts/vazir-bold/Vazir-Bold-FD.woff2) format("woff2");
+}
+
+@font-face {
+  font-family: "Vazir-normal";
+  font-weight: 400;
+  src: url(../fonts/vazir-medium/Vazir-Medium-FD.ttf) format("truetype"),
+    url(../fonts/vazir-medium/Vazir-Medium-FD.eot) format("embedded-opentype"),
+    url(../fonts/vazir-medium/Vazir-Medium-FD.woff) format("woff"),
+    url(../fonts/vazir-medium/Vazir-Medium-FD.woff2) format("woff2");
+}
+
+@font-face {
+  font-family: "Yekan";
+  font-weight: normal;
+  src: url(../fonts/yekan-medium/Yekan.eot) format("embedded-opentype"),
+    url(../fonts/yekan-medium/Yekan.svg) format("svg"),
+    url(../fonts/yekan-medium/Yekan.ttf) format("truetype"),
+    url(../fonts/yekan-medium/Yekan.woff) format("woff");
+}
+
+@font-face {
+  font-family: "Bebas";
+  src: url(../fonts/Bebas/Bebas-Regular.woff) format("woff");
+}
+
+// End

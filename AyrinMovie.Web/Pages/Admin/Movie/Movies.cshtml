@@ -1,0 +1,191 @@
+﻿@page
+@using AyrinMovie.Core.Convertors
+@model AyrinMovie.Web.Pages.Admin.Movie.MoviesModel
+
+@{
+    ViewData["Title"] = "پنل کاربری | لیست فیلم و انیمیشن ها ";
+    ViewData["Page-Header"] = "فیلم و انیمیشن ها ";
+    ViewData["MovieMenuActive"] = "true";
+}
+
+
+@section Styles
+{
+<link rel="stylesheet" type="text/css" href="~/Admin/plugins/table/datatable/datatables.css">
+<link rel="stylesheet" type="text/css" href="~/Admin/assets/css/forms/theme-checkbox-radio.css">
+<link rel="stylesheet" type="text/css" href="~/Admin/plugins/table/datatable/dt-global_style.css">
+<link rel="stylesheet" type="text/css" href="~/Admin/plugins/table/datatable/custom_dt_custom.css">
+<link href="~/Admin/plugins/animate/animate.css" rel="stylesheet" type="text/css" />
+<link href="~/Admin/assets/css/scrollspyNav.css" rel="stylesheet" type="text/css" />
+<link href="~/Admin/assets/css/components/custom-modal.css" rel="stylesheet" type="text/css" />
+}
+
+
+
+
+<div class="col-lg-12">
+    <div class="statbox widget box box-shadow">
+
+        <div class="widget-header">
+            <div class="row">
+                <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                    <h4> لیست فیلم و انیمیشن ها </h4>
+                    <a href="/Admin/Movie/AddMovie" class="btn btn-primary mb-4 mr-2 btn-lg">افزودن فیلم - انیمشن جدید</a>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="widget-content widget-content-area">
+            <div class="table-responsive mb-4">
+                <table id="style-3" class="table style-3  table-hover non-hover">
+                    <thead>
+                        <tr>
+                            <th class="text-center">تصویر</th>
+                            <th>عنوان </th>
+                            <th>ژانر</th>
+                            <th> تاریخ انتشار</th>
+                            <th class="text-center">عمل</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var movie in Model.Movies)
+                        {
+                            <tr>
+
+                                <td class="text-center">
+                                    <span><img src="~/Files/Movies/Thumbnail/@movie.MovieImageName" alt="avatar"></span>
+                                </td>
+
+                                <td>@movie.MovieTitle</td>
+                                <td>@movie.MovieGenre</td>
+                                <td>@movie.CreateDate.ToShamsi()</td>
+
+                                <td class="text-center">
+                                    <div class="dropdown custom-dropdown">
+                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-horizontal"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink1">
+                                            <a class="dropdown-item" href="/Admin/Movie/ShowMovie/@movie.MovieId">مشاهده</a>
+                                            <a class="dropdown-item" href="/home/Movie/@movie.MovieTitle">مشاهده در سایت</a>
+                                            <a class="dropdown-item" href="/Admin/Movie/EditMovie/@movie.MovieId">ویرایش</a>
+                                            <a class="dropdown-item" onclick="GoModal(@movie.MovieId);" data-target="#deleteMovieModal" data-toggle="modal" data-placement="top" title="" data-original-title="حذف">حذف</a>
+                                        </div>
+                                    </div>
+                                </td>
+
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+        <!-- Movie Delete Modal -->
+
+        <div class="modal fade" id="deleteMovieModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">حذف فیلم - انیمیشن</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="modal-text"> آیا از حذف این مورد مطمئن هستید ؟  </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn" data-dismiss="modal"><i class="flaticon-cancel-12"></i>  نادیده گرفتن</button>
+                        <a href="#" type="button" class="btn btn-primary" id="modalHref">حذف کن</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+
+@section Scripts
+    {
+
+<script src="~/Admin/plugins/table/datatable/datatables.js"></script>
+<script src="~/Admin/assets/js/scrollspyNav.js"></script>
+
+<script>
+
+    function GoModal(id)
+    {
+        var modalRouteTag = document.getElementById("modalHref");
+        modalRouteTag.setAttribute("href","/Admin/Movie/DeleteMovie/" + id);
+    }
+
+
+    c1 = $('#style-1').DataTable({
+        headerCallback:function(e, a, t, n, s) {
+            e.getElementsByTagName("th")[0].innerHTML='<label class="new-control new-checkbox checkbox-outline-info m-auto">\n<input type="checkbox" class="new-control-input chk-parent select-customers-info" id="customer-all-info">\n<span class="new-control-indicator"></span><span style="visibility:hidden">c</span>\n</label>'
+        },
+        columnDefs:[ {
+            targets:0, width:"30px", className:"", orderable:!1, render:function(e, a, t, n) {
+                return'<label class="new-control new-checkbox checkbox-outline-info  m-auto">\n<input type="checkbox" class="new-control-input child-chk select-customers-info" id="customer-all-info">\n<span class="new-control-indicator"></span><span style="visibility:hidden">c</span>\n</label>'
+            }
+        }],
+        "oLanguage": {
+            "oPaginate": { "sPrevious": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>', "sNext": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>' },
+            "sInfo": "صفحه _PAGE_ از _PAGES_",
+            "sSearch": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>',
+            "sSearchPlaceholder": "جستجو کنید...",
+           "sLengthMenu": "نتایج :  _MENU_",
+        },
+        "lengthMenu": [5, 10, 20, 50],
+        "pageLength": 5
+    });
+
+    multiCheck(c1);
+
+    c2 = $('#style-2').DataTable({
+        headerCallback:function(e, a, t, n, s) {
+            e.getElementsByTagName("th")[0].innerHTML='<label class="new-control new-checkbox checkbox-outline-info m-auto">\n<input type="checkbox" class="new-control-input chk-parent select-customers-info" id="customer-all-info">\n<span class="new-control-indicator"></span><span style="visibility:hidden">c</span>\n</label>'
+        },
+        columnDefs:[ {
+            targets:0, width:"30px", className:"", orderable:!1, render:function(e, a, t, n) {
+                return'<label class="new-control new-checkbox checkbox-outline-info  m-auto">\n<input type="checkbox" class="new-control-input child-chk select-customers-info" id="customer-all-info">\n<span class="new-control-indicator"></span><span style="visibility:hidden">c</span>\n</label>'
+            }
+        }],
+        "oLanguage": {
+            "oPaginate": { "sPrevious": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>', "sNext": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>' },
+            "sInfo": "صفحه _PAGE_ از _PAGES_",
+            "sSearch": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>',
+            "sSearchPlaceholder": "جستجو کنید...",
+           "sLengthMenu": "نتایج :  _MENU_",
+        },
+        "lengthMenu": [5, 10, 20, 50],
+        "pageLength": 5
+    });
+
+    multiCheck(c2);
+
+    c3 = $('#style-3').DataTable({
+        "oLanguage": {
+            "oPaginate": { "sPrevious": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>', "sNext": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>' },
+            "sInfo": "صفحه _PAGE_ از _PAGES_",
+            "sSearch": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>',
+            "sSearchPlaceholder": "جستجو کنید...",
+           "sLengthMenu": "نتایج :  _MENU_",
+        },
+        "stripeClasses": [],
+        "lengthMenu": [5, 10, 20, 50],
+        "pageLength": 5
+    });
+
+    multiCheck(c3);
+</script>
+    }

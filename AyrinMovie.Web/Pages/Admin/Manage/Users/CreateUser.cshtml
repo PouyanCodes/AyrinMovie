@@ -1,0 +1,147 @@
+﻿@page
+@using AyrinMovie.Core.Services.Permission
+@model AyrinMovie.Web.Pages.Admin.Manage.Users.CreateUserModel
+
+@inject IPermissionService _permissionService
+
+
+@section Styles
+{
+<link rel="stylesheet" type="text/css" href="~/Admin/plugins/dropify/dropify.min.css">
+<link href="~/Admin/assets/css/users/account-setting.css" rel="stylesheet" type="text/css" />
+}
+
+
+@{
+    ViewData["Title"] = "پنل کاربری | افزودن کاربر ";
+    ViewData["Page-Header"] = "افزودن کاربر";
+    ViewData["UsersMenuActive"] = "true";
+}
+
+
+@{
+    var data = _permissionService.GetRoles();
+    var Roles = new SelectList(data, "Value", "Text");
+}
+
+
+<div class="Information-Box-container layout-top-spacing">
+
+    <div class="Information-content">
+        <form method="post" enctype="multipart/form-data">
+
+
+            <div class="scrollspy-example" data-spy="scroll" data-target="#Information-Box-scroll" data-offset="-100">
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
+                        <div id="general-info" class="section general-info">
+                            <div class="info">
+                                <h6>افزودن کاربر</h6>
+                                <div class="row">
+                                    <div class="col-lg-11 mx-auto">
+                                        <div class="row">
+                                            <div class="col-xl-2 col-lg-12 col-md-4">
+                                                <div class="upload mt-4 pr-md-4">
+                                                    <input type="file" asp-for="CreateUserViewModel.UserAvatar" id="input-file-max-fs" class="dropify" data-default-file="/Files/UserAvatar/Defult.jpg" data-max-file-size="7M" />
+                                                    <p class="mt-2"><i class="flaticon-cloud-upload mr-1"></i> آپلود عکس</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-10 col-lg-12 col-md-8 mt-md-0 mt-4">
+                                                <div class="form">
+                                                    <div class="row">
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                <label>نام و نام خانوادگی</label>
+                                                                <input type="text" asp-for="CreateUserViewModel.FullName" class="form-control mb-4" placeholder="نام و نام خانوادگی" />
+                                                                <span asp-validation-for="CreateUserViewModel.FullName" class="text-danger"></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <label class="dob-input">نقش</label>
+                                                            <div class="d-sm-flex d-block">
+                                                                <div class="form-group mr-1">
+                                                                    <select asp-for="CreateUserViewModel.UserRole" asp-items="@Roles" class="form-control" id="SelectRole">
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                <label>ایمیل</label>
+                                                                <input type="text" asp-for="CreateUserViewModel.Email" class="form-control mb-4" placeholder="ایمیلتان را در اینجا بنویسید" />
+                                                                <span asp-validation-for="CreateUserViewModel.Email" class="text-danger"></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                <label>موبایل</label>
+                                                                <input type="text" asp-for="CreateUserViewModel.PhoneNumber" class="form-control mb-4"  placeholder="شماره موبایل خود را اینجا وارد نمایید" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <div class="form-group">
+                                                                <label>رمزعبور</label>
+                                                                <input type="password" asp-for="CreateUserViewModel.Password" class="form-control" placeholder="از رمز قوی استفاده کنید" />
+                                                                <span asp-validation-for="CreateUserViewModel.Password" class="text-danger"></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
+                        <div id="about" class="section about">
+                            <div class="info">
+                                <h5>درباره</h5>
+                                <div class="row">
+                                    <div class="col-md-11 mx-auto">
+                                        <div class="form-group">
+                                            <label>بیوگرافی</label>
+                                            <textarea class="form-control" asp-for="CreateUserViewModel.Biography" placeholder="در مورد خودتان چیز جالبی بگویید" rows="10"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
+                        <div class="row">
+                            <div class="col-md-11 mx-auto">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <input type="submit" class="btn btn-primary mb-4 mr-2 btn-lg" value="افزودن کاربر" />
+                                        <input type="reset" class="btn btn-secondary mb-4 mr-2 btn-lg" value="پاک کن" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+
+
+
+@section Scripts
+{
+<script src="~/Admin/plugins/dropify/dropify.min.js"></script>
+<script src="~/Admin/plugins/blockui/jquery.blockUI.min.js"></script>
+<script src="~/Admin/assets/js/users/account-settings.js"></script>
+}

@@ -1,0 +1,94 @@
+﻿
+@{
+    ViewData["Title"] = "آیرین مووی - وبلاگ";
+}
+
+
+@using AyrinMovie.Core.Convertors
+@using AyrinMovie.Core.Services.Article
+@inject IArticleService _articleService;
+
+<main class="main-content-top-video-choises">
+    <!-- Top choices Videos Start-->
+    <!-- Top choices Videos End-->
+</main>
+
+
+
+<section class="main-body" id="index-main-body">
+    <article class="container articles-container">
+
+        <div class="articles-aside">
+            <!-- Posts Container -->
+            <section id="main-article-container" class="main-articles">
+
+                @foreach (var article in ViewBag.articlesList.Articles)
+                {
+                    <article class="main-post">
+                        <div class="post-img-container">
+                            <a href="/home/article/@article.ArticleTitle" title="@article.ArticleTitle">
+                                <img loading="lazy" class="article-img"
+                                 src="~/Files/Blog/@article.ArticleImageName"
+                                 alt="@article.ArticleTitle">
+                            </a>
+                        </div>
+                        <div class="post-info">
+                            <div class="post-title-container">
+                                <h1 class="post-info-title">
+                                    <a class="post-info-link" href="/home/article/@article.ArticleTitle" title="@article.ArticleTitle">
+                                        @article.ArticleTitle
+                                    </a>
+                                </h1>
+                            </div>
+
+                            <div class="actors-director-container">
+                                <div class="director">
+                                    <span class="actors-title">نویسنده : @_articleService.GetAuthorNameByAuthorId(@article.AuthorId) </span>
+                                </div>
+                            </div>
+                            <div class="post-summary">
+                                <p class="post-summary-text">
+                                    @article.ArticleIntroduction
+                                </p>
+                            </div>
+                            <div class="post-time-country-score-btn-container">
+                                <div class="post-time-country-score">
+                                    <p>
+                                        <i class="far fa-calendar"></i>
+
+                                        @((article.UpdateDate == null ?
+                                    "تاریخ انتشار : " + article.CreateDate  : " آخرین بروز رسانی : " + article.UpdateDate))
+
+                                    </p>
+
+                                </div>
+                                <div class="post-btn">
+                                    <button class="post-btn-con">
+                                        <a class="post-btn-link" href="/home/article/@article.ArticleTitle">
+                                            <i class="fa fa-download"></i>
+                                            ادامه مطلب
+                                        </a>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                }
+
+
+                <!-- pagination -->
+                <section id="post-pages" class="pagination">
+                    <ul id="pages">
+
+                        @for (int i = 1; i <= (ViewBag.articlesList.PageCount + 1); i++)
+                        {
+                            <li class="pagelines"><a class="@((i==ViewBag.articlesList.CurrentPage)?"active-page":"")" id="DefaultPage" href="/blog?PageId=@i">@i</a></li>
+                        }
+
+                    </ul>
+                </section>
+            </section>
+
+        </div>
+    </article>
+</section>

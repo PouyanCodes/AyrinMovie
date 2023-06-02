@@ -1,0 +1,79 @@
+// این کامپوننت سفارشی سازی کتابخانه ویدیو جی اس اسفاده شده
+// this file make customize video js and fullpage video styles
+
+// video js custom styles
+.video-js {
+  @extend %btn-border-radius;
+  max-width: $fullwidth;
+  height: auto;
+}
+
+.vjs-poster {
+  @extend %fullwidth;
+}
+
+.vjs-default-skin .vjs-big-play-button {
+  font-size: 1rem;
+}
+
+.video-js .vjs-volume-level,
+.video-js .vjs-play-progress {
+  background: $primary-bg-color;
+  background: $primary-linear-color;
+}
+
+.video-js .vjs-big-play-button {
+  @extend %whitecolor;
+  background: $primary-bg-color;
+  background: $primary-linear-color;
+  font-size: 2rem;
+}
+
+.video-js .vjs-load-progress {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.vjs-play-control {
+  @extend %btn-border-radius;
+  background: $primary-bg-color !important;
+  background: $primary-linear-color !important;
+}
+
+.full__page__video {
+  video {
+    @extend %relative;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .logo__on__video {
+    @extend %pointer-abs, %transition-2;
+    right: 20px;
+    top: 10px;
+    opacity: 0.7;
+
+    div {
+      padding-right: 0.5rem;
+    }
+
+    svg {
+      width: 40px;
+      height: 40px;
+    }
+
+    h1 {
+      font-size: 0.7rem;
+    }
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  [poster] {
+    @include fullwidth;
+    position: $absolute;
+  }
+}
+
+// End
